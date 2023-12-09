@@ -1,0 +1,52 @@
+.locale--current {
+  background-color: $baseLinkColor;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  border: 0;
+  color: $whiteBgFontColor;
+  display: inline-block;
+  line-height: 2em;
+  margin: 0.1rem 0;
+  cursor: pointer;
+  text-align: center;
+
+  &:hover {
+    color: $whiteBgFontColor;
+    background-color: $hoverLinkColor;
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+
+  &.active,
+  &.active:hover {
+    cursor: default;
+    border: 0;
+    background-color: $activeLinkColor;
+  }
+}
+
+.locale--container {
+  position: absolute;
+  background-color: $baseLinkColor;
+  border-radius: 0.3rem;
+  color: $whiteBgFontColor;
+  width: 2rem;
+  list-style-type: none;
+  padding: 0.5rem 0;
+  text-align: center;
+
+  li {
+    margin: 0;
+    cursor: pointer;
+
+    &.active {
+      background-color: $activeLinkColor;
+    }
+
+    &:hover {
+      background-color: $hoverLinkColor;
+    }
+  }
+}
