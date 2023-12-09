@@ -18,7 +18,6 @@ function App() {
         <Route path="/" element={<WelcomePage />} />
         <Route path="/main" element={<MainPage />} />
         <Route path="/sign-in" element={<SignInPage />} />
-        <Route path="/sign-in" element={<SignInPage />} />
         <Route path="/sign-up" element={<SignUpPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
