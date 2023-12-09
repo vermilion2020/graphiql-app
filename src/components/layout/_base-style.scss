@@ -1,0 +1,53 @@
+// main colors
+$activeLinkColor: #1f5dc0;
+$baseLinkColor: #1c478b;
+$hoverLinkColor: #2F79F0;
+
+// font bg colors
+$whiteBgFontColor: #fff;
+$errorColor: rgb(145, 30, 30);
+$blackBgFontColor: #000;
+$mainBgFontColor: #282c34;
+$darkGreyFontColor: #636975;
+$lightGreyColor: #b9b5bb;
+$darkBlueColor: #0f2857;
+$lightBlueColor: #7186ad;
+
+
+.button {
+  width: 120px;
+  height: 35px;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  background-color: $activeLinkColor;
+  color: $whiteBgFontColor;
+  border: 0;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $hoverLinkColor;
+  }
+
+  &.disabled,
+  &.disabled:hover {
+    background-color: $lightGreyColor;
+    cursor: default;
+  }
+}
+
+a {
+  font-weight: 500;
+  color: $baseLinkColor;
+  text-decoration: inherit;
+
+  &:hover,
+  &.active-link:hover {
+    color: $hoverLinkColor;
+  }
+
+  &.active-link {
+    color: $activeLinkColor;
+  }
+}

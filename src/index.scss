@@ -1,0 +1,10 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import 'components/layout/_base-style';
+@import 'components/_common';
+@import 'components/layout/_layout';
+@import 'components/auth/_auth';
+@import 'components/main/_main';
+@import 'components/not-found/not-found';

@@ -1,0 +1,110 @@
+.app-header,
+.app-footer {
+  background-color: $mainBgFontColor;
+  min-height: 10vh;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  justify-content: center;
+  font-size: 1rem;
+  color: $whiteBgFontColor;
+}
+
+.footer-container {
+  width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.github-link, use  {
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.github-link--wrapper {
+  padding: 1.4rem 0;
+  display: flex;
+  gap: 15px;
+}
+
+.github-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: $baseLinkColor;
+  gap: 5px;
+  .icon-git {
+    height: 20px;
+    width: 20px;
+    use {
+      fill: $baseLinkColor;
+    }
+  }
+}
+
+.link-rs {
+  padding-right: 0.5rem;
+
+  .icon-rs {
+    height: 35px;
+    width: 90px;
+    use {
+      fill: $baseLinkColor;
+    }
+  }
+}
+
+.link-rs:hover {
+
+  .icon-rs{
+    use {
+      fill: $hoverLinkColor;
+    }
+  }
+}
+
+.github-link:hover {
+  use {
+    fill: $hoverLinkColor;
+  }
+}
+
+.copyright {
+  font-size: 1rem;
+  font-weight: 600;
+  color: $baseLinkColor;
+
+  &:before {
+    content: '© ';
+  }
+}
+
+@media screen and (max-width: 767px) {
+
+  .link-rs {
+    padding-right: 1rem;
+
+    .icon-rs {
+      height: 25px;
+      width: 75px;
+    }
+  }
+
+  .footer-container {
+    gap: 1rem;
+    
+    .copyright {
+      padding-left: 1rem;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .footer-container .github-link--wrapper {
+    gap: 10px;
+}
+
+}
