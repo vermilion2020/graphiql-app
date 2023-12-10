@@ -1,5 +1,10 @@
+import { useContext } from 'react';
+import { LocaleContext } from "../../context/LocaleContext";
+
 function SignUpForm() {
-  return <h2>Sign Up Form</h2>
+  const { texts } = useContext(LocaleContext);
+
+  return <h2>{texts.signUp.title}</h2>
 }
 
 export default SignUpForm;

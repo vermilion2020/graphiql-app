@@ -1,26 +1,33 @@
 import { createContext, useState } from 'react';
+import { LOCALES, Locales, en, ru } from '../model/transaltes';
 
 export interface ILocaleContext {
-  locale: string;
-  setLocale: (locale: string) => void;
+  locale: Locales;
+  texts: typeof en;
+  setLocale: (locale: Locales) => void;
 }
 
 export const LocaleContext = createContext<ILocaleContext>({
-  locale: 'en',
+  locale: 'En',
+  texts: en,
   setLocale: () => {
     /**/
   }
 });
 
 export const LocaleState = ({ children }: { children: React.ReactNode }) => {
-  const defaultLang = localStorage.getItem('lang') ?? 'en';
-  const [locale, setLocale] = useState(defaultLang);
+  const storedLang = localStorage.getItem('lang') ?? '';
+  const defaultLang = LOCALES.includes(storedLang) ? storedLang : 'En';
+  const [locale, setLocale] = useState(defaultLang as Locales);
+  const texts = locale === 'En' ? en:
+    locale === 'Ru' ? ru : en;
 
   return (
     <LocaleContext.Provider
       value={{
         locale,
-        setLocale
+        setLocale,
+        texts
       }}
     >
       {children}

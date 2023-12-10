@@ -1,5 +1,9 @@
+import { useContext } from "react";
+import { LocaleContext } from "../../context/LocaleContext";
+
 function Main() {
-  return <h2>Main Content</h2>
+  const { texts } = useContext(LocaleContext);
+  return <h2>{texts.main.title}</h2>
 }
 
 export default Main;
