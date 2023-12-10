@@ -1,21 +1,19 @@
 import { NavLink } from "react-router-dom";
 import { useContext } from 'react';
-import { getTexts } from "../helpers/localisation";
 import { LocaleContext } from "../context/LocaleContext";
 
 function WelcomePage() {
-  const { locale } = useContext(LocaleContext);
-  const texts = getTexts(locale, 'welcome');
+  const { texts } = useContext(LocaleContext);
   
   return(
     <div className="content">
-      <h2>{texts['title']}</h2>
+      <h2>{texts.welcome.title}</h2>
       <NavLink to="/sign-in">
-        <button className="button" >{texts['sign-in']}</button>
+        <button className="button" >{texts.welcome.signIn}</button>
       </NavLink>
       <br /><br />
       <NavLink to="/sign-up">
-        <button className="button" >{texts['sign-up']}</button>
+        <button className="button" >{texts.welcome.signUp}</button>
       </NavLink>
     </div>
   );

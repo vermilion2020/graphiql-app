@@ -5,7 +5,7 @@ import Locale from './Locale';
 import { renderWithProviders } from '../../test-utils';
 import { LocaleState } from '../../context/LocaleContext';
 import Header from '../layout/Header';
-import { getTexts } from '../../helpers/localisation';
+import { ru } from '../../model/transaltes';
 
 describe('Localisation', async () => {
   it('Stored localisation value is applied on load', async () => {
@@ -27,7 +27,7 @@ describe('Localisation', async () => {
   it('Change localisation value changes menu component names', async () => {
     // Arrange
     const testLocale = 'Ru';
-    const texts = getTexts(testLocale, 'menu');
+    const texts = ru;
     renderWithProviders(
       <LocaleState>
         <MemoryRouter>
@@ -44,7 +44,7 @@ describe('Localisation', async () => {
     expect(screen.getByTestId('locale-current')).toHaveTextContent(
       `${testLocale}`
     );
-    expect(screen.getByText(texts['main'])).toBeVisible();
-    expect(screen.getByText(texts['welcome'])).toBeVisible();
+    expect(screen.getByText(texts.menu.main)).toBeVisible();
+    expect(screen.getByText(texts.menu.welcome)).toBeVisible();
   });
 });
