@@ -1,15 +1,30 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { Link, useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+
+export interface ISignInForm {
+  email: string;
+  password: string;
+}
 
 function SignInForm() {
-  const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { register, handleSubmit, reset, formState } = useForm<ISignInForm>({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+    mode: 'onChange',
+  });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const navigate = useNavigate();
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  const onSubmit = ({ email, password }: ISignInForm, e?: React.BaseSyntheticEvent) => {
+    console.log('email', email);
+
+    e?.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
@@ -22,7 +37,16 @@ function SignInForm() {
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
       });
+      reset();
   };
+
+  useEffect(() => {
+    if (formState.isValid) {
+      setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
+    }
+  }, [formState]);
 
   return (
     <div className='col'>
@@ -33,7 +57,7 @@ function SignInForm() {
           </h2>
           <form
             className='bg-white dark:bg-slate-900 rounded-lg p-6 border shadow-xl'
-            onSubmit={(e) => handleSubmit(e)}
+            onSubmit={handleSubmit(onSubmit)}
           >
             <label htmlFor='email' className='block h-24 text-left'>
               <span className='block text-sm font-medium text-gray-900'>Email address</span>
@@ -46,10 +70,17 @@ function SignInForm() {
             disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
             invalid:border-pink-500 invalid:text-pink-600
             focus:invalid:border-pink-500 focus:invalid:ring-pink-500'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
+                {...register('email', {
+                  required: 'Email address is required',
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: 'Please enter a valid email',
+                  },
+                })}
               />
+              <div className='block text-xs font-medium text-red-600'>
+                {formState.errors.email && formState.errors.email.message}
+              </div>
             </label>
 
             <label htmlFor='password' className='block h-24 text-left'>
@@ -72,13 +103,22 @@ function SignInForm() {
             disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
             invalid:border-pink-500 invalid:text-pink-600
             focus:invalid:border-pink-500 focus:invalid:ring-pink-500'
-                onChange={(e) => setPassword(e.target.value)}
-                required
                 autoComplete='current-password'
+                {...register('password', { required: 'Password is required' })}
               />
+              <div className='block text-xs font-medium text-red-600'>
+                {formState.errors.password && formState.errors.password.message}
+              </div>
             </label>
 
-            <button className='button' type='submit'>
+            <button
+              type='submit'
+              disabled={isDisabled}
+              className='rounded-md bg-buttonBg-600 px-3 py-2 text-sm font-semibold 
+              text-white shadow-sm hover:bg-buttonBg-400 focus-visible:outline 
+              focus-visible:outline-2 focus-visible:outline-offset-2 
+              focus-visible:outline-buttonBg-400 disabled:bg-disabledButton hover:bg-buttonBg-400'
+            >
               Sign In
             </button>
           </form>
