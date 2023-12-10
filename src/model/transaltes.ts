@@ -2,18 +2,6 @@ export type Locales = 'En' | 'Ru';
 
 export const LOCALES = ['En', 'Ru'];
 
-export type Component = 'menu' | 'main' | 'welcome' | 'signIn' | 'signUp';
-
-export interface IComponentTexts {
-  menu: { [key: string]: string },
-  main: { [key: string]: string },
-  welcome: { [key: string]: string },
-  signIn: { [key: string]: string },
-  signUp: { [key: string]: string },
-}
-
-export type LocaleTexts = Map<Locales, IComponentTexts>;
-
 export const en = {
   menu: {
     welcome: 'Welcome',
