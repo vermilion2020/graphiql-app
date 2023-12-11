@@ -14,7 +14,7 @@ export const schema = yup
       .matches(/[0-9]/, getCharacterValidationError('digit'))
       .matches(/[a-z]/, getCharacterValidationError('lowercase'))
       .matches(/[A-Z]/, getCharacterValidationError('uppercase'))
-      .matches(/[@$!%*#?&+=()]/, getCharacterValidationError('special'))
+      .matches(/[@$!%*#?&+=()/.,'"-+<>~`]/, getCharacterValidationError('special'))
       .required('Password is required'),
     confirmPassword: yup
       .string()
