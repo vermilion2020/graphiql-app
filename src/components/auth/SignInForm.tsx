@@ -9,6 +9,16 @@ export interface ISignInForm {
   password: string;
 }
 
+export interface ISession {
+  status: string;
+  userId: null | string;
+}
+
+export interface IUser {
+  uid: string;
+  email: string;
+}
+
 function SignInForm() {
   const { register, handleSubmit, reset, formState } = useForm<ISignInForm>({
     defaultValues: {
@@ -20,6 +30,7 @@ function SignInForm() {
 
   const navigate = useNavigate();
   const [isDisabled, setIsDisabled] = useState(true);
+  const [session, setSession] = useState<ISession>({ status: 'no-authenticated', userId: null });
 
   const onSubmit = ({ email, password }: ISignInForm, e?: React.BaseSyntheticEvent) => {
     console.log('email', email);
@@ -29,15 +40,22 @@ function SignInForm() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+        if (user) {
+          setSession({ status: 'authenticated', userId: user.uid });
+        }
         navigate('/main');
         console.log(user);
+      })
+      .then(() => {
+        console.log('session', session);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
+        setSession({ status: 'no-authenticated', userId: null });
       });
-      reset();
+    reset();
   };
 
   useEffect(() => {
