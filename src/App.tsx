@@ -8,14 +8,17 @@ import SignUpPage from './pages/SignUp.tsx';
 import WelcomePage from './pages/Welcome.tsx';
 import { LocaleState } from './context/LocaleContext.tsx';
 import AppLayout from './components/layout/AppLayout.tsx';
+import AuthLayout from './components/layout/AuthLayout.tsx';
 
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<WelcomePage />} />
-      <Route path='/sign-in' element={<SignInPage />} />
-      <Route path='/sign-up' element={<SignUpPage />} />
-      <Route path='*' element={<NotFoundPage />} />
+      <Route element={<AuthLayout />}>
+        <Route path='/' element={<WelcomePage />} />
+        <Route path='/sign-in' element={<SignInPage />} />
+        <Route path='/sign-up' element={<SignUpPage />} />
+        <Route path='*' element={<NotFoundPage />} />
+      </Route>
       <Route element={<AppLayout />}>
         <Route path='/main' element={<MainPage />} />
       </Route>
