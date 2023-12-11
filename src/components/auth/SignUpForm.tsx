@@ -5,6 +5,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schema } from './Schema';
+import { useContext } from 'react';
+import { LocaleContext } from "../../context/LocaleContext";
 
 export interface IFormInput {
   email: string;
@@ -14,6 +16,7 @@ export interface IFormInput {
 }
 
 function SignUpForm() {
+  const { texts } = useContext(LocaleContext);
   const { register, handleSubmit, reset, formState } = useForm<IFormInput>({
     defaultValues: {
       email: '',
@@ -148,7 +151,7 @@ function SignUpForm() {
               focus-visible:outline-2 focus-visible:outline-offset-2 
               focus-visible:outline-buttonBg-400 disabled:bg-disabledButton hover:bg-buttonBg-400'
             >
-              Sign Up
+              {texts.signUp.title}
             </button>
           </div>
         </form>

@@ -3,6 +3,8 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { useContext } from 'react';
+import { LocaleContext } from "../../context/LocaleContext";
 
 export interface ISignInForm {
   email: string;
@@ -20,6 +22,7 @@ export interface IUser {
 }
 
 function SignInForm() {
+  const { texts } = useContext(LocaleContext);
   const { register, handleSubmit, reset, formState } = useForm<ISignInForm>({
     defaultValues: {
       email: '',
@@ -137,7 +140,7 @@ function SignInForm() {
               focus-visible:outline-2 focus-visible:outline-offset-2 
               focus-visible:outline-buttonBg-400 disabled:bg-disabledButton hover:bg-buttonBg-400'
             >
-              Sign In
+              {texts.signIn.title}
             </button>
           </form>
           <p className='mt-3'>
