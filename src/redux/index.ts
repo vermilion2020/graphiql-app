@@ -3,10 +3,12 @@ import {
   combineReducers,
   configureStore,
 } from '@reduxjs/toolkit';
+import { schemaApi } from './api/schemaApi';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import appReducer from './features/appSlice';
 
 const rootReducer = combineReducers({
+  [schemaApi.reducerPath]: schemaApi.reducer,
   appState: appReducer,
 });
 
@@ -15,7 +17,7 @@ export function setupStore(preloadedState?: PreloadedState<RootState>) {
     reducer: rootReducer,
     preloadedState,
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({}),
+    getDefaultMiddleware({}).concat([schemaApi.middleware]),
   });
 }
 

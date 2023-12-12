@@ -9,6 +9,7 @@ import WelcomePage from './pages/Welcome.tsx';
 import { LocaleState } from './context/LocaleContext.tsx';
 import AppLayout from './components/layout/AppLayout.tsx';
 import AuthLayout from './components/layout/AuthLayout.tsx';
+import DocumentationPage from './pages/Documentation.tsx';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='/' element={<WelcomePage />} />
         <Route path='/sign-in' element={<SignInPage />} />
         <Route path='/sign-up' element={<SignUpPage />} />
+        <Route path='/documentation' element={<DocumentationPage />} />
         <Route path='*' element={<NotFoundPage />} />
       </Route>
       <Route element={<AppLayout />}>
