@@ -83,7 +83,7 @@ function SignInForm() {
             {texts.signIn.title}
           </h2>
           <form
-            className="bg-white dark:bg-slate-900 rounded-lg p-6 border shadow-xl"
+            className="bg-white dark:bg-slate-900 rounded-lg p-6 pt-8 border shadow-xl"
             onSubmit={handleSubmit(onSubmit)}
           >
             <label htmlFor="email" className="block h-24 text-left">
@@ -100,10 +100,10 @@ function SignInForm() {
             invalid:border-pink-500 invalid:text-pink-600
             focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                 {...register('email', {
-                  required: 'Email address is required',
+                  required: `${texts.signIn.emailErr}`,
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: 'Please enter a valid email',
+                    message: `${texts.signIn.emailMes}`,
                   },
                 })}
               />
@@ -113,19 +113,9 @@ function SignInForm() {
             </label>
 
             <label htmlFor="password" className="block h-24 text-left">
-              <div className="flex items-center justify-between">
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-medium text-gray-900"
-                >
-                  {texts.signIn.passwordLabel}
-                </label>
-                <div className="text-sm">
-                  <Link to="#" className="font-semibold leading-6 ps-1">
-                    Forgot password?
-                  </Link>
-                </div>
-              </div>
+              <span className="block text-sm font-medium text-gray-900">
+                {texts.signIn.passwordLabel}
+              </span>
               <input
                 type="password"
                 id="password"
@@ -136,7 +126,7 @@ function SignInForm() {
             invalid:border-pink-500 invalid:text-pink-600
             focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
                 autoComplete="current-password"
-                {...register('password', { required: 'Password is required' })}
+                {...register('password', { required: `${texts.signIn.passwordErr}` })}
               />
               <div className="block text-xs font-medium text-red-600">
                 {formState.errors.password && formState.errors.password.message}

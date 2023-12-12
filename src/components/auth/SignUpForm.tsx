@@ -3,8 +3,8 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { schema } from './Schema';
 import { useContext } from 'react';
 import { LocaleContext } from '../../context/LocaleContext';
 
@@ -17,6 +17,30 @@ export interface IFormInput {
 
 function SignUpForm() {
   const { texts } = useContext(LocaleContext);
+
+  const schema = yup
+  .object({
+    email: yup.string().email(texts.signUp.emailMes).required(texts.signUp.emailErr),
+    password: yup
+      .string()
+      .matches(/^\S*$/, texts.signUp.emailWhitespace)
+      .min(8, texts.signUp.passwordLength)
+      .matches(/[@$!%*#?&+=()/.,'"-<+<>~`]/, texts.signUp.passwordSpecial)
+      .matches(/[0-9]/, texts.signUp.passwordDigit)
+      .matches(/\p{Ll}/gu, texts.signUp.passwordLowercase)
+      .matches(/\p{Lu}/gu, texts.signUp.passwordUppercase)
+      .required(texts.signUp.passwordErr),
+    confirmPassword: yup
+      .string()
+      .oneOf([yup.ref('password')], texts.signUp.confirmPasswordMatch)
+      .required(texts.signUp.confirmPasswordErr),
+    accept: yup
+      .boolean()
+      .oneOf([true], texts.signUp.acceptErr)
+      .required(texts.signUp.acceptErr),
+  })
+  .required();
+
   const { register, handleSubmit, reset, formState } = useForm<IFormInput>({
     defaultValues: {
       email: '',
