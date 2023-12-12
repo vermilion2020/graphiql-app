@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useContext } from 'react';
 import { LocaleContext } from '../../context/LocaleContext';
+import ArrowCircle from '../../assets/icons/ArrowCircle ';
 
 export interface ISignInForm {
   email: string;
@@ -78,12 +79,15 @@ function SignInForm() {
   return (
     <div className="col">
       <div className="mx-auto w-96">
-        <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-          <h2 className="mt-10 mb-4 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+      <div className="flex min-h-full flex-col justify-center mt-24 p-6 lg:px-8 border rounded-lg shadow-xl">
+        <Link to="/" className="font-semibold leading-6 ps-1">
+          <ArrowCircle />
+        </Link>
+        <h2 className="mt-8 mb-4 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             {texts.signIn.title}
           </h2>
           <form
-            className="bg-white dark:bg-slate-900 rounded-lg p-6 pt-8 border shadow-xl"
+            className="bg-white"
             onSubmit={handleSubmit(onSubmit)}
           >
             <label htmlFor="email" className="block h-24 text-left">
@@ -137,16 +141,14 @@ function SignInForm() {
               type="submit"
               disabled={isDisabled}
               className="rounded-md bg-buttonBg-600 px-3 py-2 text-sm font-semibold 
-              text-white shadow-sm hover:bg-buttonBg-400 focus-visible:outline 
-              focus-visible:outline-2 focus-visible:outline-offset-2 
-              focus-visible:outline-buttonBg-400 disabled:bg-disabledButton hover:bg-buttonBg-400"
+              text-white shadow-sm hover:bg-buttonBg-400 disabled:bg-disabledButton"
             >
               {texts.signIn.btnText}
             </button>
           </form>
           <p className="mt-3">
             {texts.signIn.question}
-            <Link to="/sign-up" className="font-semibold leading-6 ps-1">
+            <Link to="/sign-up" className="font-semibold leading-6 ps-1 text-buttonColor-900">
               {texts.signIn.linkText}
             </Link>
           </p>

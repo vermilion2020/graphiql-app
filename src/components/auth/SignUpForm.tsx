@@ -7,6 +7,7 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useContext } from 'react';
 import { LocaleContext } from '../../context/LocaleContext';
+import ArrowCircle from '../../assets/icons/ArrowCircle ';
 
 export interface IFormInput {
   email: string;
@@ -19,27 +20,30 @@ function SignUpForm() {
   const { texts } = useContext(LocaleContext);
 
   const schema = yup
-  .object({
-    email: yup.string().email(texts.signUp.emailMes).required(texts.signUp.emailErr),
-    password: yup
-      .string()
-      .matches(/^\S*$/, texts.signUp.emailWhitespace)
-      .min(8, texts.signUp.passwordLength)
-      .matches(/[@$!%*#?&+=()/.,'"-<+<>~`]/, texts.signUp.passwordSpecial)
-      .matches(/[0-9]/, texts.signUp.passwordDigit)
-      .matches(/\p{Ll}/gu, texts.signUp.passwordLowercase)
-      .matches(/\p{Lu}/gu, texts.signUp.passwordUppercase)
-      .required(texts.signUp.passwordErr),
-    confirmPassword: yup
-      .string()
-      .oneOf([yup.ref('password')], texts.signUp.confirmPasswordMatch)
-      .required(texts.signUp.confirmPasswordErr),
-    accept: yup
-      .boolean()
-      .oneOf([true], texts.signUp.acceptErr)
-      .required(texts.signUp.acceptErr),
-  })
-  .required();
+    .object({
+      email: yup
+        .string()
+        .email(texts.signUp.emailMes)
+        .required(texts.signUp.emailErr),
+      password: yup
+        .string()
+        .matches(/^\S*$/, texts.signUp.emailWhitespace)
+        .min(8, texts.signUp.passwordLength)
+        .matches(/[@$!%*#?&+=()/.,'"-<+<>~`]/, texts.signUp.passwordSpecial)
+        .matches(/[0-9]/, texts.signUp.passwordDigit)
+        .matches(/\p{Ll}/gu, texts.signUp.passwordLowercase)
+        .matches(/\p{Lu}/gu, texts.signUp.passwordUppercase)
+        .required(texts.signUp.passwordErr),
+      confirmPassword: yup
+        .string()
+        .oneOf([yup.ref('password')], texts.signUp.confirmPasswordMatch)
+        .required(texts.signUp.confirmPasswordErr),
+      accept: yup
+        .boolean()
+        .oneOf([true], texts.signUp.acceptErr)
+        .required(texts.signUp.acceptErr),
+    })
+    .required();
 
   const { register, handleSubmit, reset, formState } = useForm<IFormInput>({
     defaultValues: {
@@ -89,14 +93,14 @@ function SignUpForm() {
 
   return (
     <div className="mx-auto w-96">
-      <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-        <h2 className="mt-10 mb-4 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+      <div className="flex min-h-full flex-col justify-center mt-24 p-6 lg:px-8 border rounded-lg shadow-xl">
+        <Link to="/" className="">
+          <ArrowCircle />
+        </Link>
+        <h2 className="mt-8 mb-4 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
           {texts.signUp.formTitle}
         </h2>
-        <form
-          className="bg-white dark:bg-slate-900 rounded-lg p-6 border shadow-xl"
-          onSubmit={handleSubmit(onSubmit)}
-        >
+        <form className="bg-white" onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="email" className="block h-24 text-left">
             <span className="block text-sm font-medium text-gray-900">
               {texts.signUp.emailLabel}
@@ -187,9 +191,7 @@ function SignUpForm() {
               type="submit"
               disabled={isDisabled}
               className="rounded-md bg-buttonBg-600 px-3 py-2 text-sm font-semibold 
-              text-white shadow-sm hover:bg-buttonBg-400 focus-visible:outline 
-              focus-visible:outline-2 focus-visible:outline-offset-2 
-              focus-visible:outline-buttonBg-400 disabled:bg-disabledButton hover:bg-buttonBg-400"
+              text-white shadow-sm hover:bg-buttonBg-400 disabled:bg-disabledButton"
             >
               {texts.signUp.title}
             </button>
@@ -197,7 +199,7 @@ function SignUpForm() {
         </form>
         <p className="mt-3">
           {texts.signUp.question}
-          <Link to="/sign-in" className="font-semibold leading-6 ps-1">
+          <Link to="/sign-in" className="font-semibold leading-6 ps-1 text-buttonColor-900">
             {texts.signUp.linkText}
           </Link>
         </p>
