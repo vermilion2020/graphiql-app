@@ -1,0 +1,19 @@
+.save-endpoint-wrapper {
+  min-width: 320px;
+  max-width: 640px;
+  padding: 5px;
+  border: solid 2px #A9A9A9;
+
+  .form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    .text-input {
+      width: 70%;
+      height: 35px;
+      padding: 0 5px;
+      border: solid 2px #A9A9A9;
+    }
+  }
+}

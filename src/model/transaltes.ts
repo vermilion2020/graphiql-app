@@ -9,6 +9,10 @@ export const en = {
   },
   main: {
     title: 'GraphQL editor',
+    saveEndpoint: {
+      heading: 'Enter new endpoint URL:',
+      button: 'SAVE'
+    }
   },
   welcome: {
     title: 'GraphQL editor',
@@ -35,6 +39,10 @@ export const ru: typeof en = {
   },
   main: {
     title: 'GraphQL редактор',
+    saveEndpoint: {
+      heading: 'Введите адрес новой конечной точки:',
+      button: 'СОХРАНИТЬ'
+    }
   },
   welcome: {
     title: 'GraphQL редактор',
