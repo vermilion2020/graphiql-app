@@ -14,15 +14,17 @@ function Documentation() {
   let fields = null;
   if (!isLoading && !isError) {
     console.log(data?.data.__schema.types);
-    schemaQuery = data?.data.__schema.types.find(s => s.name === 'Root' || s.name === 'Query') as SchemaType;
-    fields = data?.data.__schema.types.filter(s => s.name !== 'Root' && s.name !== 'Query');
+    schemaQuery = data?.data.__schema.types
+      .find(s => s.name === 'Root' || s.name === 'Query') as SchemaType;
+    fields = data?.data.__schema.types
+      .filter(s => s.name !== 'Root' && s.name !== 'Query');
   }
-  const handleClick = () => {
+  const handleGetDocsClick = () => {
     const value = inputRef.current?.value ?? '';
     trigger(value);
   }
 
-  const toDefault = () => {
+  const toDefaultView = () => {
     setSchemaType(null);
     setQueries(null);
   }
@@ -40,13 +42,13 @@ function Documentation() {
               focus:invalid:border-pink-500 focus:invalid:ring-pink-500'"/>
         </label>
         <div className="block text-xs font-medium text-red-600"></div>
-        <button onClick={handleClick} className="rounded-md bg-buttonBg-600 px-3 py-2 text-sm font-semibold 
+        <button onClick={handleGetDocsClick} className="rounded-md bg-buttonBg-600 px-3 py-2 text-sm font-semibold 
             text-white shadow-sm hover:bg-buttonBg-400 focus-visible:outline 
             focus-visible:outline-2 focus-visible:outline-offset-2 
             focus-visible:outline-buttonBg-400 disabled:bg-disabledButton hover:bg-buttonBg-400">Get Documentation</button>
-        <div className="heading ">
+        <div className="heading mt-4 mb-2">
           {schemaQuery && !schemaType && !queries && <span onClick={() => setQueries(schemaQuery)} className="cursor-pointer hover:underline">query: <span className="text-orange-600 ms-2">{schemaQuery.name}</span></span>}
-          {(schemaType || queries) && <span className="text-blue-900 ms-2 cursor-pointer hover:underline" onClick={toDefault}>{'<< Back'}</span>}
+          {(schemaType || queries) && <span className="text-blue-900 ms-2 cursor-pointer hover:underline" onClick={toDefaultView}>{'<< Back'}</span>}
         </div>
         
         {queries && <Queries queriesData={queries} />}
