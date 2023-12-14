@@ -62,15 +62,15 @@ function SignInForm() {
   }, [formState]);
 
   return (
-    <div className="mx-auto xs:w-80 sm:w-96 w-full relative">
-      <div className="flex flex-col justify-center mt-24 xs:p-4 lg:px-8 border rounded-lg lg:shadow-xl xs:shadow-md">
+    <div className="flex flex-row items-center justify-center min-h-full">
+      <div className="flex flex-col justify-center xs:p-4 lg:px-8 border rounded-lg lg:shadow-xl xs:shadow-md">
         <Link to="/" className="font-semibold leading-6 ps-1">
           <ArrowCircle />
         </Link>
         <h2 className="mt-8 mb-4 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
           {texts.signIn.title}
         </h2>
-        <form className="bg-white" onSubmit={handleSubmit(onSubmit)}>
+        <form className="bg-white max-w-xs" onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="email" className="block h-24 text-left">
             <span className="block text-sm font-medium text-gray-900">
               {texts.signIn.emailLabel}
