@@ -8,6 +8,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useContext } from 'react';
 import { LocaleContext } from '../../context/LocaleContext';
 import ArrowCircle from '../../assets/icons/ArrowCircle ';
+import { setSingUp, setAuthError } from '../../redux/features/appSlice';
+import { useAppDispatch } from '../../redux/index';
+import PopupError from './PopupError';
 
 export interface IFormInput {
   email: string;
@@ -18,6 +21,7 @@ export interface IFormInput {
 
 function SignUpForm() {
   const { texts } = useContext(LocaleContext);
+  const dispatch = useAppDispatch();
 
   const schema = yup
     .object({
@@ -58,6 +62,7 @@ function SignUpForm() {
 
   const navigate = useNavigate();
   const [isDisabled, setIsDisabled] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   const onSubmit = async (
     data: IFormInput,
@@ -68,17 +73,16 @@ function SignUpForm() {
     const { email, password } = data;
     await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
+        // Signed Up
         const user = userCredential.user;
-        console.log(user);
-        navigate('/sign-in');
-        // ...
+        if (user) {
+          dispatch(setSingUp(true));
+          navigate('/sign-in');
+        }
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-        // ..
+        dispatch(setAuthError(error.code));
+        setIsError(true);
       });
     reset();
   };
@@ -92,7 +96,7 @@ function SignUpForm() {
   }, [formState]);
 
   return (
-    <div className="mx-auto w-96">
+    <div className="mx-auto xs:w-96 w-full relative">
       <div className="flex min-h-full flex-col justify-center mt-24 p-6 lg:px-8 border rounded-lg shadow-xl">
         <Link to="/" className="">
           <ArrowCircle />
@@ -151,6 +155,7 @@ function SignUpForm() {
               type="password"
               id="confirmPassword"
               placeholder={texts.signUp.confirmPasswordPlaceholder}
+              autoComplete="none"
               className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
             focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
             disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
@@ -199,11 +204,15 @@ function SignUpForm() {
         </form>
         <p className="mt-3">
           {texts.signUp.question}
-          <Link to="/sign-in" className="font-semibold leading-6 ps-1 text-buttonColor-900">
+          <Link
+            to="/sign-in"
+            className="font-semibold leading-6 ps-1 text-buttonColor-900"
+          >
             {texts.signUp.linkText}
           </Link>
         </p>
       </div>
+      {isError && <PopupError setIsError={setIsError} />}
     </div>
   );
 }

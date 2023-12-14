@@ -6,7 +6,7 @@ function WelcomePage() {
   const { texts } = useContext(LocaleContext);
 
   return (
-    <div className="flex flex-row justify-center items-center box-decoration-slice bg-gradient-to-r from-buttonColor-600 to-pink-500 text-white p-8 text-center min-h-full">
+    <div className="flex flex-row justify-center items-center box-decoration-slice bg-gradient-to-t from-buttonColor-600 to-pink-500 text-white p-8 text-center min-h-full">
       <div>
         <h1 className="mb-8">{texts.welcome.title}</h1>
         <div className="flex flex-row justify-around">
