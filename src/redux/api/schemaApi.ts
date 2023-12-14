@@ -28,9 +28,9 @@ export const schemaApi = createApi({
           console.log(data?.data.__schema.types);
 
           const schemaQuery = data?.data.__schema.types
-            .find(s => s.name === 'Root' || s.name === 'Query') as SchemaType;
+            .find(s => s.name === data?.data.__schema.queryType.name) as SchemaType;
           const types = data?.data.__schema.types
-            .filter(s => s.name !== 'Root' && s.name !== 'Query');
+            .filter(s => s.name !== data?.data.__schema.queryType.name);
 
           dispatch(setSchemaQueries(schemaQuery));
           dispatch(setSchemaTypes(types));

@@ -1,19 +1,17 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { useLazyGetItemsListQuery } from '../../redux/api/schemaApi';
 import Queries from './Queries';
 import FieldsList from './FieldsList';
 import SType from './SType';
-import { AppDispatch, useAppSelector } from '../../redux';
-import { useDispatch } from 'react-redux';
-import { setTypeDisplayed } from '../../redux/features/documentationSlice';
+import { useAppDispatch, useAppSelector } from '../../redux';
+import { setQueriesDisplayed, setTypeDisplayed } from '../../redux/features/documentationSlice';
 
 function Documentation() {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [trigger] = useLazyGetItemsListQuery();
-  const [queriesDisplayed, setQueriesDisplayed] = useState(false);
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
   
-  const { schemaQueries, schemaTypes, typeDisplayed } = useAppSelector(
+  const { schemaQueries, schemaTypes, typeDisplayed, queriesDisplayed } = useAppSelector(
     (state) => state.documentationState
   );
 
@@ -24,8 +22,9 @@ function Documentation() {
 
   const toDefaultView = () => {
     dispatch(setTypeDisplayed(null));
-    setQueriesDisplayed(false);
+    dispatch(setQueriesDisplayed(false));
   }
+  console.log(queriesDisplayed)
 
   return (
     <div className='mx-auto w-3/6'>
@@ -46,11 +45,11 @@ function Documentation() {
             focus-visible:outline-buttonBg-400 disabled:bg-disabledButton hover:bg-buttonBg-400">Get Documentation</button>
         <div className="heading mt-4 mb-2">
           {schemaQueries && !typeDisplayed && !queriesDisplayed && 
-            <span onClick={() => setQueriesDisplayed(true)} className="cursor-pointer hover:underline">query: 
+            <span onClick={() => dispatch(setQueriesDisplayed(true))} className="cursor-pointer hover:underline">query: 
               <span className="text-orange-600 ms-2">{schemaQueries.name}</span>
             </span>}
           {(typeDisplayed || queriesDisplayed) && 
-            <span className="text-blue-900 ms-2 cursor-pointer hover:underline" onClick={toDefaultView}>{'<< Back'}</span>}
+            <span className="text-blue-900 ms-2 cursor-pointer hover:underline" onClick={toDefaultView}>{'< Docs'}</span>}
         </div>
         
         {schemaQueries && queriesDisplayed && <Queries queriesData={schemaQueries} />}

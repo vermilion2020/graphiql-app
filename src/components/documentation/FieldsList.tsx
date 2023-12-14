@@ -1,6 +1,6 @@
+import { TYPE_CLASSES } from "../../helpers/documentation-helper";
 import { SchemaType } from "../../model/schema.interface";
-import { AppDispatch } from "../../redux";
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from "../../redux";
 import { setTypeDisplayed } from "../../redux/features/documentationSlice";
 
 interface IFieldsList {
@@ -8,16 +8,18 @@ interface IFieldsList {
 }
 
 function FieldsList ({ fieldsData }: IFieldsList) {
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
   
   return (
     <div>
       {
-         fieldsData && fieldsData.map((f, i) => 
-         f.kind === 'OBJECT' ? 
-         <div onClick={() => dispatch(setTypeDisplayed(f.name))} key={i} className="text-orange-600 hover:underline cursor-pointer">{f.name}</div> :
-         <div key={i} className="text-red-900">{f.name}</div>
-         )
+        fieldsData && fieldsData.map((f, i) => 
+          <div
+            onClick={() => dispatch(setTypeDisplayed(f.name))}
+            key={i}
+            className={TYPE_CLASSES}
+          >{f.name}</div>
+        )
       }
     </div>
   );

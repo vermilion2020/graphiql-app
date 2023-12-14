@@ -1,5 +1,7 @@
-import { parseType } from "../../helpers/documentation-helper";
-import { useAppSelector } from "../../redux";
+import { TYPE_CLASSES, parseType } from "../../helpers/documentation-helper";
+import { SchemaType } from "../../model/schema.interface";
+import { useAppSelector, useAppDispatch } from "../../redux";
+import { setTypeDisplayed } from "../../redux/features/documentationSlice";
 
 interface IFieldProps {
   sTypeName: string;
@@ -9,19 +11,34 @@ function SType ({ sTypeName }: IFieldProps) {
   const { schemaTypes } = useAppSelector(
     (state) => state.documentationState
   );
-  const sType = schemaTypes?.find(f => f.name === sTypeName);
-  
+  const dispatch = useAppDispatch();
+  const sType = schemaTypes?.find(f => f.name === sTypeName) as SchemaType;
+  console.log(sTypeName)
   return (
     <div>
-      <h3 className="font-bold my-2">Fields</h3>
-      { sType ?
-         sType.fields && sType.fields.map((f, i) => 
+      { sType?.kind === 'OBJECT' && <h3 className="font-bold my-2">Fields</h3> }
+      { sType?.kind === 'INPUT_OBJECT' && <h3 className="font-bold my-2">Input Fields</h3> }
+      { sType?.kind === 'SCALAR' && <h3 className="my-2">{`${sType.name} is a type of a kind 'Scalar'`}</h3> }
+      { sType?.kind === 'ENUM' && <h3 className="my-2">{`${sType.name} is a type of a kind 'Enum'`}</h3> }
+      { sType && sType.fields ? sType.fields.map((f, i) => 
           <div key={i}>
               <span className="text-red-900">{f.name}</span>: 
-              <span className="text-orange-600 ms-1">{parseType(f.type)}</span>
+              <span
+                className={TYPE_CLASSES}
+                onClick={() => dispatch(setTypeDisplayed(f.type.name ?? ''))}
+              >{parseType(f.type)}</span>
           </div>
          ) :
-         <div>Type doesn't exist</div>
+         sType.inputFields ? sType.inputFields.map((f, i) => 
+          <div key={i}>
+              <span className="text-red-900">{f.name}</span>: 
+              <span
+                className={TYPE_CLASSES}
+                onClick={() => dispatch(setTypeDisplayed(f.type.name ?? ''))}
+              >{parseType(f.type)}</span>
+          </div>
+         ) :
+         !sType ? <div>Type doesn't exist</div> : ''
       }
     </div>
   );

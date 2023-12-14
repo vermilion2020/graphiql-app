@@ -9,6 +9,7 @@ export interface IDocumentationState {
   schemaQueries: SchemaType | null;
   schemaTypes: SchemaType[] | null;
   typeDisplayed: string | null;
+  queriesDisplayed: boolean;
 }
 
 export interface EndpointState {
