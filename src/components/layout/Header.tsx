@@ -4,22 +4,21 @@ import { auth } from '../../firebase';
 import { useContext } from 'react';
 import { LocaleContext } from '../../context/LocaleContext';
 import Locale from '../common/Locale';
+import { setSignOut } from '../../redux/features/appSlice';
+import { useAppDispatch } from '../../redux';
 
 function Header() {
   const { texts } = useContext(LocaleContext);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
+        dispatch(setSignOut());
         navigate('/');
-        console.log('Signed out successfully');
       })
-      .catch((error: unknown) => {
-        // An error happened.
-        console.log('error', error);
-      });
   };
 
   return (

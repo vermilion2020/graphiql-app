@@ -8,11 +8,7 @@ import { LocaleContext } from '../../context/LocaleContext';
 import ArrowCircle from '../../assets/icons/ArrowCircle ';
 import PopupError from './PopupError';
 import { useAppDispatch } from '../../redux';
-import {
-  setAuthError,
-  setLoggedIn,
-  setSingIn,
-} from '../../redux/features/appSlice';
+import { setAuthError, setSingIn } from '../../redux/features/appSlice';
 
 export interface ISignInForm {
   email: string;
@@ -47,7 +43,6 @@ function SignInForm() {
         const user = userCredential.user;
         if (user) {
           dispatch(setSingIn(user.uid));
-          dispatch(setLoggedIn(true));
           navigate('/main');
         }
       })
@@ -66,9 +61,17 @@ function SignInForm() {
     }
   }, [formState]);
 
+  useEffect(() => {
+    if (formState.isValid) {
+      setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
+    }
+  }, [formState]);
+
   return (
-    <div className="mx-auto w-80 relative">
-      <div className="flex min-h-full flex-col justify-center mt-24 p-6 lg:px-8 border rounded-lg shadow-xl">
+    <div className="mx-auto xs:w-80 sm:w-96 w-full relative">
+      <div className="flex flex-col justify-center mt-24 xs:p-4 lg:px-8 border rounded-lg lg:shadow-xl xs:shadow-md">
         <Link to="/" className="font-semibold leading-6 ps-1">
           <ArrowCircle />
         </Link>

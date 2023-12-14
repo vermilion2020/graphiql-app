@@ -8,7 +8,6 @@ export interface IAppState {
   authError: string | null;
 }
 
-
 const initialState: IAppState = {
   uid: null,
   isLoggedIn: false,
@@ -25,15 +24,21 @@ export const AppSlice = createSlice({
       state.isLoggedIn = action.payload;
     },
     setSingIn: (state, action) => {
-      console.log('state.uid', action.payload);
       state.uid = action.payload;
       state.isLoggedIn = true;
+      state.authError = null;
     },
     setSingUp: (state, action) => {
       state.isSignedUp = action.payload;
     },
     setAuthError: (state, action) => {
       state.authError = errorMap(action.payload);
+    },
+    setSignOut: (state) => {
+      state.uid = null;
+      state.isLoggedIn = false;
+      state.isSignedUp = false;
+      state.authError = null;
     },
 
 
@@ -43,4 +48,4 @@ export const AppSlice = createSlice({
 
 export default AppSlice.reducer;
 
-export const { setLoggedIn, setSingUp, setSingIn, setAuthError } = AppSlice.actions;
+export const { setLoggedIn, setSingUp, setSingIn, setAuthError, setSignOut } = AppSlice.actions;

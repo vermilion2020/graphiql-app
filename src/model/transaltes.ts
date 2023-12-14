@@ -13,7 +13,8 @@ export const en = {
   welcome: {
     title: 'GraphQL editor',
     signIn: 'Sign In',
-    signUp: 'Sign Up'
+    signUp: 'Sign Up',
+    main: 'Main Page',
   },
   signIn: {
     title: 'Sign In',
@@ -56,8 +57,9 @@ export const en = {
   notFound: {
     title: 'Not Found',
     heading: 'Page or item you are requesting does not exist',
-    description: 'Check the URL or ask for help if you are sure that it is correct'
-  }
+    description:
+      'Check the URL or ask for help if you are sure that it is correct',
+  },
 };
 
 export const ru: typeof en = {
@@ -71,7 +73,8 @@ export const ru: typeof en = {
   welcome: {
     title: 'GraphQL редактор',
     signIn: 'Вход',
-    signUp: 'Регистрация'
+    signUp: 'Регистрация',
+    main: 'Главная страница',
   },
   signIn: {
     title: 'Вход',
@@ -104,8 +107,10 @@ export const ru: typeof en = {
     passwordLength: 'Пароль должен содержать не менее 8 символов',
     passwordSpecial: 'Пароль должен содержать как минимум 1 специальный символ',
     passwordDigit: 'Пароль должен содержать не менее 1 цифры',
-    passwordLowercase: 'Пароль должен содержать не менее 1 символа в нижнем регистре',
-    passwordUppercase: 'Пароль должен содержать не менее 1 символа в верхнем регистре',
+    passwordLowercase:
+      'Пароль должен содержать не менее 1 символа в нижнем регистре',
+    passwordUppercase:
+      'Пароль должен содержать не менее 1 символа в верхнем регистре',
     passwordErr: 'Требуется пароль',
     confirmPasswordMatch: 'Пароли должны совпадать',
     confirmPasswordErr: 'Требуется подтвердить пароль',
@@ -114,7 +119,7 @@ export const ru: typeof en = {
   notFound: {
     title: 'Страница не найдена',
     heading: 'Страница, которую Вы запрашиваете не существует',
-    description: 'Проверьте адрес, который Вы указываете или обратитесь за помощью'
-  }
+    description:
+      'Проверьте адрес, который Вы указываете или обратитесь за помощью',
+  },
 };
-

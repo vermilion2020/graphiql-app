@@ -77,6 +77,7 @@ function SignUpForm() {
         const user = userCredential.user;
         if (user) {
           dispatch(setSingUp(true));
+          dispatch(setAuthError(null));
           navigate('/sign-in');
         }
       })
@@ -96,8 +97,8 @@ function SignUpForm() {
   }, [formState]);
 
   return (
-    <div className="mx-auto xs:w-96 w-full relative">
-      <div className="flex min-h-full flex-col justify-center mt-24 p-6 lg:px-8 border rounded-lg shadow-xl">
+    <div className="mx-auto xs:w-80 sm:w-96 w-full relative">
+      <div className="flex flex-col justify-center xl:mt-24 mt-8 xs:p-4 lg:px-8 border rounded-lg lg:shadow-xl xs:shadow-md">
         <Link to="/" className="">
           <ArrowCircle />
         </Link>
