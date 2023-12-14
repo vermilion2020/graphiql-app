@@ -217,7 +217,7 @@ function SignUpForm() {
           </Link>
         </p>
       </div>
-      {error && <PopupError />}
+      {!!error && <PopupError />}
     </div>
   );
 }
