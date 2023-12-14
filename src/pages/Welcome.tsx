@@ -15,7 +15,7 @@ function WelcomePage() {
         {isLoggedIn ? (
           <div className="flex flex-row justify-around">
             <NavLink
-              to="/sign-in"
+              to="/main"
               className="rounded-md bg-buttonBg-600 px-3 py-2 text-sm font-semibold 
               text-white shadow-sm hover:bg-buttonBg-400 disabled:bg-disabledButton hover:text-white"
             >

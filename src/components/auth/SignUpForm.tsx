@@ -8,7 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useContext } from 'react';
 import { LocaleContext } from '../../context/LocaleContext';
 import ArrowCircle from '../../assets/icons/ArrowCircle ';
-import { setSingUp, setAuthError } from '../../redux/features/appSlice';
+import { setAuthError } from '../../redux/features/appSlice';
 import { useAppDispatch } from '../../redux/index';
 import PopupError from './PopupError';
 
@@ -76,7 +76,6 @@ function SignUpForm() {
         // Signed Up
         const user = userCredential.user;
         if (user) {
-          dispatch(setSingUp(true));
           dispatch(setAuthError(null));
           navigate('/sign-in');
         }
