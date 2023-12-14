@@ -1,16 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit';
-import errorMap from '../../utils/errorMap';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 export interface IAppState {
   uid: string | null;
   isLoggedIn: boolean;
-  authError: string | null;
+  error: string | null;
 }
 
 const initialState: IAppState = {
   uid: null,
   isLoggedIn: false,
-  authError: null,
+  error: null,
 };
 
 export const AppSlice = createSlice({
@@ -21,22 +20,20 @@ export const AppSlice = createSlice({
     setSingIn: (state, action) => {
       state.uid = action.payload;
       state.isLoggedIn = true;
-      state.authError = null;
+      state.error = null;
     },
-    setAuthError: (state, action) => {
-      state.authError = errorMap(action.payload);
+    setError: (state, action: PayloadAction<string | null>) => {
+      state.error = action.payload;
     },
     setSignOut: (state) => {
       state.uid = null;
       state.isLoggedIn = false;
-      state.authError = null;
+      state.error = null;
     },
-
-
   },
 
 });
 
 export default AppSlice.reducer;
 
-export const { setSingIn, setAuthError, setSignOut } = AppSlice.actions;
+export const { setSingIn, setError, setSignOut } = AppSlice.actions;

@@ -8,9 +8,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useContext } from 'react';
 import { LocaleContext } from '../../context/LocaleContext';
 import ArrowCircle from '../../assets/icons/ArrowCircle ';
-import { setAuthError } from '../../redux/features/appSlice';
-import { useAppDispatch } from '../../redux/index';
+import { setError } from '../../redux/features/appSlice';
+import { useAppDispatch, useAppSelector } from '../../redux/index';
 import PopupError from './PopupError';
+import { HIDE_MODAL_TIMEOUT, authErrorCode } from '../../utils/errorMap';
 
 export interface IFormInput {
   email: string;
@@ -21,6 +22,9 @@ export interface IFormInput {
 
 function SignUpForm() {
   const { texts } = useContext(LocaleContext);
+  const { error } = useAppSelector(
+    (state) => state.appState
+  );
   const dispatch = useAppDispatch();
 
   const schema = yup
@@ -62,7 +66,6 @@ function SignUpForm() {
 
   const navigate = useNavigate();
   const [isDisabled, setIsDisabled] = useState(true);
-  const [isError, setIsError] = useState(false);
 
   const onSubmit = async (
     data: IFormInput,
@@ -76,13 +79,15 @@ function SignUpForm() {
         // Signed Up
         const user = userCredential.user;
         if (user) {
-          dispatch(setAuthError(null));
+          dispatch(setError(null));
           navigate('/sign-in');
         }
       })
       .catch((error) => {
-        dispatch(setAuthError(error.code));
-        setIsError(true);
+        const code = error.code as authErrorCode;
+        const errorMessage = texts.errorMessages[code];
+        dispatch(setError(errorMessage));
+        setTimeout(() => {dispatch(setError(null))}, HIDE_MODAL_TIMEOUT);
       });
     reset();
   };
@@ -212,7 +217,7 @@ function SignUpForm() {
           </Link>
         </p>
       </div>
-      {isError && <PopupError setIsError={setIsError} />}
+      {error && <PopupError />}
     </div>
   );
 }

@@ -7,8 +7,9 @@ import { useContext } from 'react';
 import { LocaleContext } from '../../context/LocaleContext';
 import ArrowCircle from '../../assets/icons/ArrowCircle ';
 import PopupError from './PopupError';
-import { useAppDispatch } from '../../redux';
-import { setAuthError, setSingIn } from '../../redux/features/appSlice';
+import { useAppDispatch, useAppSelector } from '../../redux';
+import { setError, setSingIn } from '../../redux/features/appSlice';
+import { HIDE_MODAL_TIMEOUT, authErrorCode } from '../../utils/errorMap';
 
 export interface ISignInForm {
   email: string;
@@ -18,6 +19,9 @@ export interface ISignInForm {
 function SignInForm() {
   const { texts } = useContext(LocaleContext);
   const dispatch = useAppDispatch();
+  const { error } = useAppSelector(
+    (state) => state.appState
+  );
 
   const { register, handleSubmit, reset, formState } = useForm<ISignInForm>({
     defaultValues: {
@@ -29,7 +33,6 @@ function SignInForm() {
 
   const navigate = useNavigate();
   const [isDisabled, setIsDisabled] = useState(true);
-  const [isError, setIsError] = useState(false);
 
   const onSubmit = (
     { email, password }: ISignInForm,
@@ -47,8 +50,10 @@ function SignInForm() {
         }
       })
       .catch((error) => {
-        dispatch(setAuthError(error.code));
-        setIsError(true);
+        const code = error.code as authErrorCode;
+        const errorMessage = texts.errorMessages[code];
+        dispatch(setError(errorMessage));
+        setTimeout(() => {dispatch(setError(null))}, HIDE_MODAL_TIMEOUT);
       });
     reset();
   };
@@ -140,7 +145,7 @@ function SignInForm() {
           </Link>
         </p>
       </div>
-      {isError && <PopupError setIsError={setIsError} />}
+      {!!error && <PopupError />}
     </div>
   );
 }

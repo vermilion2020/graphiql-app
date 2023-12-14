@@ -1,13 +1,11 @@
 import CloseIcon from '../../assets/icons/CloseIcon';
 import ExclamationMark from '../../assets/icons/ExclamationMark';
-import { useAppSelector } from '../../redux';
+import { useAppDispatch, useAppSelector } from '../../redux';
+import { setError } from '../../redux/features/appSlice';
 
-interface IPopupErrorProps {
-  setIsError: (arg: boolean) => void;
-}
-
-export default function PopupError({ setIsError }: IPopupErrorProps) {
-  const authError = useAppSelector((state) => state.appState.authError);
+export default function PopupError() {
+  const { error } = useAppSelector((state) => state.appState);
+  const dispatch = useAppDispatch();
 
   return (
     <div className="fixed inset-0 z-10 overflow-y-auto">
@@ -18,14 +16,14 @@ export default function PopupError({ setIsError }: IPopupErrorProps) {
           <button
             type="button"
             className="absolute top-3 end-2.5 text-red-600 bg-transparent hover:bg-gray-200 hover:text-red-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
-            onClick={() => setIsError(false)}
+            onClick={() => dispatch(setError(null))}
           >
             <CloseIcon />
             <span className="sr-only">Close modal</span>
           </button>
           <div className="p-4 md:p-5 border rounded-lg shadow-xl text-center bg-yellow-50">
             <ExclamationMark />
-            <h3 className="mb-4 text-gray-500">{authError && authError}</h3>
+            <h3 className="mb-4 text-gray-500">{!!error && error}</h3>
           </div>
         </div>
       </div>
