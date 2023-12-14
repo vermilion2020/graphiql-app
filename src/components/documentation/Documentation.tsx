@@ -2,31 +2,29 @@ import { useRef, useState } from 'react';
 import { useLazyGetItemsListQuery } from '../../redux/api/schemaApi';
 import Queries from './Queries';
 import FieldsList from './FieldsList';
-import { SchemaType } from '../../model/schema.interface';
 import SType from './SType';
+import { AppDispatch, useAppSelector } from '../../redux';
+import { useDispatch } from 'react-redux';
+import { setTypeDisplayed } from '../../redux/features/documentationSlice';
 
 function Documentation() {
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const [trigger, { isLoading, isError, data } ] = useLazyGetItemsListQuery();
-  const [schemaType, setSchemaType] = useState<SchemaType | null>(null);
-  const [queries, setQueries] = useState<SchemaType | null>(null);
-  let schemaQuery: null | SchemaType = null;
-  let fields = null;
-  if (!isLoading && !isError) {
-    console.log(data?.data.__schema.types);
-    schemaQuery = data?.data.__schema.types
-      .find(s => s.name === 'Root' || s.name === 'Query') as SchemaType;
-    fields = data?.data.__schema.types
-      .filter(s => s.name !== 'Root' && s.name !== 'Query');
-  }
+  const [trigger] = useLazyGetItemsListQuery();
+  const [queriesDisplayed, setQueriesDisplayed] = useState(false);
+  const dispatch = useDispatch<AppDispatch>();
+  
+  const { schemaQueries, schemaTypes, typeDisplayed } = useAppSelector(
+    (state) => state.documentationState
+  );
+
   const handleGetDocsClick = () => {
     const value = inputRef.current?.value ?? '';
     trigger(value);
   }
 
   const toDefaultView = () => {
-    setSchemaType(null);
-    setQueries(null);
+    dispatch(setTypeDisplayed(null));
+    setQueriesDisplayed(false);
   }
 
   return (
@@ -47,13 +45,17 @@ function Documentation() {
             focus-visible:outline-2 focus-visible:outline-offset-2 
             focus-visible:outline-buttonBg-400 disabled:bg-disabledButton hover:bg-buttonBg-400">Get Documentation</button>
         <div className="heading mt-4 mb-2">
-          {schemaQuery && !schemaType && !queries && <span onClick={() => setQueries(schemaQuery)} className="cursor-pointer hover:underline">query: <span className="text-orange-600 ms-2">{schemaQuery.name}</span></span>}
-          {(schemaType || queries) && <span className="text-blue-900 ms-2 cursor-pointer hover:underline" onClick={toDefaultView}>{'<< Back'}</span>}
+          {schemaQueries && !typeDisplayed && !queriesDisplayed && 
+            <span onClick={() => setQueriesDisplayed(true)} className="cursor-pointer hover:underline">query: 
+              <span className="text-orange-600 ms-2">{schemaQueries.name}</span>
+            </span>}
+          {(typeDisplayed || queriesDisplayed) && 
+            <span className="text-blue-900 ms-2 cursor-pointer hover:underline" onClick={toDefaultView}>{'<< Back'}</span>}
         </div>
         
-        {queries && <Queries queriesData={queries} />}
-        {schemaType && <SType sType={schemaType} />}
-        {fields && !schemaType && !queries && <FieldsList fieldsData={fields} clickHandler={setSchemaType}/>}
+        {schemaQueries && queriesDisplayed && <Queries queriesData={schemaQueries} />}
+        {typeDisplayed && <SType sTypeName={typeDisplayed} />}
+        {schemaTypes && !typeDisplayed && !queriesDisplayed && <FieldsList fieldsData={schemaTypes}/>}
       </div>
     </div>
   );

@@ -1,5 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { ISchemaTypes } from '../../model/schema.interface';
+import { ISchemaTypes, SchemaType } from '../../model/schema.interface';
+import { DEFINITION_QUERY } from '../../model/definition-query';
+import { setError } from '../features/appSlice';
+import { setSchemaQueries, setSchemaTypes } from '../features/documentationSlice';
 
 export const schemaApi = createApi({
   reducerPath: 'schemaApi',
@@ -14,16 +17,27 @@ export const schemaApi = createApi({
           url: endpoint,
           method: 'POST',
           body: {
-            "query": "fragment FullType on __Type { kind name fields(includeDeprecated: true) { name args { ...InputValue } type { ...TypeRef } isDeprecated deprecationReason } inputFields { ...InputValue } interfaces { ...TypeRef } enumValues(includeDeprecated: true) { name isDeprecated deprecationReason } possibleTypes { ...TypeRef }}fragment InputValue on __InputValue { name type { ...TypeRef } defaultValue}fragment TypeRef on __Type { kind name ofType { kind name ofType { kind name ofType { kind name ofType { kind name ofType { kind name ofType { kind name ofType { kind name } } } } } } }}query IntrospectionQuery { __schema { queryType { name } mutationType { name } types { ...FullType } directives { name locations args { ...InputValue } } }}"
+            query: DEFINITION_QUERY
           }
         };
         return query;
       },
-      async onQueryStarted(_, { queryFulfilled }) {
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
-          await queryFulfilled;
+          const { data } = await queryFulfilled;
+          console.log(data?.data.__schema.types);
+
+          const schemaQuery = data?.data.__schema.types
+            .find(s => s.name === 'Root' || s.name === 'Query') as SchemaType;
+          const types = data?.data.__schema.types
+            .filter(s => s.name !== 'Root' && s.name !== 'Query');
+
+          dispatch(setSchemaQueries(schemaQuery));
+          dispatch(setSchemaTypes(types));
         } catch (e) {
-          console.log(e);
+          const err = e as string;
+          dispatch(setError(err));
+          console.log(err);
         }
       },
     }),
