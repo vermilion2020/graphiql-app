@@ -13,11 +13,11 @@ function SType ({ sTypeName }: IFieldProps) {
   );
   const dispatch = useAppDispatch();
   const sType = schemaTypes?.find(f => f.name === sTypeName) as SchemaType;
-  console.log(sTypeName)
+
   return (
     <div>
-      { sType?.kind === 'OBJECT' && <h3 className="font-bold my-2">Fields</h3> }
-      { sType?.kind === 'INPUT_OBJECT' && <h3 className="font-bold my-2">Input Fields</h3> }
+      { sType?.kind === 'OBJECT' && <h3 className="font-bold my-2">{`Fields for ${sType.name}`}</h3> }
+      { sType?.kind === 'INPUT_OBJECT' && <h3 className="font-bold my-2">{`Input Fields for ${sType.name}`}</h3> }
       { sType?.kind === 'SCALAR' && <h3 className="my-2">{`${sType.name} is a type of a kind 'Scalar'`}</h3> }
       { sType?.kind === 'ENUM' && <h3 className="my-2">{`${sType.name} is a type of a kind 'Enum'`}</h3> }
       { sType && sType.fields ? sType.fields.map((f, i) => 
@@ -25,7 +25,7 @@ function SType ({ sTypeName }: IFieldProps) {
               <span className="text-red-900">{f.name}</span>: 
               <span
                 className={TYPE_CLASSES}
-                onClick={() => dispatch(setTypeDisplayed(f.type.name ?? ''))}
+                onClick={() => dispatch(setTypeDisplayed(parseType(f.type)))}
               >{parseType(f.type)}</span>
           </div>
          ) :
@@ -34,7 +34,7 @@ function SType ({ sTypeName }: IFieldProps) {
               <span className="text-red-900">{f.name}</span>: 
               <span
                 className={TYPE_CLASSES}
-                onClick={() => dispatch(setTypeDisplayed(f.type.name ?? ''))}
+                onClick={() => dispatch(setTypeDisplayed(parseType(f.type)))}
               >{parseType(f.type)}</span>
           </div>
          ) :

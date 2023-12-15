@@ -1,8 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { ISchemaTypes, SchemaType } from '../../model/schema.interface';
-import { DEFINITION_QUERY } from '../../model/definition-query';
+import { BASIC_TYPES_QUERY, DEFINITION_QUERY } from '../../model/queries';
 import { setError } from '../features/appSlice';
 import { setSchemaQueries, setSchemaTypes } from '../features/documentationSlice';
+import { setEndpoint, setResponse } from '../features/requestSlice';
 
 export const schemaApi = createApi({
   reducerPath: 'schemaApi',
@@ -11,7 +12,7 @@ export const schemaApi = createApi({
   }),
   tagTypes: ['schema'],
   endpoints: (builder) => ({
-    getItemsList: builder.query<ISchemaTypes, string>({
+    getSchema: builder.query<ISchemaTypes, string>({
       query: (endpoint: string) => {
         const query = {
           url: endpoint,
@@ -25,7 +26,6 @@ export const schemaApi = createApi({
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          console.log(data?.data.__schema.types);
 
           const schemaQuery = data?.data.__schema.types
             .find(s => s.name === data?.data.__schema.queryType.name) as SchemaType;
@@ -35,13 +35,62 @@ export const schemaApi = createApi({
           dispatch(setSchemaQueries(schemaQuery));
           dispatch(setSchemaTypes(types));
         } catch (e) {
-          const err = e as string;
-          dispatch(setError(err));
-          console.log(err);
+          dispatch(setError('Invalid URL is provided. Scheme check request was failed'));
+          console.log(e);
+        }
+      },
+    }),
+    checkSchema: builder.query<ISchemaTypes, string>({
+      query: (endpoint: string) => {
+        const query = {
+          url: endpoint,
+          method: 'POST',
+          body: {
+            query: BASIC_TYPES_QUERY
+          }
+        };
+        return query;
+      },
+      async onQueryStarted(url, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          if (data) {
+            dispatch(setError(null));
+            localStorage.setItem('endpoint', url);
+            dispatch(setEndpoint(url));
+          }
+        } catch (e) {
+          dispatch(setError('Invalid URL is provided. Scheme check request was failed'));
+          console.log(e);
+        }
+      },
+    }),
+    sendRequest: builder.query<ISchemaTypes, { endpoint: string, q: string }>({
+      query: ({endpoint, q}: { endpoint: string, q: string }) => {
+        const query = {
+          url: endpoint,
+          method: 'POST',
+          body: {
+            query: q
+          }
+        };
+        return query;
+      },
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          if (data) {
+            dispatch(setError(null));
+            dispatch(setResponse(JSON.stringify(data)));
+          }
+        } catch (e) {
+          dispatch(setError('Invalid query'));
+          dispatch(setResponse(''));
+          console.log(e);
         }
       },
     }),
   }),
 });
 
-export const { useLazyGetItemsListQuery } = schemaApi;
+export const { useLazyGetSchemaQuery, useLazyCheckSchemaQuery, useLazySendRequestQuery } = schemaApi;

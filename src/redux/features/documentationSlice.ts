@@ -20,15 +20,28 @@ export const documentationSlice = createSlice({
       state.schemaTypes = action.payload;
     },
     setTypeDisplayed: (state, action: PayloadAction<string | null>) => {
-      state.typeDisplayed = action.payload;
+      let sType = null;
+      if (action.payload) {
+        sType = action.payload
+          .replace('!', '')
+          .replace('[', '')
+          .replace(']', '');
+      }
+      state.typeDisplayed = sType;
     },
     setQueriesDisplayed: (state, action: PayloadAction<boolean>) => {
       state.queriesDisplayed = action.payload;
+    },
+    clearDocs: (state) => {
+      state.schemaQueries = null;
+      state.schemaTypes = null;
+      state.queriesDisplayed = false;
+      state.typeDisplayed = null;
     },
   }
 });
 
 export default documentationSlice.reducer;
 
-export const { setSchemaQueries, setSchemaTypes, setTypeDisplayed, setQueriesDisplayed } =
+export const { setSchemaQueries, setSchemaTypes, setTypeDisplayed, setQueriesDisplayed, clearDocs } =
   documentationSlice.actions; 

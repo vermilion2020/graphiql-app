@@ -6,13 +6,13 @@ import {
 import { schemaApi } from './api/schemaApi';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import appReducer from './features/appSlice';
-import endpointReducer from './features/endpointSlice';
+import requestReducer from './features/requestSlice';
 import documentationReducer from './features/documentationSlice';
 
 const rootReducer = combineReducers({
   [schemaApi.reducerPath]: schemaApi.reducer,
   appState: appReducer,
-  endpointState: endpointReducer,
+  requestState: requestReducer,
   documentationState: documentationReducer,
 });
 

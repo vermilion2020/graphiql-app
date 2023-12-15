@@ -12,6 +12,7 @@ export interface IDocumentationState {
   queriesDisplayed: boolean;
 }
 
-export interface EndpointState {
-  endpoint: string
+export interface IRequestState {
+  endpoint: string,
+  response: string
 }
