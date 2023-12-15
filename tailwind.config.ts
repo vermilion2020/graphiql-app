@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+import defaultTheme from 'tailwindcss/defaultTheme';
+
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
@@ -18,6 +21,10 @@ export default {
         },
         disabledButton: '#b9b5bb',
       },
+    },
+    screens: {
+      xs: '320px',
+      ...defaultTheme.screens,
     },
   },
   plugins: [],

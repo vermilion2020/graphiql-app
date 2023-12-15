@@ -1,21 +1,39 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { IAppState } from '../../model/state.interface';
+
+export interface IAppState {
+  uid: string | null;
+  isLoggedIn: boolean;
+  error: string | null;
+}
 
 const initialState: IAppState = {
-  isLoggedIn: false
+  uid: null,
+  isLoggedIn: false,
+  error: null,
 };
 
 export const AppSlice = createSlice({
-  initialState,
   name: 'appSlice',
+  initialState,
+
   reducers: {
-    setLoggedIn: (state, action: PayloadAction<boolean>) => {
-      state.isLoggedIn = action.payload;
+    setSingIn: (state, action) => {
+      state.uid = action.payload;
+      state.isLoggedIn = true;
+      state.error = null;
     },
-  }
+    setError: (state, action: PayloadAction<string | null>) => {
+      state.error = action.payload;
+    },
+    setSignOut: (state) => {
+      state.uid = null;
+      state.isLoggedIn = false;
+      state.error = null;
+    },
+  },
+
 });
 
 export default AppSlice.reducer;
 
-export const { setLoggedIn } =
-AppSlice.actions; 
+export const { setSingIn, setError, setSignOut } = AppSlice.actions;
