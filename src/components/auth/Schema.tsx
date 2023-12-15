@@ -9,12 +9,12 @@ export const schema = yup
     email: yup.string().email('Please enter a valid email!').required('Email is required'),
     password: yup
       .string()
-      .min(8, 'Password must be at least 8 characters')
       .matches(/^\S*$/, 'Whitespace is not allowed')
+      .min(8, 'Password must be at least 8 characters')
+      .matches(/[@$!%*#?&+=()/.,'"-<+<>~`]/, getCharacterValidationError('special'))
       .matches(/[0-9]/, getCharacterValidationError('digit'))
-      .matches(/[a-z]/, getCharacterValidationError('lowercase'))
-      .matches(/[A-Z]/, getCharacterValidationError('uppercase'))
-      .matches(/[@$!%*#?&+=()/.,'"-+<>~`]/, getCharacterValidationError('special'))
+      .matches(/\p{Ll}/gu, getCharacterValidationError('lowercase'))
+      .matches(/\p{Lu}/gu, getCharacterValidationError('uppercase'))
       .required('Password is required'),
     confirmPassword: yup
       .string()

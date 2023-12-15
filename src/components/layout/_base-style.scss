@@ -42,6 +42,10 @@ a {
   color: $baseLinkColor;
   text-decoration: inherit;
 
+  &.menu-link {
+    color: $whiteBgFontColor;
+  }
+
   &:hover,
   &.active-link:hover {
     color: $hoverLinkColor;
