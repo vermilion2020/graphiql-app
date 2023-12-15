@@ -24,14 +24,11 @@ function Header() {
   return (
     <header className='app-header'>
       <h1>GraphiQL</h1>
-      <NavLink className={({ isActive }) => (isActive ? 'active-link' : '')} to='/' title={texts.menu.welcome}>
+      <NavLink className={({ isActive }) => (isActive ? 'menu-link active-link' : 'menu-link')} to='/' title={texts.menu.welcome}>
       {texts.menu.welcome}
       </NavLink>
-      <NavLink className={({ isActive }) => (isActive ? 'active-link' : '')} to='/main' title={texts.menu.main}>
-      {texts.menu.main}
-      </NavLink>
       <Locale />
-      <button type='button' className='btn btn-primary me-3' onClick={handleLogout}>
+      <button type='button' className='btn btn-primary me-3 hover:text-buttonColor-400' onClick={handleLogout}>
         Sign Out
       </button>
     </header>
