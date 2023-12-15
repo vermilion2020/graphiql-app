@@ -20,7 +20,7 @@ function Query ({ query }: IQueryProps) {
   const argBlock = (a: Arg) => 
     <>
       <span className="text-red-900 ms-2">{a.name}</span>: 
-      <span className={TYPE_CLASSES} onClick={() => handleClickField(a.type.name ?? '')}>{parseType(a.type)}</span>
+      <span className={TYPE_CLASSES} onClick={() => handleClickField(a.type.name ?? '')}>{parseType(a.type)}</span> 
     </>
     
   return (
@@ -36,12 +36,14 @@ function Query ({ query }: IQueryProps) {
               {i !== query.args.length - 1 ? ',' : ''}
             </div>)}
           <div>{`):`}
-            {typeBlock(query.type.name ?? '')}
+            {typeBlock(parseType(query.type))}
           </div> 
         </> :
+         query.args.length === 1 ? 
         <span>(
-          {argBlock(query.args[0])}): {typeBlock(query.type.name ?? '')}
-        </span>
+          {argBlock(query.args[0])}): {typeBlock(parseType(query.type))}
+        </span>:
+        <span>()</span>
       }
     </div>
   );

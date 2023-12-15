@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { ISchemaTypes, SchemaType } from '../../model/schema.interface';
 import { BASIC_TYPES_QUERY, DEFINITION_QUERY } from '../../model/queries';
 import { setError } from '../features/appSlice';
-import { setSchemaQueries, setSchemaTypes } from '../features/documentationSlice';
+import { setSchemaMutations, setSchemaQueries, setSchemaTypes } from '../features/documentationSlice';
 import { setEndpoint, setResponse } from '../features/requestSlice';
 
 export const schemaApi = createApi({
@@ -26,13 +26,23 @@ export const schemaApi = createApi({
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
+          const schema = data?.data.__schema;
+          let types = schema.types.filter(t => !t.name.includes('__'));
+          
+          if (schema.mutationType && schema.mutationType.name) {
+            const schemaMutation = schema.types
+            .find(t => t.name === schema.mutationType.name) as SchemaType;
+            dispatch(setSchemaMutations(schemaMutation));
+            types = types.filter(t => t.name !== schema.mutationType.name);
+          }
 
-          const schemaQuery = data?.data.__schema.types
-            .find(s => s.name === data?.data.__schema.queryType.name) as SchemaType;
-          const types = data?.data.__schema.types
-            .filter(s => s.name !== data?.data.__schema.queryType.name);
+          if (schema.queryType && schema.queryType.name) {
+            const schemaQuery = schema.types
+            .find(t => t.name === schema.queryType.name) as SchemaType;
+            dispatch(setSchemaQueries(schemaQuery));
+            types = types.filter(t => t.name !== schema.queryType.name);
+          }
 
-          dispatch(setSchemaQueries(schemaQuery));
           dispatch(setSchemaTypes(types));
         } catch (e) {
           dispatch(setError('Invalid URL is provided. Scheme check request was failed'));

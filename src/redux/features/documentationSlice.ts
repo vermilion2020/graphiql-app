@@ -4,8 +4,10 @@ import { SchemaType } from '../../model/schema.interface';
 
 const initialState: IDocumentationState = {
   schemaQueries: null,
+  schemaMutations: null,
   schemaTypes: null,
   typeDisplayed: null,
+  mutationsDisplayed: false,
   queriesDisplayed: false
 };
 
@@ -15,6 +17,9 @@ export const documentationSlice = createSlice({
   reducers: {
     setSchemaQueries: (state, action: PayloadAction<SchemaType>) => {
       state.schemaQueries = action.payload;
+    },
+    setSchemaMutations: (state, action: PayloadAction<SchemaType>) => {
+      state.schemaMutations = action.payload;
     },
     setSchemaTypes: (state, action: PayloadAction<SchemaType[]>) => {
       state.schemaTypes = action.payload;
@@ -32,10 +37,15 @@ export const documentationSlice = createSlice({
     setQueriesDisplayed: (state, action: PayloadAction<boolean>) => {
       state.queriesDisplayed = action.payload;
     },
+    setMutationsDisplayed: (state, action: PayloadAction<boolean>) => {
+      state.mutationsDisplayed = action.payload;
+    },
     clearDocs: (state) => {
       state.schemaQueries = null;
+      state.schemaMutations = null;
       state.schemaTypes = null;
       state.queriesDisplayed = false;
+      state.mutationsDisplayed = false;
       state.typeDisplayed = null;
     },
   }
@@ -43,5 +53,12 @@ export const documentationSlice = createSlice({
 
 export default documentationSlice.reducer;
 
-export const { setSchemaQueries, setSchemaTypes, setTypeDisplayed, setQueriesDisplayed, clearDocs } =
-  documentationSlice.actions; 
+export const { 
+  setSchemaQueries,
+  setSchemaTypes,
+  setTypeDisplayed,
+  setQueriesDisplayed,
+  setSchemaMutations,
+  setMutationsDisplayed,
+  clearDocs
+} = documentationSlice.actions; 

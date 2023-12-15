@@ -7,9 +7,11 @@ export interface IAppState {
 
 export interface IDocumentationState {
   schemaQueries: SchemaType | null;
+  schemaMutations: SchemaType | null;
   schemaTypes: SchemaType[] | null;
   typeDisplayed: string | null;
   queriesDisplayed: boolean;
+  mutationsDisplayed: boolean;
 }
 
 export interface IRequestState {

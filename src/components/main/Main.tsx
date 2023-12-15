@@ -45,7 +45,7 @@ function Main() {
   }
 
   return (
-    <div className='w-[1200px] m-auto flex'>
+    <div className='w-[1200px] m-auto flex pt-4'>
       <div className='w-1/3'>
         <Documentation />
       </div>
@@ -69,9 +69,7 @@ function Main() {
       </div>
       <div className='w-1/3'>
         <h2>Response</h2>
-        {!!response && 
-        <div>{response}</div>
-        }
+        <div className="border-solid border-1 border-gray-600 w-5/6 m-auto min-h-[390px]">{!!response && response}</div>
       </div>
 
     </div>
