@@ -80,7 +80,8 @@ export const en = {
     'auth/user-disabled': 'The user account has been disabled by an administrator.',
     'auth/user-mismatch': 'The supplied credentials do not correspond to the previously signed in user.',
     'auth/too-many-requests': 'Too many requests',
-    'auth/user-signed-out': ''
+    'auth/user-signed-out': '',
+    'auth/custom-authentication-error': 'Authentication error.',
   }
 };
 
@@ -164,6 +165,7 @@ export const ru: typeof en = {
     'auth/user-disabled': 'RU: The user account has been disabled by an administrator.',
     'auth/user-mismatch': 'RU: The supplied credentials do not correspond to the previously signed in user.',
     'auth/too-many-requests': 'RU: Too many requests',
-    'auth/user-signed-out': ''
+    'auth/user-signed-out': '',
+    'auth/custom-authentication-error': 'RU: Authentication error.',
   }
 };

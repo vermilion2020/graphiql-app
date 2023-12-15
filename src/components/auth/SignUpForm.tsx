@@ -84,13 +84,25 @@ function SignUpForm() {
         }
       })
       .catch((error) => {
-        const code = error.code as authErrorCode;
-        const errorMessage = texts.errorMessages[code];
-        dispatch(setError(errorMessage));
-        setTimeout(() => {dispatch(setError(null))}, HIDE_MODAL_TIMEOUT);
+        const code = error.code;
+        const errorMessageCode = Object.keys(texts.errorMessages).find(item => item === code);
+        if (errorMessageCode) {
+          dispatch(setError(texts.errorMessages[errorMessageCode as authErrorCode]));
+        } else {
+          dispatch(setError(texts.errorMessages['auth/custom-authentication-error']));
+        }
       });
     reset();
   };
+
+  useEffect(() => {
+    if (error) {
+      const timeoutId = setTimeout(() => {dispatch(setError(null))}, HIDE_MODAL_TIMEOUT);
+      return () => {
+        clearTimeout(timeoutId);
+      };
+  }
+  }, [dispatch, error]);
 
   useEffect(() => {
     if (formState.isValid) {
