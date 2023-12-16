@@ -3,6 +3,8 @@ import FieldsList from './FieldsList';
 import SType from './SType';
 import { useAppDispatch, useAppSelector } from '../../redux';
 import { setQueriesDisplayed, setTypeDisplayed } from '../../redux/features/documentationSlice';
+import { useContext } from 'react';
+import { LocaleContext } from '../../context/LocaleContext';
 
 function Documentation() {
   const dispatch = useAppDispatch();
@@ -17,6 +19,7 @@ function Documentation() {
   } = useAppSelector(
     (state) => state.documentationState
   );
+  const { texts } = useContext(LocaleContext);
 
   const toDefaultView = () => {
     dispatch(setTypeDisplayed(null));
@@ -27,14 +30,14 @@ function Documentation() {
 
   return (
     <div className="text-left">
-      <h2>Documentation</h2>
+      <h2>{texts.main.docs.title}</h2>
       <div className="heading mt-4 mb-2">
         {mainPartDisplayed && schemaQueries &&
-            <div>query: <span onClick={() => dispatch(setQueriesDisplayed(true))} className="cursor-pointer hover:underline">
+            <div>{texts.main.docs.query}:<span onClick={() => dispatch(setQueriesDisplayed(true))} className="cursor-pointer hover:underline">
             <span className="text-orange-600 ms-2">{schemaQueries.name}</span>
           </span></div>}
         {mainPartDisplayed && schemaMutations &&
-            <div>mutation: <span onClick={() => dispatch(setQueriesDisplayed(true))} className="cursor-pointer hover:underline">
+            <div>{texts.main.docs.mutation}:<span onClick={() => dispatch(setQueriesDisplayed(true))} className="cursor-pointer hover:underline">
             <span className="text-orange-600 ms-2">{schemaMutations.name}</span>
           </span></div>}
         {(typeDisplayed || queriesDisplayed || mutationsDisplayed) && 

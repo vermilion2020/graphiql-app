@@ -13,13 +13,26 @@ import { LocaleContext } from '../../context/LocaleContext';
 import { setError } from '../../redux/features/appSlice';
 
 function Editor() {
-  const [value, setValue] = useState(BASIC_TYPES_QUERY);
+  const [query, setQuery] = useState(BASIC_TYPES_QUERY);
+  const [vars, setVars] = useState('');
+  const [headers, setHeaders] = useState('');
+  const [visibleTab, setVisibleTab] = useState<'vars'|'headers'>('vars');
   const { texts } = useContext(LocaleContext);
   const [triggerRequest] = useLazySendRequestQuery();
   const [triggerSchema] = useLazyGetSchemaQuery();
-  const onChange = useCallback((val: string) => {
-    setValue(val);
+
+  const onChangeMain = useCallback((val: string) => {
+    setQuery(val);
   }, []);
+
+  const onChangeVars = useCallback((val: string) => {
+    setVars(val);
+  }, []);
+
+  const onChangeHeaders = useCallback((val: string) => {
+    setHeaders(val);
+  }, []);
+
   const { schemaQueries } = useAppSelector(
     (state) => state.documentationState
   );
@@ -37,7 +50,23 @@ function Editor() {
   }
 
   const sendRequest = () => {
-    triggerRequest({ endpoint, q: value });
+    // if (!vars.validate()) return;
+    // if (!value.validate())
+    let varsParsed = {};
+    let headersParsed = {};
+    try {
+      varsParsed = JSON.parse(vars);
+    } catch {
+      console.log('vars not parsed');
+    }
+
+    try {
+      headersParsed = JSON.parse(headers);
+    } catch {
+      console.log('headers not parsed');
+    }
+    
+    triggerRequest({ endpoint, q: query, vars: varsParsed, headers: headersParsed });
   }
 
   const hideDocs = () => {
@@ -61,7 +90,23 @@ function Editor() {
             focus-visible:outline-2 focus-visible:outline-offset-2 
             focus-visible:outline-buttonBg-400 disabled:bg-disabledButton hover:bg-buttonBg-400">Send Request</button>}
 
-        <CodeMirror value={value} height="200px" className="border-gray-700 border-solid border-2" extensions={[javascript({ jsx: true })]} onChange={onChange} />;
+        <CodeMirror value={query} height="200px" className="border-gray-700 border-solid border-2 text-left" extensions={[javascript({ jsx: true })]} onChange={onChangeMain} />
+        <div className="flex gap-1">
+          <span
+            onClick={() => setVisibleTab('vars')}
+            className={visibleTab === 'vars' ? 'text-blue-900 font-bold' : 'cursor-pointer'}
+          >Variables</span>
+          <span
+            onClick={() => setVisibleTab('headers')}
+            className={visibleTab === 'headers' ? 'text-blue-900 font-bold' : 'cursor-pointer'}
+          >Headers</span>
+        </div>
+        {visibleTab === 'vars' && <div className="vars-container">
+          <CodeMirror value={vars} height="200px" className="border-gray-700 border-solid border-2 text-left" extensions={[javascript({ jsx: true })]} onChange={onChangeVars} />
+        </div>}
+        {visibleTab === 'headers' && <div className="headers-container">
+          <CodeMirror value={headers} height="200px" className="border-gray-700 border-solid border-2 text-left" extensions={[javascript({ jsx: true })]} onChange={onChangeHeaders} />
+        </div>}
     </>
   );
 }

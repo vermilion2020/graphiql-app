@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { ISchemaTypes, SchemaType } from '../../model/schema.interface';
-import { BASIC_TYPES_QUERY, DEFINITION_QUERY } from '../../model/queries';
+import { BASIC_TYPES_QUERY, DEFINITION_QUERY, RequestQueryData } from '../../model/queries';
 import { setError } from '../features/appSlice';
 import { setSchemaMutations, setSchemaQueries, setSchemaTypes } from '../features/documentationSlice';
 import { setEndpoint, setResponse } from '../features/requestSlice';
@@ -75,14 +75,16 @@ export const schemaApi = createApi({
         }
       },
     }),
-    sendRequest: builder.query<ISchemaTypes, { endpoint: string, q: string }>({
-      query: ({endpoint, q}: { endpoint: string, q: string }) => {
+    sendRequest: builder.query<ISchemaTypes, RequestQueryData>({
+      query: ({endpoint, q, vars, headers}: RequestQueryData) => {
         const query = {
           url: endpoint,
           method: 'POST',
           body: {
-            query: q
-          }
+            query: q,
+            variables: vars
+          },
+          headers: headers
         };
         return query;
       },

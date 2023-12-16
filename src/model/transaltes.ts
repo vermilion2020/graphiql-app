@@ -14,7 +14,16 @@ export const en = {
     saveEndpoint: {
       heading: 'Enter new endpoint URL:',
       button: 'SAVE'
-    }
+    },
+    docs: {
+      title: 'Documentation',
+      query: 'query', 
+      mutation: 'mutation',
+      kind: 'is a type of a kind',
+      inputFields: 'Input Fields for',
+      fields: 'Fields for',
+      noType: `Type doesn't exist`,
+    },
   },
   welcome: {
     title: 'GraphQL editor',
@@ -101,7 +110,16 @@ export const ru: typeof en = {
     saveEndpoint: {
       heading: 'Введите адрес новой конечной точки:',
       button: 'СОХРАНИТЬ'
-    }
+    },
+    docs: {
+      title: 'Документация',
+      query: 'запрос', 
+      mutation: 'мутация',
+      kind: 'это тип вида',
+      inputFields: 'Поля ввода для',
+      fields: 'Поля для',
+      noType: `Такого типа не существует`,
+    },
   },
   welcome: {
     title: 'GraphQL редактор',
