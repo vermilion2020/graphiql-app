@@ -2,25 +2,26 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainPage from './pages/Main.tsx';
 import NotFoundPage from './pages/NotFound';
 import { Provider } from 'react-redux';
-import { setupStore } from './redux/index.ts';
+import { store, persistor } from './redux/index.ts';
 import SignInPage from './pages/SignIn.tsx';
 import SignUpPage from './pages/SignUp.tsx';
 import WelcomePage from './pages/Welcome.tsx';
 import { LocaleState } from './context/LocaleContext.tsx';
 import AppLayout from './components/layout/AppLayout.tsx';
 import AuthLayout from './components/layout/AuthLayout.tsx';
+import { PersistGate } from 'redux-persist/integration/react';
 
 function App() {
   return (
     <Routes>
       <Route element={<AuthLayout />}>
-        <Route path='/' element={<WelcomePage />} />
-        <Route path='/sign-in' element={<SignInPage />} />
-        <Route path='/sign-up' element={<SignUpPage />} />
-        <Route path='*' element={<NotFoundPage />} />
+        <Route path="/" element={<WelcomePage />} />
+        <Route path="/sign-in" element={<SignInPage />} />
+        <Route path="/sign-up" element={<SignUpPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
       <Route element={<AppLayout />}>
-        <Route path='/main' element={<MainPage />} />
+        <Route path="/main" element={<MainPage />} />
       </Route>
     </Routes>
   );
@@ -30,8 +31,10 @@ function WrappedApp() {
   return (
     <BrowserRouter>
       <LocaleState>
-        <Provider store={setupStore({})}>
-          <App />
+        <Provider store={store}>
+          <PersistGate persistor={persistor}>
+            <App />
+          </PersistGate>
         </Provider>
       </LocaleState>
     </BrowserRouter>
