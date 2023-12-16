@@ -1,3 +1,5 @@
+import { en } from "../model/transaltes";
+
 export type authErrorCode = 
   'auth/credential-already-in-use' |
   'auth/email-already-in-use' |
@@ -15,5 +17,12 @@ export type authErrorCode =
   'auth/user-mismatch' |
   'auth/user-signed-out' |
   'auth/too-many-requests';
+
+export const getErrorMessage = (key: string, texts: typeof en) => {
+  const errorMessageCode = Object.keys(texts.errorMessages).find(item => item === key);
+  return errorMessageCode ?
+    texts.errorMessages[errorMessageCode as authErrorCode] :
+    texts.errorMessages['auth/custom-authentication-error'];
+}
 
 export const HIDE_MODAL_TIMEOUT = 4000;

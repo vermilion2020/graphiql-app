@@ -1,4 +1,4 @@
-import { TYPE_CLASSES, parseType } from "../../helpers/documentation-helper";
+import { TYPE_CLASSES, parseType } from "../../utils/documentation-helper";
 import { SchemaType } from "../../model/schema.interface";
 import { useAppSelector, useAppDispatch } from "../../redux";
 import { setTypeDisplayed } from "../../redux/features/documentationSlice";

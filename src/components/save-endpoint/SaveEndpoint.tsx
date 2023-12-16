@@ -1,7 +1,8 @@
 import { useState, useContext } from 'react';
 import { LocaleContext } from '../../context/LocaleContext';
-import { useAppSelector } from '../../redux';
+import { useAppDispatch, useAppSelector } from '../../redux';
 import { useLazyCheckSchemaQuery } from '../../redux/api/schemaApi';
+import { setError } from '../../redux/features/appSlice';
 
 function SaveEndpoint() {
   const { endpoint } = useAppSelector(
@@ -10,10 +11,16 @@ function SaveEndpoint() {
   const [triggerCheck] = useLazyCheckSchemaQuery();
   const [url, setUrl] = useState(endpoint);
   const { texts } = useContext(LocaleContext);
+  const dispatch = useAppDispatch();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    triggerCheck(url);
+    if (url.length > 0) {
+      triggerCheck(url);
+    } else {
+      dispatch(setError(texts.errorMessages['endpoint/empty']))
+    }
+
   };
 
   return (

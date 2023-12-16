@@ -1,8 +1,17 @@
 import { Link } from "react-router-dom";
+import { useAppSelector } from "../../redux";
+import PopupError from "../auth/PopupError";
+import { useErrorMessage } from "../../hooks/ErrorMessage";
 
 function Footer() {
+  const { error } = useAppSelector(
+    (state) => state.appState
+  );
+  useErrorMessage();
+
   return (
     <footer className="app-footer">
+      {!!error && <PopupError />}
       <div className="footer-container">
         <p className="copyright">
           {

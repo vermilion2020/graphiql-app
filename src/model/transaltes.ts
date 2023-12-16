@@ -6,9 +6,11 @@ export const en = {
   menu: {
     welcome: 'Welcome',
     main: 'GraphQL editor',
+    signOut: 'Sign Out',
   },
   main: {
     title: 'GraphQL editor',
+    response: 'Response',
     saveEndpoint: {
       heading: 'Enter new endpoint URL:',
       button: 'SAVE'
@@ -82,6 +84,8 @@ export const en = {
     'auth/too-many-requests': 'Too many requests',
     'auth/user-signed-out': '',
     'auth/custom-authentication-error': 'Authentication error.',
+    'docs/no-enpoint': 'No endpoint provided. Save an endpoint to view the documentation',
+    'endpoint/empty': `You can't save en empty endpoint`,
   }
 };
 
@@ -89,9 +93,11 @@ export const ru: typeof en = {
   menu: {
     welcome: 'Добро пожаловать',
     main: 'GraphQL редактор',
+    signOut: 'Выход',
   },
   main: {
     title: 'GraphQL редактор',
+    response: 'Ответ',
     saveEndpoint: {
       heading: 'Введите адрес новой конечной точки:',
       button: 'СОХРАНИТЬ'
@@ -167,5 +173,7 @@ export const ru: typeof en = {
     'auth/too-many-requests': 'Слишком много запросов.',
     'auth/user-signed-out': '',
     'auth/custom-authentication-error': 'Ошибка аутентификации.',
+    'docs/no-enpoint': 'Не сохранен эндроинт. Добавьте эндпоинт, чтобы увидеть документацию',
+    'endpoint/empty': 'Вы не можете сохранить пустой эндпоинт',
   }
 };

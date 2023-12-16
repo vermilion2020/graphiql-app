@@ -1,4 +1,4 @@
-import { TYPE_CLASSES, parseType } from "../../helpers/documentation-helper";
+import { TYPE_CLASSES, parseType } from "../../utils/documentation-helper";
 import { Arg, Field } from "../../model/schema.interface";
 import { useAppDispatch } from "../../redux";
 import { setQueriesDisplayed, setTypeDisplayed } from "../../redux/features/documentationSlice";

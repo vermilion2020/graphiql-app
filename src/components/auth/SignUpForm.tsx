@@ -9,9 +9,8 @@ import { useContext } from 'react';
 import { LocaleContext } from '../../context/LocaleContext';
 import ArrowCircle from '../../assets/icons/ArrowCircle ';
 import { setError } from '../../redux/features/appSlice';
-import { useAppDispatch, useAppSelector } from '../../redux/index';
-import PopupError from './PopupError';
-import { HIDE_MODAL_TIMEOUT, authErrorCode } from '../../utils/errorMap';
+import { useAppDispatch } from '../../redux/index';
+import { getErrorMessage } from '../../utils/errorMessage';
 
 export interface IFormInput {
   email: string;
@@ -22,9 +21,6 @@ export interface IFormInput {
 
 function SignUpForm() {
   const { texts } = useContext(LocaleContext);
-  const { error } = useAppSelector(
-    (state) => state.appState
-  );
   const dispatch = useAppDispatch();
 
   const schema = yup
@@ -83,26 +79,12 @@ function SignUpForm() {
           navigate('/sign-in');
         }
       })
-      .catch((error) => {
-        const code = error.code;
-        const errorMessageCode = Object.keys(texts.errorMessages).find(item => item === code);
-        if (errorMessageCode) {
-          dispatch(setError(texts.errorMessages[errorMessageCode as authErrorCode]));
-        } else {
-          dispatch(setError(texts.errorMessages['auth/custom-authentication-error']));
-        }
+      .catch(({ code }) => {
+        const message = getErrorMessage(code, texts);
+        dispatch(setError(message));
       });
     reset();
   };
-
-  useEffect(() => {
-    if (error) {
-      const timeoutId = setTimeout(() => {dispatch(setError(null))}, HIDE_MODAL_TIMEOUT);
-      return () => {
-        clearTimeout(timeoutId);
-      };
-  }
-  }, [dispatch, error]);
 
   useEffect(() => {
     if (formState.isValid) {
@@ -229,7 +211,6 @@ function SignUpForm() {
           </Link>
         </p>
       </div>
-      {!!error && <PopupError />}
     </div>
   );
 }
