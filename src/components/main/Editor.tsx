@@ -11,6 +11,7 @@ import { useCallback, useContext, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux';
 import { LocaleContext } from '../../context/LocaleContext';
 import { setError } from '../../redux/features/appSlice';
+import { validJson, validQuery } from '../../utils/editor-validation';
 
 function Editor() {
   const [query, setQuery] = useState(BASIC_TYPES_QUERY);
@@ -50,8 +51,19 @@ function Editor() {
   }
 
   const sendRequest = () => {
-    // if (!vars.validate()) return;
-    // if (!value.validate())
+    if (!validQuery(query)) {
+      dispatch(setError(texts.main.errors.query));
+      return;
+    }
+    if (!validJson(vars)) {
+      dispatch(setError(texts.main.errors.vars));
+      return;
+    }
+    if (!validJson(headers)) {
+      dispatch(setError(texts.main.errors.headers));
+      return;
+    }
+
     let varsParsed = {};
     let headersParsed = {};
     try {
@@ -95,11 +107,11 @@ function Editor() {
           <span
             onClick={() => setVisibleTab('vars')}
             className={visibleTab === 'vars' ? 'text-blue-900 font-bold' : 'cursor-pointer'}
-          >Variables</span>
+          >{texts.main.variables}</span>
           <span
             onClick={() => setVisibleTab('headers')}
             className={visibleTab === 'headers' ? 'text-blue-900 font-bold' : 'cursor-pointer'}
-          >Headers</span>
+          >{texts.main.headers}</span>
         </div>
         {visibleTab === 'vars' && <div className="vars-container">
           <CodeMirror value={vars} height="200px" className="border-gray-700 border-solid border-2 text-left" extensions={[javascript({ jsx: true })]} onChange={onChangeVars} />

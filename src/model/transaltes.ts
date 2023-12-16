@@ -15,6 +15,8 @@ export const en = {
       heading: 'Enter new endpoint URL:',
       button: 'SAVE'
     },
+    variables: 'Variables',
+    headers: 'Headers',
     docs: {
       title: 'Documentation',
       query: 'query', 
@@ -24,6 +26,11 @@ export const en = {
       fields: 'Fields for',
       noType: `Type doesn't exist`,
     },
+    errors: {
+      vars: 'Error in variables',
+      headers: 'Error in headers',
+      query: 'Error in query',
+    }
   },
   welcome: {
     title: 'GraphQL editor',
@@ -109,8 +116,10 @@ export const ru: typeof en = {
     response: 'Ответ',
     saveEndpoint: {
       heading: 'Введите адрес новой конечной точки:',
-      button: 'СОХРАНИТЬ'
+      button: 'СОХРАНИТЬ',
     },
+    variables: 'Переменные',
+    headers: 'Заголовки',
     docs: {
       title: 'Документация',
       query: 'запрос', 
@@ -120,6 +129,11 @@ export const ru: typeof en = {
       fields: 'Поля для',
       noType: `Такого типа не существует`,
     },
+    errors: {
+      vars: 'Ошибка в переменных',
+      headers: 'Ошибка в заголовках',
+      query: 'Ошибка в запросе',
+    }
   },
   welcome: {
     title: 'GraphQL редактор',

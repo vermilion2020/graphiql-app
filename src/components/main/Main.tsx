@@ -19,7 +19,7 @@ function Main() {
   });
 
   return (
-    <div className='w-[1200px] m-auto flex pt-4'>
+    <div className='w-[1200px] m-auto flex pt-4 gap-x-4'>
       <div className='w-1/3'>
         <Documentation />
       </div>
