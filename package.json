@@ -12,10 +12,12 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@codemirror/lang-javascript": "^6.2.1",
     "@hookform/resolvers": "^3.3.2",
     "@reduxjs/toolkit": "^1.9.7",
     "@testing-library/jest-dom": "^6.1.4",
     "@types/react-redux": "^7.1.30",
+    "@uiw/react-codemirror": "^4.21.21",
     "@vitejs/plugin-react": "^4.0.3",
     "firebase": "^10.7.1",
     "react": "^18.2.0",

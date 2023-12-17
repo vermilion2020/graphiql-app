@@ -1,14 +1,33 @@
-import { useContext } from 'react';
-import { LocaleContext } from '../../context/LocaleContext';
-import SaveEndpoint from '../save-endpoint/SaveEndpoint';
+import { useEffect } from 'react';
+import Documentation from '../documentation/Documentation';
+import { useAppSelector } from '../../redux';
+import { useNavigate } from 'react-router-dom';
+import Editor from './Editor';
+import Response from './Response';
 
 function Main() {
-  const { texts } = useContext(LocaleContext);
+  const navigate = useNavigate();
+
+  const { isLoggedIn } = useAppSelector((state) => state.appState);
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate('/');
+    }
+  });
+
   return (
-    <>
-      <h2>{texts.main.title}</h2>
-      <SaveEndpoint />
-    </>
+    <div className="w-[1200px] m-auto flex pt-4 gap-x-4">
+      <div className="w-1/3">
+        <Documentation />
+      </div>
+      <div className="flex flex-col flex-nowrap w-1/3 gap-y-3">
+        <Editor />
+      </div>
+      <div className="w-1/3">
+        <Response />
+      </div>
+    </div>
   );
 }
 

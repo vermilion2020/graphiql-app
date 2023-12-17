@@ -31,7 +31,6 @@ export const AppSlice = createSlice({
       state.error = null;
     },
   },
-
 });
 
 export default AppSlice.reducer;

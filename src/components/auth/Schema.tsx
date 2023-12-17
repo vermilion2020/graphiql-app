@@ -6,12 +6,18 @@ const getCharacterValidationError = (str: string) => {
 
 export const schema = yup
   .object({
-    email: yup.string().email('Please enter a valid email!').required('Email is required'),
+    email: yup
+      .string()
+      .email('Please enter a valid email!')
+      .required('Email is required'),
     password: yup
       .string()
       .matches(/^\S*$/, 'Whitespace is not allowed')
       .min(8, 'Password must be at least 8 characters')
-      .matches(/[@$!%*#?&+=()/.,'"-<+<>~`]/, getCharacterValidationError('special'))
+      .matches(
+        /[@$!%*#?&+=()/.,'"-<+<>~`]/,
+        getCharacterValidationError('special')
+      )
       .matches(/[0-9]/, getCharacterValidationError('digit'))
       .matches(/\p{Ll}/gu, getCharacterValidationError('lowercase'))
       .matches(/\p{Lu}/gu, getCharacterValidationError('uppercase'))

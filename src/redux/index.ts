@@ -1,10 +1,8 @@
-import {
-  combineReducers,
-  configureStore,
-} from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import appReducer from './features/appSlice';
-import endpointReducer from './features/endpointSlice';
+import requestReducer from './features/requestSlice';
+import documentationReducer from './features/documentationSlice';
 import storage from 'redux-persist/lib/storage';
 import {
   persistReducer,
@@ -16,6 +14,7 @@ import {
   REGISTER,
   persistStore,
 } from 'redux-persist';
+import { schemaApi } from './api/schemaApi';
 
 const persistconfig = {
   key: 'root',
@@ -25,20 +24,22 @@ const persistconfig = {
 
 const rootReducer = combineReducers({
   appState: appReducer,
-  endpointState: endpointReducer,
+  requestState: requestReducer,
+  documentationState: documentationReducer,
+  [schemaApi.reducerPath]: schemaApi.reducer,
 });
 
 const persistedreducer = persistReducer(persistconfig, rootReducer);
 
-// Actual store used by the application 
+// Actual store used by the application
 export const store = configureStore({
   reducer: persistedreducer,
   middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware({
-            serializableCheck: {
-                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-            },
-        }),
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }).concat([schemaApi.middleware]),
 });
 
 export const persistor = persistStore(store);
@@ -49,7 +50,7 @@ export const setupStore = (preloadedState?: Partial<RootState>) => {
     reducer: rootReducer,
     preloadedState,
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({}),
+      getDefaultMiddleware({}).concat([schemaApi.middleware]),
   });
 };
 

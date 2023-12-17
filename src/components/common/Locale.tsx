@@ -29,16 +29,17 @@ function Locale() {
           {LOCALES.map((l) => {
             const loc = l as Locales;
             return (
-            <li
-              key={loc}
-              title={`${loc}`}
-              data-testid={`locale-${loc}`}
-              onClick={() => handleClick(loc)}
-              className={loc === locale ? 'active' : ''}
-            >
-              {loc}
-            </li>
-          )})}
+              <li
+                key={loc}
+                title={`${loc}`}
+                data-testid={`locale-${loc}`}
+                onClick={() => handleClick(loc)}
+                className={loc === locale ? 'active' : ''}
+              >
+                {loc}
+              </li>
+            );
+          })}
         </ul>
       )}
     </div>

@@ -5,7 +5,7 @@ import Footer from './Footer';
 const AppLayout = () => (
   <>
     <Header />
-    <main className='app-container'>
+    <main className="app-container">
       <Outlet />
     </main>
     <Footer />

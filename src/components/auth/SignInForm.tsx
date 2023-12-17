@@ -6,10 +6,9 @@ import { useForm } from 'react-hook-form';
 import { useContext } from 'react';
 import { LocaleContext } from '../../context/LocaleContext';
 import ArrowCircle from '../../assets/icons/ArrowCircle ';
-import PopupError from './PopupError';
-import { useAppDispatch, useAppSelector } from '../../redux';
+import { useAppDispatch } from '../../redux';
 import { setError, setSingIn } from '../../redux/features/appSlice';
-import { HIDE_MODAL_TIMEOUT, authErrorCode } from '../../utils/errorMap';
+import { getErrorMessage } from '../../utils/errorMessage';
 
 export interface ISignInForm {
   email: string;
@@ -19,9 +18,6 @@ export interface ISignInForm {
 function SignInForm() {
   const { texts } = useContext(LocaleContext);
   const dispatch = useAppDispatch();
-  const { error } = useAppSelector(
-    (state) => state.appState
-  );
 
   const { register, handleSubmit, reset, formState } = useForm<ISignInForm>({
     defaultValues: {
@@ -49,26 +45,12 @@ function SignInForm() {
           navigate('/main');
         }
       })
-      .catch((error) => {
-        const code = error.code;
-        const errorMessageCode = Object.keys(texts.errorMessages).find(item => item === code);
-        if (errorMessageCode) {
-          dispatch(setError(texts.errorMessages[errorMessageCode as authErrorCode]));
-        } else {
-          dispatch(setError(texts.errorMessages['auth/custom-authentication-error']));
-        }
+      .catch(({ code }) => {
+        const message = getErrorMessage(code, texts);
+        dispatch(setError(message));
       });
     reset();
   };
-
-  useEffect(() => {
-    if (error) {
-      const timeoutId = setTimeout(() => {dispatch(setError(null))}, HIDE_MODAL_TIMEOUT);
-      return () => {
-        clearTimeout(timeoutId);
-      };
-  }
-  }, [dispatch, error]);
 
   useEffect(() => {
     if (formState.isValid) {
@@ -157,7 +139,6 @@ function SignInForm() {
           </Link>
         </p>
       </div>
-      {!!error && <PopupError />}
     </div>
   );
 }

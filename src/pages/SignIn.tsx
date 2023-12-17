@@ -1,7 +1,7 @@
-import SignInForm from "../components/auth/SignInForm";
+import SignInForm from '../components/auth/SignInForm';
 
 function SignInPage() {
-  return(
+  return (
     <div className="content">
       <SignInForm />
     </div>

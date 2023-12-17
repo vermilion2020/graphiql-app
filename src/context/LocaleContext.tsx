@@ -12,22 +12,21 @@ export const LocaleContext = createContext<ILocaleContext>({
   texts: en,
   setLocale: () => {
     /**/
-  }
+  },
 });
 
 export const LocaleState = ({ children }: { children: React.ReactNode }) => {
   const storedLang = localStorage.getItem('lang') ?? '';
   const defaultLang = LOCALES.includes(storedLang) ? storedLang : 'En';
   const [locale, setLocale] = useState(defaultLang as Locales);
-  const texts = locale === 'En' ? en :
-    locale === 'Ru' ? ru : en;
+  const texts = locale === 'En' ? en : locale === 'Ru' ? ru : en;
 
   return (
     <LocaleContext.Provider
       value={{
         locale,
         setLocale,
-        texts
+        texts,
       }}
     >
       {children}

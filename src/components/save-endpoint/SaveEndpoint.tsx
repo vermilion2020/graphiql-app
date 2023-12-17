@@ -1,18 +1,23 @@
 import { useState, useContext } from 'react';
-import { useDispatch } from 'react-redux';
 import { LocaleContext } from '../../context/LocaleContext';
-import './_save-endpoint.scss';
-import { setEndpoint } from '../../redux/features/endpointSlice';
+import { useAppDispatch, useAppSelector } from '../../redux';
+import { useLazyCheckSchemaQuery } from '../../redux/api/schemaApi';
+import { setError } from '../../redux/features/appSlice';
 
 function SaveEndpoint() {
-  const [url, setUrl] = useState('');
+  const { endpoint } = useAppSelector((state) => state.requestState);
+  const [triggerCheck] = useLazyCheckSchemaQuery();
+  const [url, setUrl] = useState(endpoint);
   const { texts } = useContext(LocaleContext);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    localStorage.setItem('endpoint', url);
-    dispatch(setEndpoint(url));
+    if (url.length > 0) {
+      triggerCheck(url);
+    } else {
+      dispatch(setError(texts.errorMessages['endpoint/empty']));
+    }
   };
 
   return (
@@ -24,7 +29,7 @@ function SaveEndpoint() {
           className="text-input"
           value={url}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setUrl(e.target.value)
+            setUrl(e.target.value.trim())
           }
         ></input>
         <button type="submit" className="button">
