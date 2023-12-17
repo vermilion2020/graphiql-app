@@ -1,7 +1,4 @@
-import {
-  combineReducers,
-  configureStore,
-} from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import appReducer from './features/appSlice';
 import requestReducer from './features/requestSlice';
@@ -34,15 +31,15 @@ const rootReducer = combineReducers({
 
 const persistedreducer = persistReducer(persistconfig, rootReducer);
 
-// Actual store used by the application 
+// Actual store used by the application
 export const store = configureStore({
   reducer: persistedreducer,
   middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware({
-            serializableCheck: {
-                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-            },
-        }).concat([schemaApi.middleware]),
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }).concat([schemaApi.middleware]),
 });
 
 export const persistor = persistStore(store);

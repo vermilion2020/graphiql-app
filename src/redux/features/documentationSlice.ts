@@ -8,7 +8,7 @@ const initialState: IDocumentationState = {
   schemaTypes: null,
   typeDisplayed: null,
   mutationsDisplayed: false,
-  queriesDisplayed: false
+  queriesDisplayed: false,
 };
 
 export const documentationSlice = createSlice({
@@ -48,17 +48,17 @@ export const documentationSlice = createSlice({
       state.mutationsDisplayed = false;
       state.typeDisplayed = null;
     },
-  }
+  },
 });
 
 export default documentationSlice.reducer;
 
-export const { 
+export const {
   setSchemaQueries,
   setSchemaTypes,
   setTypeDisplayed,
   setQueriesDisplayed,
   setSchemaMutations,
   setMutationsDisplayed,
-  clearDocs
-} = documentationSlice.actions; 
+  clearDocs,
+} = documentationSlice.actions;

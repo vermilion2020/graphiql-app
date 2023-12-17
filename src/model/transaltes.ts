@@ -13,13 +13,13 @@ export const en = {
     response: 'Response',
     saveEndpoint: {
       heading: 'Enter new endpoint URL:',
-      button: 'SAVE'
+      button: 'SAVE',
     },
     variables: 'Variables',
     headers: 'Headers',
     docs: {
       title: 'Documentation',
-      query: 'query', 
+      query: 'query',
       mutation: 'mutation',
       kind: 'is a type of a kind',
       inputFields: 'Input Fields for',
@@ -30,7 +30,7 @@ export const en = {
       vars: 'Error in variables',
       headers: 'Error in headers',
       query: 'Error in query',
-    }
+    },
   },
   welcome: {
     title: 'GraphQL editor',
@@ -83,26 +83,38 @@ export const en = {
       'Check the URL or ask for help if you are sure that it is correct',
   },
   errorMessages: {
-    'auth/credential-already-in-use': 'This credential is already associated with a different user account.',
-    'auth/email-already-in-use': 'The email address is already in use by another account.',
+    'auth/credential-already-in-use':
+      'This credential is already associated with a different user account.',
+    'auth/email-already-in-use':
+      'The email address is already in use by another account.',
     'auth/invalid-email': 'The email address is badly formatted.',
-    'auth/invalid-credential': 'The supplied auth credential is incorrect, malformed or has expired.',
-    'auth/invalid-multi-factor-session': 'The request does not contain a valid proof of first factor successful sign-in.',
-    'auth/wrong-password': 'The password is invalid or the user does not have a password.',
+    'auth/invalid-credential':
+      'The supplied auth credential is incorrect, malformed or has expired.',
+    'auth/invalid-multi-factor-session':
+      'The request does not contain a valid proof of first factor successful sign-in.',
+    'auth/wrong-password':
+      'The password is invalid or the user does not have a password.',
     'auth/login-blocked': 'Login was blocked.',
-    'auth/account-exists-with-different-credential': 'An account already exists with the same email address.',
-    'auth/rejected-credential': 'The request contains malformed or mismatching credentials.',
+    'auth/account-exists-with-different-credential':
+      'An account already exists with the same email address.',
+    'auth/rejected-credential':
+      'The request contains malformed or mismatching credentials.',
     'auth/user-token-expired': `The user's credential is no longer valid. The user must sign in again.`,
-    'auth/user-cancelled': 'The user did not grant your application the permissions it requested.',
-    'auth/user-not-found': 'There is no user record corresponding to this identifier. The user may have been deleted.',
-    'auth/user-disabled': 'The user account has been disabled by an administrator.',
-    'auth/user-mismatch': 'The supplied credentials do not correspond to the previously signed in user.',
+    'auth/user-cancelled':
+      'The user did not grant your application the permissions it requested.',
+    'auth/user-not-found':
+      'There is no user record corresponding to this identifier. The user may have been deleted.',
+    'auth/user-disabled':
+      'The user account has been disabled by an administrator.',
+    'auth/user-mismatch':
+      'The supplied credentials do not correspond to the previously signed in user.',
     'auth/too-many-requests': 'Too many requests',
     'auth/user-signed-out': '',
     'auth/custom-authentication-error': 'Authentication error.',
-    'docs/no-enpoint': 'No endpoint provided. Save an endpoint to view the documentation',
+    'docs/no-enpoint':
+      'No endpoint provided. Save an endpoint to view the documentation',
     'endpoint/empty': `You can't save en empty endpoint`,
-  }
+  },
 };
 
 export const ru: typeof en = {
@@ -122,7 +134,7 @@ export const ru: typeof en = {
     headers: 'Заголовки',
     docs: {
       title: 'Документация',
-      query: 'запрос', 
+      query: 'запрос',
       mutation: 'мутация',
       kind: 'это тип вида',
       inputFields: 'Поля ввода для',
@@ -133,7 +145,7 @@ export const ru: typeof en = {
       vars: 'Ошибка в переменных',
       headers: 'Ошибка в заголовках',
       query: 'Ошибка в запросе',
-    }
+    },
   },
   welcome: {
     title: 'GraphQL редактор',
@@ -188,24 +200,36 @@ export const ru: typeof en = {
       'Проверьте адрес, который Вы указываете или обратитесь за помощью',
   },
   errorMessages: {
-    'auth/credential-already-in-use': 'Эти учетные данные уже связаны с другой учетной записью пользователя.',
-    'auth/email-already-in-use': 'Адрес электронной почты уже используется другой учетной записью.',
+    'auth/credential-already-in-use':
+      'Эти учетные данные уже связаны с другой учетной записью пользователя.',
+    'auth/email-already-in-use':
+      'Адрес электронной почты уже используется другой учетной записью.',
     'auth/invalid-email': 'Адрес электронной почты неправильно отформатирован.',
-    'auth/invalid-credential': 'Предоставленные учетные данные для авторизации неверны, неправильно сформированы или срок их действия истек.',
-    'auth/invalid-multi-factor-session': 'Запрос не содержит валидного подтверждения первого фактора успешного входа в систему.',
+    'auth/invalid-credential':
+      'Предоставленные учетные данные для авторизации неверны, неправильно сформированы или срок их действия истек.',
+    'auth/invalid-multi-factor-session':
+      'Запрос не содержит валидного подтверждения первого фактора успешного входа в систему.',
     'auth/wrong-password': 'Пароль неверен или у пользователя нет пароля.',
     'auth/login-blocked': 'Вход в систему был заблокирован.',
-    'auth/account-exists-with-different-credential': 'Учетная запись с таким же адресом электронной почты уже существует.',
-    'auth/rejected-credential': 'Запрос содержит неправильно сформированные или не соответствующие друг другу учетные данные.',
-    'auth/user-token-expired': 'Учетные данные пользователя больше недействительны. Пользователь должен снова войти в систему.',
-    'auth/user-cancelled': 'Пользователь не предоставил вашему приложению запрошенные им разрешения.',
-    'auth/user-not-found': 'Нет записи пользователя, соответствующей этому идентификатору. Возможно, пользователь был удален.',
-    'auth/user-disabled': 'Учетная запись пользователя была отключена администратором.',
-    'auth/user-mismatch': 'Предоставленные учетные данные не соответствуют ранее зарегистрированному пользователю.',
+    'auth/account-exists-with-different-credential':
+      'Учетная запись с таким же адресом электронной почты уже существует.',
+    'auth/rejected-credential':
+      'Запрос содержит неправильно сформированные или не соответствующие друг другу учетные данные.',
+    'auth/user-token-expired':
+      'Учетные данные пользователя больше недействительны. Пользователь должен снова войти в систему.',
+    'auth/user-cancelled':
+      'Пользователь не предоставил вашему приложению запрошенные им разрешения.',
+    'auth/user-not-found':
+      'Нет записи пользователя, соответствующей этому идентификатору. Возможно, пользователь был удален.',
+    'auth/user-disabled':
+      'Учетная запись пользователя была отключена администратором.',
+    'auth/user-mismatch':
+      'Предоставленные учетные данные не соответствуют ранее зарегистрированному пользователю.',
     'auth/too-many-requests': 'Слишком много запросов.',
     'auth/user-signed-out': '',
     'auth/custom-authentication-error': 'Ошибка аутентификации.',
-    'docs/no-enpoint': 'Не сохранен эндроинт. Добавьте эндпоинт, чтобы увидеть документацию',
+    'docs/no-enpoint':
+      'Не сохранен эндроинт. Добавьте эндпоинт, чтобы увидеть документацию',
     'endpoint/empty': 'Вы не можете сохранить пустой эндпоинт',
-  }
+  },
 };

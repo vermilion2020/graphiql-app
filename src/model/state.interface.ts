@@ -1,4 +1,4 @@
-import { SchemaType } from "./schema.interface";
+import { SchemaType } from './schema.interface';
 
 export interface IAppState {
   isLoggedIn: boolean;
@@ -15,6 +15,6 @@ export interface IDocumentationState {
 }
 
 export interface IRequestState {
-  endpoint: string,
-  response: string
+  endpoint: string;
+  response: string;
 }

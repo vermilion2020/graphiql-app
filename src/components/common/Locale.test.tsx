@@ -32,7 +32,7 @@ describe('Localisation', async () => {
       <LocaleState>
         <MemoryRouter>
           <Header />
-        </MemoryRouter> 
+        </MemoryRouter>
       </LocaleState>
     );
 

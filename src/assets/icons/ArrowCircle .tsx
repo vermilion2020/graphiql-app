@@ -18,4 +18,3 @@ const ArrowCircle = () => {
 };
 
 export default ArrowCircle;
-

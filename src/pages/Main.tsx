@@ -1,7 +1,7 @@
-import Main from "../components/main/Main";
+import Main from '../components/main/Main';
 
 function MainPage() {
-  return(
+  return (
     <div className="content">
       <Main />
     </div>

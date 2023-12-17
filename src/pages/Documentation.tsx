@@ -1,7 +1,7 @@
-import Documentation from "../components/documentation/Documentation";
+import Documentation from '../components/documentation/Documentation';
 
 function DocumentationPage() {
-  return(
+  return (
     <div className="content">
       <Documentation />
     </div>

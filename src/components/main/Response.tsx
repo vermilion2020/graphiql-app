@@ -6,9 +6,7 @@ import { javascript } from '@codemirror/lang-javascript';
 
 function Response() {
   const { texts } = useContext(LocaleContext);
-  const { response } = useAppSelector(
-    (state) => state.requestState
-  );
+  const { response } = useAppSelector((state) => state.requestState);
 
   return (
     <>

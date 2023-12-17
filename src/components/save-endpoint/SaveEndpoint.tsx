@@ -5,9 +5,7 @@ import { useLazyCheckSchemaQuery } from '../../redux/api/schemaApi';
 import { setError } from '../../redux/features/appSlice';
 
 function SaveEndpoint() {
-  const { endpoint } = useAppSelector(
-    (state) => state.requestState
-  );
+  const { endpoint } = useAppSelector((state) => state.requestState);
   const [triggerCheck] = useLazyCheckSchemaQuery();
   const [url, setUrl] = useState(endpoint);
   const { texts } = useContext(LocaleContext);
@@ -18,9 +16,8 @@ function SaveEndpoint() {
     if (url.length > 0) {
       triggerCheck(url);
     } else {
-      dispatch(setError(texts.errorMessages['endpoint/empty']))
+      dispatch(setError(texts.errorMessages['endpoint/empty']));
     }
-
   };
 
   return (

@@ -17,7 +17,8 @@
   justify-content: space-between;
 }
 
-.github-link, use  {
+.github-link,
+use {
   -webkit-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
@@ -58,8 +59,7 @@
 }
 
 .link-rs:hover {
-
-  .icon-rs{
+  .icon-rs {
     use {
       fill: $hoverLinkColor;
     }
@@ -83,7 +83,6 @@
 }
 
 @media screen and (max-width: 767px) {
-
   .link-rs {
     padding-right: 1rem;
 
@@ -95,7 +94,7 @@
 
   .footer-container {
     gap: 1rem;
-    
+
     .copyright {
       padding-left: 1rem;
     }
@@ -105,6 +104,5 @@
 @media screen and (max-width: 400px) {
   .footer-container .github-link--wrapper {
     gap: 10px;
-}
-
+  }
 }

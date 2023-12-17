@@ -3,7 +3,7 @@ import Footer from './Footer';
 
 const AuthLayout = () => (
   <>
-    <main className='app-container'>
+    <main className="app-container">
       <Outlet />
     </main>
     <Footer />

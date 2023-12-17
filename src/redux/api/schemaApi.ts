@@ -1,8 +1,16 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { ISchemaTypes, SchemaType } from '../../model/schema.interface';
-import { BASIC_TYPES_QUERY, DEFINITION_QUERY, RequestQueryData } from '../../model/queries';
+import {
+  BASIC_TYPES_QUERY,
+  DEFINITION_QUERY,
+  RequestQueryData,
+} from '../../model/queries';
 import { setError } from '../features/appSlice';
-import { setSchemaMutations, setSchemaQueries, setSchemaTypes } from '../features/documentationSlice';
+import {
+  setSchemaMutations,
+  setSchemaQueries,
+  setSchemaTypes,
+} from '../features/documentationSlice';
 import { setEndpoint, setResponse } from '../features/requestSlice';
 
 export const schemaApi = createApi({
@@ -18,8 +26,8 @@ export const schemaApi = createApi({
           url: endpoint,
           method: 'POST',
           body: {
-            query: DEFINITION_QUERY
-          }
+            query: DEFINITION_QUERY,
+          },
         };
         return query;
       },
@@ -27,25 +35,29 @@ export const schemaApi = createApi({
         try {
           const { data } = await queryFulfilled;
           const schema = data?.data.__schema;
-          let types = schema.types.filter(t => !t.name.includes('__'));
-          
+          let types = schema.types.filter((t) => !t.name.includes('__'));
+
           if (schema.mutationType && schema.mutationType.name) {
-            const schemaMutation = schema.types
-            .find(t => t.name === schema.mutationType.name) as SchemaType;
+            const schemaMutation = schema.types.find(
+              (t) => t.name === schema.mutationType.name
+            ) as SchemaType;
             dispatch(setSchemaMutations(schemaMutation));
-            types = types.filter(t => t.name !== schema.mutationType.name);
+            types = types.filter((t) => t.name !== schema.mutationType.name);
           }
 
           if (schema.queryType && schema.queryType.name) {
-            const schemaQuery = schema.types
-            .find(t => t.name === schema.queryType.name) as SchemaType;
+            const schemaQuery = schema.types.find(
+              (t) => t.name === schema.queryType.name
+            ) as SchemaType;
             dispatch(setSchemaQueries(schemaQuery));
-            types = types.filter(t => t.name !== schema.queryType.name);
+            types = types.filter((t) => t.name !== schema.queryType.name);
           }
 
           dispatch(setSchemaTypes(types));
         } catch (e) {
-          dispatch(setError('Invalid URL is provided. Scheme check request was failed'));
+          dispatch(
+            setError('Invalid URL is provided. Scheme check request was failed')
+          );
           console.log(e);
         }
       },
@@ -56,8 +68,8 @@ export const schemaApi = createApi({
           url: endpoint,
           method: 'POST',
           body: {
-            query: BASIC_TYPES_QUERY
-          }
+            query: BASIC_TYPES_QUERY,
+          },
         };
         return query;
       },
@@ -70,21 +82,23 @@ export const schemaApi = createApi({
             dispatch(setEndpoint(url));
           }
         } catch (e) {
-          dispatch(setError('Invalid URL is provided. Scheme check request was failed'));
+          dispatch(
+            setError('Invalid URL is provided. Scheme check request was failed')
+          );
           console.log(e);
         }
       },
     }),
     sendRequest: builder.query<ISchemaTypes, RequestQueryData>({
-      query: ({endpoint, q, vars, headers}: RequestQueryData) => {
+      query: ({ endpoint, q, vars, headers }: RequestQueryData) => {
         const query = {
           url: endpoint,
           method: 'POST',
           body: {
             query: q,
-            variables: vars
+            variables: vars,
           },
-          headers: headers
+          headers: headers,
         };
         return query;
       },
@@ -105,4 +119,8 @@ export const schemaApi = createApi({
   }),
 });
 
-export const { useLazyGetSchemaQuery, useLazyCheckSchemaQuery, useLazySendRequestQuery } = schemaApi;
+export const {
+  useLazyGetSchemaQuery,
+  useLazyCheckSchemaQuery,
+  useLazySendRequestQuery,
+} = schemaApi;
