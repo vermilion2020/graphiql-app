@@ -44,12 +44,22 @@ body::-webkit-scrollbar-thumb {
   border: 3px solid $whiteBgFontColor;
 }
 
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 #root,
 .app-container {
   width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.app-container {
+  flex-grow: 1;
 }
 
 .content {
