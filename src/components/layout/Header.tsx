@@ -4,7 +4,7 @@ import { auth } from '../../firebase';
 import { useContext } from 'react';
 import { LocaleContext } from '../../context/LocaleContext';
 import Locale from '../common/Locale';
-import { setSignOut } from '../../redux/features/appSlice';
+import { setError, setSignOut } from '../../redux/features/appSlice';
 import { useAppDispatch, useAppSelector } from '../../redux';
 
 function Header() {
@@ -13,11 +13,14 @@ function Header() {
   const dispatch = useAppDispatch();
   const { isLoggedIn } = useAppSelector((state) => state.appState);
 
-  const handleLogout = () => {
-    signOut(auth).then(() => {
+  const handleLogout = async() => {
+    try {
+      await signOut(auth);
       dispatch(setSignOut());
       navigate('/');
-    });
+    } catch (error) {
+      dispatch(setError("There was an error"));
+    }
   };
 
   return (
