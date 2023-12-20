@@ -113,6 +113,9 @@ function Editor() {
       )}
       <SaveEndpoint />
       {endpoint && (
+        <>
+        <img src="./play.svg" className="w-10 h-10 cursor-pointer" alt="My Happy SVG"/>
+        
         <button
           onClick={sendRequest}
           className="rounded-md bg-red-800 px-3 py-2 text-sm font-semibold 
@@ -122,15 +125,18 @@ function Editor() {
         >
           Send Request
         </button>
+        </>
+        
       )}
-
-      <CodeMirror
-        value={query}
-        height="200px"
-        className="border-gray-700 border-solid border-2 text-left"
-        extensions={[javascript({ jsx: true })]}
-        onChange={onChangeMain}
-      />
+      <div className="border-gray-200 border-solid border-4 rounded-md p-1">
+        <CodeMirror
+          value={query}
+          height="200px"
+          className="text-left"
+          extensions={[javascript({ jsx: true })]}
+          onChange={onChangeMain}
+        />
+      </div>
       <div className="flex gap-1">
         <span
           onClick={() => setVisibleTab('vars')}
@@ -152,22 +158,22 @@ function Editor() {
         </span>
       </div>
       {visibleTab === 'vars' && (
-        <div className="vars-container">
+        <div className="vars-container border-gray-200 border-solid border-4 rounded-md p-1">
           <CodeMirror
             value={vars}
             height="200px"
-            className="border-gray-700 border-solid border-2 text-left"
+            className="text-left"
             extensions={[javascript({ jsx: true })]}
             onChange={onChangeVars}
           />
         </div>
       )}
       {visibleTab === 'headers' && (
-        <div className="headers-container">
+        <div className="headers-container border-gray-200 border-solid border-4 rounded-md p-1">
           <CodeMirror
             value={headers}
             height="200px"
-            className="border-gray-700 border-solid border-2 text-left"
+            className="text-left"
             extensions={[javascript({ jsx: true })]}
             onChange={onChangeHeaders}
           />

@@ -11,13 +11,15 @@ function Response() {
   return (
     <>
       <h2>{texts.main.response}</h2>
-      <CodeMirror
-        value={response}
-        readOnly
-        height="640px"
-        className="border-gray-700 border-solid border-2 text-left"
-        extensions={[javascript({ jsx: true })]}
-      />
+      <div className="border-gray-200 border-solid border-4 rounded-md p-1">
+        <CodeMirror
+          value={JSON.stringify(JSON.parse(response), null, 2)}
+          readOnly
+          height="640px"
+          className="text-left"
+          extensions={[javascript({ jsx: true })]}
+        />
+      </div>
     </>
   );
 }

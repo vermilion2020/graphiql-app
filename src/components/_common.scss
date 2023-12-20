@@ -27,18 +27,21 @@ body {
   scroll-behavior: smooth;
 }
 
-body::-webkit-scrollbar {
+body::-webkit-scrollbar,
+.cm-scroller::-webkit-scrollbar {
   width: 12px;
   height: 90%;
 }
 
-body::-webkit-scrollbar-track {
+body::-webkit-scrollbar-track,
+.cm-scroller::-webkit-scrollbar-track {
   background: $whiteBgFontColor;
   z-index: -1;
 }
 
-body::-webkit-scrollbar-thumb {
-  background-color: $mainBgFontColor;
+body::-webkit-scrollbar-thumb,
+.cm-scroller::-webkit-scrollbar-thumb {
+  background-color: $darkGreyFontColor;
   border-radius: 20px;
   cursor: pointer;
   border: 3px solid $whiteBgFontColor;
