@@ -36,7 +36,28 @@ export const en = {
     title: 'GraphQL editor',
     signIn: 'Sign In',
     signUp: 'Sign Up',
-    main: 'Main Page',
+    main: 'MAIN PAGE',
+    project: 'This application is an educational project on GraphiQL developed within RSSchool React course',
+    course: 'RSSchool React is a free-of-charge course for JavaScript / Front-End developers who want to get acquainted with React library for web application development',
+    tecks: 'Technologies',
+    developers: {
+      title: 'Developers',
+      mila: {
+        name: 'Mila',
+        description: 'Team lead, Front-end developer',
+        contribution: 'Contribution to the project:'
+      },
+      natali: {
+        name: 'Natali',
+        description: 'Front-end developer',
+        contribution: 'Contribution to the project: sign-in / sign-up pages, authentication with use of Firebase'
+    },
+      victor: {
+        name: 'Victor',
+        description: 'Front-end developer',
+        contribution: 'Contribution to the project: welcome page, endpoint saving'
+      }
+    }
   },
   signIn: {
     title: 'Sign In',
@@ -151,7 +172,28 @@ export const ru: typeof en = {
     title: 'GraphQL редактор',
     signIn: 'Вход',
     signUp: 'Регистрация',
-    main: 'Главная страница',
+    main: 'НА ГЛАВНУЮ',
+    project: 'Данное приложение является учебным проектом по GraphiQL, разработанным в рамках курса RSSchool React',
+    course: 'RSSchool React - бесплатный курс для JavaScript / Front-End-разработчиков, желающих ознакомиться с библиотекой React для разработки web-приложений',
+    tecks: 'Технологии',
+    developers: {
+      title: 'Разработчики',
+      mila: {
+        name: 'Мила',
+        description: 'Тимлид, Front-end-разработчик',
+        contribution: 'Личный вклад в проект: '
+      },
+      natali: {
+        name: 'Натали',
+        description: 'Front-end-разработчик',
+        contribution: 'Личный вклад в проект: страницы входа и регистрации, аутентификация с использованием Firebase'
+      },
+      victor: {
+        name: 'Виктор',
+        description: 'Front-end-разработчик',
+        contribution: 'Личный вклад в проект: страница-приветствие, сохранение конечной точки'
+      }
+    }
   },
   signIn: {
     title: 'Вход',
