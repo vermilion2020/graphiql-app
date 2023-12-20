@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react';
-import { LOCALES, Locales, en, ru } from '../model/transaltes';
+import { LOCALES, Locales, en, ru } from '../model/translates';
 
 export interface ILocaleContext {
   locale: Locales;

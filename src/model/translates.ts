@@ -170,8 +170,8 @@ export const ru: typeof en = {
   },
   welcome: {
     title: 'GraphQL редактор',
-    signIn: 'Регистрация',
-    signUp: 'Вход',
+    signIn: 'Вход',
+    signUp: 'Регистрация',
     main: 'НА ГЛАВНУЮ',
     project: 'Данное приложение является учебным проектом по GraphiQL, разработанным в рамках курса RSSchool React',
     course: 'RSSchool React - бесплатный курс для JavaScript / Front-End-разработчиков, желающих ознакомиться с библиотекой React для разработки web-приложений',
@@ -181,7 +181,7 @@ export const ru: typeof en = {
       mila: {
         name: 'Мила',
         description: 'Тимлид, Front-end-разработчик',
-        contribution: 'Личный вклад в проект:'
+        contribution: 'Личный вклад в проект: '
       },
       natali: {
         name: 'Натали',

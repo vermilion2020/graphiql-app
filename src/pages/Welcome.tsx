@@ -43,48 +43,69 @@ function WelcomePage() {
           Tailwind, GraphQL
         </p>
         <h2 className="my-3 text-lg">{texts.welcome.developers.title}</h2>
-        <div className="flex max-w-3xl max-md:flex-col justify-center gap-5">
-          <div className="flex flex-col w-[235px] items-center">
-            <h3>{texts.welcome.developers.mila.name}</h3>
-            <div className="w-32 h-24 my-2 flex justify-center">
+        <hr className="border-white border-1 w-full m-1"></hr>
+        <div className="flex w-full flex-col justify-center">
+          <div className="flex max-sm:flex-col my-3 gap-3 items-start max-sm:items-center">
+            <div className="w-32 h-32 flex flex-none">
               <img
-                className="w-full h-full object-contain"
+                className="w-full h-full object-cover"
                 src={milaPhotoUrl}
                 alt="Mila"
               ></img>
             </div>
-            <p>{texts.welcome.developers.mila.description}</p>
-            <p className="self-start text-justify break-normal hyphens-auto py-2">
-              {texts.welcome.developers.mila.contribution}
-            </p>
+            <div className="flex flex-col w-full justify-start max-sm:items-center">
+              <h3 className="mb-1 font-bold">
+                {texts.welcome.developers.mila.name}
+              </h3>
+              <p className="mb-1">
+                {texts.welcome.developers.mila.description}
+              </p>
+              <p className="mb-1 text-justify self-start max-sm:break-normal max-sm:hyphens-auto">
+                {texts.welcome.developers.mila.contribution}
+              </p>
+            </div>
           </div>
-          <div className="flex flex-col w-[235px] items-center">
-            <h3>{texts.welcome.developers.natali.name}</h3>
-            <div className="w-32 h-24 my-2 flex justify-center">
+          <hr className="border-white border-1 w-full my-1"></hr>
+          <div className="flex max-sm:flex-col my-3 gap-3 items-start max-sm:items-center">
+            <div className="w-32 h-32 flex flex-none">
               <img
-                className="w-full h-full object-contain"
+                className="w-full h-full object-cover"
                 src={nataliPhotoUrl}
-                alt="Mila"
+                alt="Natali"
               ></img>
             </div>
-            <p>{texts.welcome.developers.natali.description}</p>
-            <p className="self-start text-justify break-normal hyphens-auto py-2">
-              {texts.welcome.developers.natali.contribution}
-            </p>
+            <div className="flex flex-col w-full justify-start max-sm:items-center">
+              <h3 className="mb-1 font-bold">
+                {texts.welcome.developers.natali.name}
+              </h3>
+              <p className="mb-1">
+                {texts.welcome.developers.natali.description}
+              </p>
+              <p className="mb-1 text-justify max-sm:self-start max-sm:break-normal max-sm:hyphens-auto">
+                {texts.welcome.developers.natali.contribution}
+              </p>
+            </div>
           </div>
-          <div className="flex flex-col w-[235px] items-center">
-            <h3>{texts.welcome.developers.victor.name}</h3>
-            <div className="w-32 h-24 my-2 flex justify-center">
+          <hr className="border-white border-1 w-full my-1"></hr>
+          <div className="flex max-sm:flex-col w-full max-sm:w-75 my-3 gap-3 items-start max-sm:items-center">
+            <div className="w-32 h-32 flex flex-none">
               <img
-                className="w-full h-full object-contain"
+                className="w-full h-full object-cover"
                 src={victorPhotoUrl}
                 alt="Victor"
               ></img>
             </div>
-            <p>{texts.welcome.developers.victor.description}</p>
-            <p className="self-start text-justify break-normal hyphens-auto py-2">
-              {texts.welcome.developers.victor.contribution}
-            </p>
+            <div className="flex flex-col w-full justify-start max-sm:items-center">
+              <h3 className="mb-1 font-bold">
+                {texts.welcome.developers.victor.name}
+              </h3>
+              <p className="mb-1">
+                {texts.welcome.developers.victor.description}
+              </p>
+              <p className="mb-1 text-justify max-sm:self-start max-sm:break-normal max-sm:hyphens-auto">
+                {texts.welcome.developers.victor.contribution}
+              </p>
+            </div>
           </div>
         </div>
       </div>
