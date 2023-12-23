@@ -25,11 +25,12 @@ export const en = {
       inputFields: 'Input Fields for',
       fields: 'Fields for',
       noType: `Type doesn't exist`,
+      back: 'Docs'
     },
     errors: {
       vars: 'Error in variables',
       headers: 'Error in headers',
-      query: 'Error in query',
+      query: 'Error in a query',
     },
   },
   welcome: {
@@ -161,6 +162,7 @@ export const ru: typeof en = {
       inputFields: 'Поля ввода для',
       fields: 'Поля для',
       noType: `Такого типа не существует`,
+      back: 'Назад',
     },
     errors: {
       vars: 'Ошибка в переменных',

@@ -9,6 +9,10 @@ function Main() {
   const navigate = useNavigate();
 
   const { isLoggedIn } = useAppSelector((state) => state.appState);
+  const { schemaTypes, loading } = useAppSelector((state) => state.documentationState);
+  const editorClasses = schemaTypes ?? loading ?
+    'flex flex-col flex-nowrap gap-y-3 w-5/12 sector-container' :
+    'flex flex-col flex-nowrap gap-y-3 w-8/12 sector-container';
 
   useEffect(() => {
     if (!isLoggedIn) {
@@ -17,14 +21,14 @@ function Main() {
   });
 
   return (
-    <div className="w-[1200px] m-auto flex pt-4 gap-x-4">
-      <div className="w-1/3">
+    <div className="main-container m-auto flex pt-4 gap-x-4">
+      <div className={schemaTypes ?? loading ? 'w-3/12 sector-container' : 'w-0 h-0 sector-container'}>
         <Documentation />
       </div>
-      <div className="flex flex-col flex-nowrap w-1/3 gap-y-3">
+      <div className={editorClasses}>
         <Editor />
       </div>
-      <div className="w-1/3">
+      <div className="w-4/12 sector-container">
         <Response />
       </div>
     </div>

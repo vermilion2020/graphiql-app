@@ -21,6 +21,17 @@ export default {
         },
         disabledButton: '#b9b5bb',
       },
+      keyframes: {
+        fadeinout: {
+          '0%': { opacity: 0 },
+          '25%': { opacity: 1 },
+          '75%': { opacity: 1 },
+          '100%': { opacity: 0 },
+        }
+      },
+      animation: {
+        'fadeinout': 'fadeinout 4s linear forwards'
+      },
     },
     screens: {
       xs: '320px',

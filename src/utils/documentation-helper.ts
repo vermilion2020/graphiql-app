@@ -19,3 +19,4 @@ export function parseType(arg: Type2, type = '') {
 
 export const TYPE_CLASSES =
   'text-orange-600 mx-1 cursor-pointer hover:underline';
+export const STANDARD_ICON = "w-7 h-7 cursor-pointer self-center hover:opacity-70";

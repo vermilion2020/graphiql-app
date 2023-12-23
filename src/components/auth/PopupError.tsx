@@ -8,7 +8,7 @@ export default function PopupError() {
   const dispatch = useAppDispatch();
 
   return (
-    <div className="absolute bottom-8 right-1 transform -translate-x-1/2 -translate-y-1/2 z-100 w-11/12 max-w-md">
+    <div className="absolute bottom-8 right-1 transform -translate-x-1/2 -translate-y-1/2 z-100 w-11/12 max-w-md animate-fadeinout">
       {/* <div className="absolute bottom-8 left-1/2 right-1/2 transform -translate-x-1/2 -translate-y-1/2 z-100 w-11/12 max-w-md"> */}
       <div className="relative max-w-xs bg-white rounded-lg shadow bg-red-600 ">
         <button

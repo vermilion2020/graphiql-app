@@ -7,6 +7,7 @@ import {
 } from '../../model/queries';
 import { setError } from '../features/appSlice';
 import {
+  setLoading,
   setSchemaMutations,
   setSchemaQueries,
   setSchemaTypes,
@@ -33,6 +34,7 @@ export const schemaApi = createApi({
       },
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
+          dispatch(setLoading(true));
           const { data } = await queryFulfilled;
           const schema = data?.data.__schema;
           let types = schema.types.filter((t) => !t.name.includes('__'));
@@ -54,6 +56,7 @@ export const schemaApi = createApi({
           }
 
           dispatch(setSchemaTypes(types));
+          dispatch(setLoading(false));
         } catch (e) {
           dispatch(
             setError('Invalid URL is provided. Scheme check request was failed')
