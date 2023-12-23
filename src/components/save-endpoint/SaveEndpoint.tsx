@@ -16,7 +16,7 @@ function SaveEndpoint() {
     e.preventDefault();
     if (url.length > 0) {
       triggerCheck(url);
-      setEditMode(false)
+      setEditMode(false);
     } else {
       dispatch(setError(texts.errorMessages['endpoint/empty']));
     }
@@ -25,7 +25,7 @@ function SaveEndpoint() {
   return (
     <div className="save-endpoint-wrapper">
       <form className="form" onSubmit={handleSubmit}>
-        {editMode && 
+        {editMode && (
           <>
             <input
               type="url"
@@ -36,14 +36,21 @@ function SaveEndpoint() {
                 setUrl(e.target.value.trim())
               }
             ></input>
-            <button type="submit"  className="w-6 h-6 cursor-pointer save-icon self-center hover:opacity-70"></button>
+            <button
+              type="submit"
+              className="w-6 h-6 cursor-pointer save-icon self-center hover:opacity-70"
+            ></button>
           </>
-        }
-        {!editMode &&   
+        )}
+        {!editMode && (
           <>
             <div className="flex font-bold self-center">{url}</div>
-            <button onClick={() => setEditMode(true)} className="w-6 h-6 cursor-pointer edit-icon self-center hover:opacity-70"></button>
-          </>}
+            <button
+              onClick={() => setEditMode(true)}
+              className="w-6 h-6 cursor-pointer edit-icon self-center hover:opacity-70"
+            ></button>
+          </>
+        )}
       </form>
     </div>
   );

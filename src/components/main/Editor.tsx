@@ -25,6 +25,8 @@ function Editor() {
   const [triggerRequest] = useLazySendRequestQuery();
   const [triggerSchema] = useLazyGetSchemaQuery();
 
+  const editorHeight = collapsed ? '58vh' : '34vh';
+
   const onChangeMain = useCallback((val: string) => {
     setQuery(val);
   }, []);
@@ -63,7 +65,7 @@ function Editor() {
       if (validation.status === 'failed') {
         dispatch(setError(texts.main.errors.vars));
       } else {
-        varsParsed = validation.json
+        varsParsed = validation.json;
       }
     }
 
@@ -72,7 +74,7 @@ function Editor() {
       if (validation.status === 'failed') {
         dispatch(setError(texts.main.errors.headers));
       } else {
-        headersParsed = validation.json
+        headersParsed = validation.json;
       }
     }
 
@@ -99,29 +101,56 @@ function Editor() {
     } else {
       dispatch(setError(texts.main.errors.query));
     }
-  }
+  };
 
   return (
     <>
       <SaveEndpoint />
-      
+
       {endpoint && (
         <div className="flex w-full justify-between">
           <div className="flex gap-2 ml-2">
-            {!schemaQueries && <img src="./docs.svg" onClick={handleGetDocsClick} className={STANDARD_ICON} alt="Show docs" title="Show docs" />}
-            {schemaQueries && <img src="./docs.svg" onClick={hideDocs} className={STANDARD_ICON} alt="Hide docs" title="Hide docs"/>}
-            <img src="./prettify.svg" onClick={prettify} className={STANDARD_ICON} alt="Prettify" title="Prettify"/>
+            {!schemaQueries && (
+              <img
+                src="./docs.svg"
+                onClick={handleGetDocsClick}
+                className={STANDARD_ICON}
+                alt="Show docs"
+                title="Show docs"
+              />
+            )}
+            {schemaQueries && (
+              <img
+                src="./docs.svg"
+                onClick={hideDocs}
+                className={STANDARD_ICON}
+                alt="Hide docs"
+                title="Hide docs"
+              />
+            )}
+            <img
+              src="./prettify.svg"
+              onClick={prettify}
+              className={STANDARD_ICON}
+              alt="Prettify"
+              title="Prettify"
+            />
           </div>
           <div className="mr-2">
-            <img src="./play.svg" onClick={sendRequest} className="w-9 h-9 cursor-pointer hover:opacity-70" alt="Run query" title="Run query"/>
+            <img
+              src="./play.svg"
+              onClick={sendRequest}
+              className="w-9 h-9 cursor-pointer hover:opacity-70"
+              alt="Run query"
+              title="Run query"
+            />
           </div>
         </div>
-        
       )}
       <div className="border-gray-200 border-solid border-4 rounded-md p-1">
         <CodeMirror
           value={query}
-          height="310px"
+          height={editorHeight}
           className="text-left"
           extensions={[javascript({ jsx: true })]}
           onChange={onChangeMain}
@@ -131,7 +160,9 @@ function Editor() {
         <span
           onClick={() => setVisibleTab('vars')}
           className={
-            visibleTab === 'vars' ? 'text-teal-500 font-bold' : 'cursor-pointer hover:text-teal-400'
+            visibleTab === 'vars'
+              ? 'text-teal-500 font-bold'
+              : 'cursor-pointer hover:text-teal-400'
           }
         >
           {texts.main.variables}
@@ -146,10 +177,23 @@ function Editor() {
         >
           {texts.main.headers}
         </span>
-        {collapsed ?
-          <img src="./expand.svg" onClick={() => setCollapsed(false)} className={STANDARD_ICON} alt="Show Variables and Headers" title="Show Variables and Headers"/> :
-          <img src="./collapse.svg" onClick={() => setCollapsed(true)} className={STANDARD_ICON} alt="Hide Variables and Headers" title="Hide Variables and Headers"/>
-        }
+        {collapsed ? (
+          <img
+            src="./expand.svg"
+            onClick={() => setCollapsed(false)}
+            className={STANDARD_ICON}
+            alt="Show Variables and Headers"
+            title="Show Variables and Headers"
+          />
+        ) : (
+          <img
+            src="./collapse.svg"
+            onClick={() => setCollapsed(true)}
+            className={STANDARD_ICON}
+            alt="Hide Variables and Headers"
+            title="Hide Variables and Headers"
+          />
+        )}
       </div>
       {visibleTab === 'vars' && !collapsed && (
         <div className="vars-container border-gray-200 border-solid border-4 rounded-md p-1">

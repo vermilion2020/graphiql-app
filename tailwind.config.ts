@@ -27,10 +27,10 @@ export default {
           '25%': { opacity: 1 },
           '75%': { opacity: 1 },
           '100%': { opacity: 0 },
-        }
+        },
       },
       animation: {
-        'fadeinout': 'fadeinout 4s linear forwards'
+        fadeinout: 'fadeinout 4s linear forwards',
       },
     },
     screens: {

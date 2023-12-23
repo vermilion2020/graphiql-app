@@ -4,6 +4,7 @@ import { IRequestState } from '../../model/state.interface';
 const initialState: IRequestState = {
   endpoint: localStorage.getItem('endpoint') ?? '',
   response: '',
+  loading: false,
 };
 
 export const requestSlice = createSlice({
@@ -16,9 +17,12 @@ export const requestSlice = createSlice({
     setResponse: (state, action: PayloadAction<string>) => {
       state.response = action.payload;
     },
+    setLoading: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
+    },
   },
 });
 
 export default requestSlice.reducer;
 
-export const { setEndpoint, setResponse } = requestSlice.actions;
+export const { setEndpoint, setResponse, setLoading } = requestSlice.actions;

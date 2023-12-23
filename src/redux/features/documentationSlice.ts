@@ -51,7 +51,7 @@ export const documentationSlice = createSlice({
     },
     setLoading: (state, action: PayloadAction<boolean>) => {
       state.loading = action.payload;
-    }
+    },
   },
 });
 

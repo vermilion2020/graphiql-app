@@ -18,4 +18,5 @@ export interface IDocumentationState {
 export interface IRequestState {
   endpoint: string;
   response: string;
+  loading: boolean;
 }

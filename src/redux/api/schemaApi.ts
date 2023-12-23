@@ -12,7 +12,7 @@ import {
   setSchemaQueries,
   setSchemaTypes,
 } from '../features/documentationSlice';
-import { setEndpoint, setResponse } from '../features/requestSlice';
+import { setEndpoint, setResponse, setLoading as setRLoading } from '../features/requestSlice';
 
 export const schemaApi = createApi({
   reducerPath: 'schemaApi',
@@ -61,6 +61,7 @@ export const schemaApi = createApi({
           dispatch(
             setError('Invalid URL is provided. Scheme check request was failed')
           );
+          dispatch(setLoading(false));
           console.log(e);
         }
       },
@@ -107,14 +108,17 @@ export const schemaApi = createApi({
       },
       async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
+          dispatch(setRLoading(true));
           const { data } = await queryFulfilled;
           if (data) {
             dispatch(setError(null));
             dispatch(setResponse(JSON.stringify(data)));
+            dispatch(setRLoading(false));
           }
         } catch (e) {
           dispatch(setError('Invalid query'));
           dispatch(setResponse(''));
+          dispatch(setRLoading(false));
           console.log(e);
         }
       },

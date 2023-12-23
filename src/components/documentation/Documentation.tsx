@@ -20,7 +20,7 @@ function Documentation() {
     typeDisplayed,
     queriesDisplayed,
     mutationsDisplayed,
-    loading
+    loading,
   } = useAppSelector((state) => state.documentationState);
   const { texts } = useContext(LocaleContext);
 
@@ -34,10 +34,13 @@ function Documentation() {
 
   return (
     <>
-      {loading ?
-        <Loader /> :
+      {loading ? (
+        <Loader />
+      ) : (
         <div className="text-left h-[74vh] overflow-scroll docs-container">
-          {schemaQueries && <h2 className="text-center">{texts.main.docs.title}</h2>}
+          {schemaQueries && (
+            <h2 className="text-center">{texts.main.docs.title}</h2>
+          )}
           <div className="heading mt-4 mb-2">
             {mainPartDisplayed && schemaQueries && (
               <div>
@@ -46,7 +49,9 @@ function Documentation() {
                   onClick={() => dispatch(setQueriesDisplayed(true))}
                   className="cursor-pointer hover:underline"
                 >
-                  <span className="text-orange-600 ms-2">{schemaQueries.name}</span>
+                  <span className="text-orange-600 ms-2">
+                    {schemaQueries.name}
+                  </span>
                 </span>
               </div>
             )}
@@ -84,9 +89,8 @@ function Documentation() {
             <FieldsList fieldsData={schemaTypes} />
           )}
         </div>
-      }
+      )}
     </>
-    
   );
 }
 

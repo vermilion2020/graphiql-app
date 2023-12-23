@@ -25,7 +25,7 @@ export const en = {
       inputFields: 'Input Fields for',
       fields: 'Fields for',
       noType: `Type doesn't exist`,
-      back: 'Docs'
+      back: 'Docs',
     },
     errors: {
       vars: 'Error in variables',
@@ -38,27 +38,31 @@ export const en = {
     signIn: 'Sign In',
     signUp: 'Sign Up',
     main: 'MAIN PAGE',
-    project: 'This application is an educational project on GraphiQL developed within RSSchool React course',
-    course: 'RSSchool React is a free-of-charge course for JavaScript / Front-End developers who want to get acquainted with React library for web application development',
+    project:
+      'This application is an educational project on GraphiQL developed within RSSchool React course',
+    course:
+      'RSSchool React is a free-of-charge course for JavaScript / Front-End developers who want to get acquainted with React library for web application development',
     tecks: 'Technologies',
     developers: {
       title: 'Developers',
       mila: {
         name: 'Mila',
         description: 'Team lead, Front-end developer',
-        contribution: 'Contribution to the project:'
+        contribution: 'Contribution to the project:',
       },
       natali: {
         name: 'Natali',
         description: 'Front-end developer',
-        contribution: 'Contribution to the project: sign-in / sign-up pages, authentication with use of Firebase'
-    },
+        contribution:
+          'Contribution to the project: sign-in / sign-up pages, authentication with use of Firebase',
+      },
       victor: {
         name: 'Victor',
         description: 'Front-end developer',
-        contribution: 'Contribution to the project: welcome page, endpoint saving'
-      }
-    }
+        contribution:
+          'Contribution to the project: welcome page, endpoint saving',
+      },
+    },
   },
   signIn: {
     title: 'Sign In',
@@ -175,27 +179,31 @@ export const ru: typeof en = {
     signIn: 'Вход',
     signUp: 'Регистрация',
     main: 'НА ГЛАВНУЮ',
-    project: 'Данное приложение является учебным проектом по GraphiQL, разработанным в рамках курса RSSchool React',
-    course: 'RSSchool React - бесплатный курс для JavaScript / Front-End-разработчиков, желающих ознакомиться с библиотекой React для разработки web-приложений',
+    project:
+      'Данное приложение является учебным проектом по GraphiQL, разработанным в рамках курса RSSchool React',
+    course:
+      'RSSchool React - бесплатный курс для JavaScript / Front-End-разработчиков, желающих ознакомиться с библиотекой React для разработки web-приложений',
     tecks: 'Технологии',
     developers: {
       title: 'Разработчики',
       mila: {
         name: 'Мила',
         description: 'Тимлид, Front-end-разработчик',
-        contribution: 'Личный вклад в проект: '
+        contribution: 'Личный вклад в проект: ',
       },
       natali: {
         name: 'Натали',
         description: 'Front-end-разработчик',
-        contribution: 'Личный вклад в проект: страницы входа и регистрации, аутентификация с использованием Firebase'
+        contribution:
+          'Личный вклад в проект: страницы входа и регистрации, аутентификация с использованием Firebase',
       },
       victor: {
         name: 'Виктор',
         description: 'Front-end-разработчик',
-        contribution: 'Личный вклад в проект: страница-приветствие, сохранение конечной точки'
-      }
-    }
+        contribution:
+          'Личный вклад в проект: страница-приветствие, сохранение конечной точки',
+      },
+    },
   },
   signIn: {
     title: 'Вход',
