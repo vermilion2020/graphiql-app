@@ -5,7 +5,7 @@ import Locale from './Locale';
 import { renderWithProviders } from '../../test-utils';
 import { LocaleState } from '../../context/LocaleContext';
 import Header from '../layout/Header';
-import { ru } from '../../model/transaltes';
+import { ru } from '../../model/translates';
 
 describe('Localisation', async () => {
   it('Stored localisation value is applied on load', async () => {
