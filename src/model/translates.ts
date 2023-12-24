@@ -48,19 +48,20 @@ export const en = {
       mila: {
         name: 'Mila',
         description: 'Team lead, Front-end developer',
-        contribution: 'Contribution to the project:',
+        contribution:
+          'Contribution to the project: basic structure of the project, main page - requests, documentation, prettifier',
       },
       natali: {
         name: 'Natali',
         description: 'Front-end developer',
         contribution:
-          'Contribution to the project: sign-in / sign-up pages, authentication with use of Firebase',
+          'Contribution to the project: sign-in / sign-up pages, authentication with use of Firebase, adaptive / responsive layout',
       },
       victor: {
         name: 'Victor',
         description: 'Front-end developer',
         contribution:
-          'Contribution to the project: welcome page, endpoint saving',
+          'Contribution to the project: welcome page, endpoint saving, validation for query body, variables and headers',
       },
     },
   },
@@ -193,19 +194,20 @@ export const ru: typeof en = {
       mila: {
         name: 'Мила',
         description: 'Тимлид, Front-end-разработчик',
-        contribution: 'Личный вклад в проект: ',
+        contribution:
+          'Личный вклад в проект: базовая структура проекта, главная страница - запросы, документация, претифаер',
       },
       natali: {
         name: 'Натали',
         description: 'Front-end-разработчик',
         contribution:
-          'Личный вклад в проект: страницы входа и регистрации, аутентификация с использованием Firebase',
+          'Личный вклад в проект: страницы входа и регистрации, аутентификация с использованием Firebase, адаптивный дизайн',
       },
       victor: {
         name: 'Виктор',
         description: 'Front-end-разработчик',
         contribution:
-          'Личный вклад в проект: страница-приветствие, сохранение конечной точки',
+          'Личный вклад в проект: страница-приветствие, сохранение конечной точки, валидация тела запроса, переменных и заголовков',
       },
     },
   },

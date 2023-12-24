@@ -21,17 +21,26 @@ function Editor() {
 
   const editorHeight = collapsed ? '58vh' : '34vh';
 
-  const onChangeMain = useCallback((val: string) => {
-    setQuery(val);
-  }, [setQuery]);
+  const onChangeMain = useCallback(
+    (val: string) => {
+      setQuery(val);
+    },
+    [setQuery]
+  );
 
-  const onChangeVars = useCallback((val: string) => {
-    setVars(val);
-  }, [setVars]);
+  const onChangeVars = useCallback(
+    (val: string) => {
+      setVars(val);
+    },
+    [setVars]
+  );
 
-  const onChangeHeaders = useCallback((val: string) => {
-    setHeaders(val);
-  }, [setHeaders]);
+  const onChangeHeaders = useCallback(
+    (val: string) => {
+      setHeaders(val);
+    },
+    [setHeaders]
+  );
 
   return (
     <>
