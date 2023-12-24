@@ -32,7 +32,7 @@ function SaveEndpoint() {
   return (
     <div className="save-endpoint-wrapper">
       <form className="form" onSubmit={handleSubmit}>
-        {endpointEdit && (
+        {(endpointEdit || !endpoint) && (
           <>
             <input
               type="url"
@@ -49,7 +49,7 @@ function SaveEndpoint() {
             ></button>
           </>
         )}
-        {!endpointEdit && (
+        {!endpointEdit && endpoint && (
           <>
             <div className="flex font-bold self-center">{url}</div>
             <button
