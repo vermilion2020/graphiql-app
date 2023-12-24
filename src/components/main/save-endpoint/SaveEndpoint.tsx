@@ -1,13 +1,13 @@
 import { useState, useContext } from 'react';
-import { LocaleContext } from '../../context/LocaleContext';
-import { useAppDispatch, useAppSelector } from '../../redux';
-import { useLazyCheckSchemaQuery } from '../../redux/api/schemaApi';
-import { setError } from '../../redux/features/appSlice';
-import { SMALL_ICON } from '../../utils/documentation-helper';
+import { LocaleContext } from '../../../context/LocaleContext';
+import { useAppDispatch, useAppSelector } from '../../../redux';
+import { useLazyCheckSchemaQuery } from '../../../redux/api/schemaApi';
+import { setError } from '../../../redux/features/appSlice';
+import { SMALL_ICON } from '../../../utils/documentation-helper';
 import {
   setEndpointEdit,
   setEndpointValid,
-} from '../../redux/features/requestSlice';
+} from '../../../redux/features/requestSlice';
 
 function SaveEndpoint() {
   const { endpoint, endpointValid, endpointEdit } = useAppSelector(
@@ -51,7 +51,7 @@ function SaveEndpoint() {
         )}
         {!endpointEdit && endpoint && (
           <>
-            <div className="flex font-bold self-center">{url}</div>
+            <div className="flex font-bold self-center mt-[10px]">{url}</div>
             <button
               onClick={() => dispatch(setEndpointEdit(true))}
               className={`${SMALL_ICON} edit-icon`}

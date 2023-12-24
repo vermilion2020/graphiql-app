@@ -4,6 +4,7 @@ import { useAppSelector } from '../../redux';
 import { useNavigate } from 'react-router-dom';
 import Editor from './Editor';
 import Response from './Response';
+import { EditorState } from '../../context/EditorContext';
 
 function Main() {
   const navigate = useNavigate();
@@ -35,7 +36,9 @@ function Main() {
         <Documentation />
       </div>
       <div className={editorClasses}>
-        <Editor />
+        <EditorState>
+          <Editor />
+        </EditorState>
       </div>
       <div className="w-4/12 sector-container">
         <Response />

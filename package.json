@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@codemirror/lang-javascript": "^6.2.1",
+    "@codemirror/language": "github:codemirror/language",
     "@hookform/resolvers": "^3.3.2",
     "@reduxjs/toolkit": "^1.9.7",
     "@testing-library/jest-dom": "^6.1.4",
