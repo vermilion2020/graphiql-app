@@ -60,6 +60,7 @@ function Toolbar() {
       const validation = validJson(vars);
       if (validation.status === 'failed') {
         dispatch(setError(texts.main.errors.vars));
+        return;
       } else {
         varsParsed = validation.json;
       }
@@ -69,6 +70,7 @@ function Toolbar() {
       const validation = validJson(headers);
       if (validation.status === 'failed') {
         dispatch(setError(texts.main.errors.headers));
+        return;
       } else {
         headersParsed = validation.json;
       }

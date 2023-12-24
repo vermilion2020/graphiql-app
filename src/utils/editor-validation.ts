@@ -13,11 +13,16 @@ export function validQuery(query: string) {
 }
 
 export function validJson(value: string) {
-  let json = {};
+  let json = {}
   try {
     json = JSON.parse(value);
-    return { status: 'ok', json };
+    for (const key in json) {
+      if (typeof (json[key as keyof typeof json]) === "object") {
+        return {status: 'failed', json: {}}
+      }
+    }
+    return {status: 'ok', json};
   } catch {
-    return { status: 'failed', json: {} };
+    return {status: 'failed', json: {}};
   }
 }
