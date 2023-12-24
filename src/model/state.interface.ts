@@ -19,4 +19,6 @@ export interface IRequestState {
   endpoint: string;
   response: string;
   loading: boolean;
+  endpointValid: boolean;
+  endpointEdit: boolean;
 }

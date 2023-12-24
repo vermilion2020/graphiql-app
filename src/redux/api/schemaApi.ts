@@ -4,15 +4,24 @@ import {
   BASIC_TYPES_QUERY,
   DEFINITION_QUERY,
   RequestQueryData,
+  RequestSchemaData,
 } from '../../model/queries';
 import { setError } from '../features/appSlice';
 import {
+  clearDocs,
   setLoading,
   setSchemaMutations,
   setSchemaQueries,
   setSchemaTypes,
 } from '../features/documentationSlice';
-import { setEndpoint, setResponse, setLoading as setRLoading } from '../features/requestSlice';
+import {
+  setEndpoint,
+  setEndpointEdit,
+  setEndpointValid,
+  setResponse,
+  setLoading as setRLoading,
+} from '../features/requestSlice';
+import { en, ru } from '../../model/translates';
 
 export const schemaApi = createApi({
   reducerPath: 'schemaApi',
@@ -21,8 +30,8 @@ export const schemaApi = createApi({
   }),
   tagTypes: ['schema'],
   endpoints: (builder) => ({
-    getSchema: builder.query<ISchemaTypes, string>({
-      query: (endpoint: string) => {
+    getSchema: builder.query<ISchemaTypes, RequestSchemaData>({
+      query: ({ endpoint }: RequestSchemaData) => {
         const query = {
           url: endpoint,
           method: 'POST',
@@ -32,7 +41,8 @@ export const schemaApi = createApi({
         };
         return query;
       },
-      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+      async onQueryStarted(requestData, { dispatch, queryFulfilled }) {
+        const { locale } = requestData;
         try {
           dispatch(setLoading(true));
           const { data } = await queryFulfilled;
@@ -58,16 +68,19 @@ export const schemaApi = createApi({
           dispatch(setSchemaTypes(types));
           dispatch(setLoading(false));
         } catch (e) {
-          dispatch(
-            setError('Invalid URL is provided. Scheme check request was failed')
-          );
+          const error =
+            locale === 'Ru'
+              ? ru.errorMessages['request/url']
+              : en.errorMessages['request/url'];
+
+          dispatch(setError(error));
           dispatch(setLoading(false));
           console.log(e);
         }
       },
     }),
-    checkSchema: builder.query<ISchemaTypes, string>({
-      query: (endpoint: string) => {
+    checkSchema: builder.query<ISchemaTypes, RequestSchemaData>({
+      query: ({ endpoint }: RequestSchemaData) => {
         const query = {
           url: endpoint,
           method: 'POST',
@@ -77,18 +90,27 @@ export const schemaApi = createApi({
         };
         return query;
       },
-      async onQueryStarted(url, { dispatch, queryFulfilled }) {
+      async onQueryStarted(requestData, { dispatch, queryFulfilled }) {
+        const { endpoint, locale } = requestData;
+        dispatch(clearDocs());
+        dispatch(setResponse(''));
         try {
           const { data } = await queryFulfilled;
           if (data) {
             dispatch(setError(null));
-            localStorage.setItem('endpoint', url);
-            dispatch(setEndpoint(url));
+            localStorage.setItem('endpoint', endpoint);
+            dispatch(setEndpoint(endpoint));
+            dispatch(setEndpointValid(true));
+            dispatch(setEndpointEdit(false));
           }
         } catch (e) {
-          dispatch(
-            setError('Invalid URL is provided. Scheme check request was failed')
-          );
+          const error =
+            locale === 'Ru'
+              ? ru.errorMessages['request/docs']
+              : en.errorMessages['request/docs'];
+
+          dispatch(setError(error));
+          dispatch(setEndpointValid(false));
           console.log(e);
         }
       },
@@ -106,7 +128,8 @@ export const schemaApi = createApi({
         };
         return query;
       },
-      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+      async onQueryStarted(requestData, { dispatch, queryFulfilled }) {
+        const { locale } = requestData;
         try {
           dispatch(setRLoading(true));
           const { data } = await queryFulfilled;
@@ -116,7 +139,12 @@ export const schemaApi = createApi({
             dispatch(setRLoading(false));
           }
         } catch (e) {
-          dispatch(setError('Invalid query'));
+          const error =
+            locale === 'Ru'
+              ? ru.errorMessages['request/query']
+              : en.errorMessages['request/query'];
+
+          dispatch(setError(error));
           dispatch(setResponse(''));
           dispatch(setRLoading(false));
           console.log(e);

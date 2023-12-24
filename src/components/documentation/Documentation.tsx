@@ -39,9 +39,9 @@ function Documentation() {
       ) : (
         <div className="text-left h-[74vh] overflow-scroll docs-container">
           {schemaQueries && (
-            <h2 className="text-center">{texts.main.docs.title}</h2>
+            <h2 className="text-center font-bold">{texts.main.docs.title}</h2>
           )}
-          <div className="heading mt-4 mb-2">
+          <div className="heading mt-2 mb-2">
             {mainPartDisplayed && schemaQueries && (
               <div>
                 {texts.main.docs.query}:

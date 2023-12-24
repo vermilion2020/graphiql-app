@@ -3,33 +3,40 @@ import { LocaleContext } from '../../context/LocaleContext';
 import { useAppDispatch, useAppSelector } from '../../redux';
 import { useLazyCheckSchemaQuery } from '../../redux/api/schemaApi';
 import { setError } from '../../redux/features/appSlice';
+import { SMALL_ICON } from '../../utils/documentation-helper';
+import {
+  setEndpointEdit,
+  setEndpointValid,
+} from '../../redux/features/requestSlice';
 
 function SaveEndpoint() {
-  const { endpoint } = useAppSelector((state) => state.requestState);
+  const { endpoint, endpointValid, endpointEdit } = useAppSelector(
+    (state) => state.requestState
+  );
   const [triggerCheck] = useLazyCheckSchemaQuery();
   const [url, setUrl] = useState(endpoint);
-  const [editMode, setEditMode] = useState(!endpoint);
-  const { texts } = useContext(LocaleContext);
+  const { texts, locale } = useContext(LocaleContext);
   const dispatch = useAppDispatch();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    dispatch(setError(null));
     if (url.length > 0) {
-      triggerCheck(url);
-      setEditMode(false);
+      triggerCheck({ endpoint: url, locale });
     } else {
       dispatch(setError(texts.errorMessages['endpoint/empty']));
+      dispatch(setEndpointValid(false));
     }
   };
 
   return (
     <div className="save-endpoint-wrapper">
       <form className="form" onSubmit={handleSubmit}>
-        {editMode && (
+        {endpointEdit && (
           <>
             <input
               type="url"
-              className="text-input"
+              className={!endpointValid ? 'text-input invalid' : 'text-input'}
               placeholder={texts.main.saveEndpoint.heading}
               value={url}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -38,16 +45,16 @@ function SaveEndpoint() {
             ></input>
             <button
               type="submit"
-              className="w-6 h-6 cursor-pointer save-icon self-center hover:opacity-70"
+              className={`${SMALL_ICON} save-icon`}
             ></button>
           </>
         )}
-        {!editMode && (
+        {!endpointEdit && (
           <>
             <div className="flex font-bold self-center">{url}</div>
             <button
-              onClick={() => setEditMode(true)}
-              className="w-6 h-6 cursor-pointer edit-icon self-center hover:opacity-70"
+              onClick={() => dispatch(setEndpointEdit(true))}
+              className={`${SMALL_ICON} edit-icon`}
             ></button>
           </>
         )}

@@ -5,6 +5,8 @@ const initialState: IRequestState = {
   endpoint: localStorage.getItem('endpoint') ?? '',
   response: '',
   loading: false,
+  endpointValid: true,
+  endpointEdit: false,
 };
 
 export const requestSlice = createSlice({
@@ -13,6 +15,12 @@ export const requestSlice = createSlice({
   reducers: {
     setEndpoint: (state, action: PayloadAction<string>) => {
       state.endpoint = action.payload;
+    },
+    setEndpointEdit: (state, action: PayloadAction<boolean>) => {
+      state.endpointEdit = action.payload;
+    },
+    setEndpointValid: (state, action: PayloadAction<boolean>) => {
+      state.endpointValid = action.payload;
     },
     setResponse: (state, action: PayloadAction<string>) => {
       state.response = action.payload;
@@ -25,4 +33,10 @@ export const requestSlice = createSlice({
 
 export default requestSlice.reducer;
 
-export const { setEndpoint, setResponse, setLoading } = requestSlice.actions;
+export const {
+  setEndpoint,
+  setEndpointValid,
+  setEndpointEdit,
+  setResponse,
+  setLoading,
+} = requestSlice.actions;

@@ -1,3 +1,5 @@
+import { Locales } from './translates';
+
 export type CommonJSON = { [key: string]: string };
 
 export interface RequestQueryData {
@@ -5,6 +7,12 @@ export interface RequestQueryData {
   q: string;
   vars: CommonJSON;
   headers: CommonJSON;
+  locale: Locales;
+}
+
+export interface RequestSchemaData {
+  endpoint: string;
+  locale: Locales;
 }
 
 export const DEFINITION_QUERY =

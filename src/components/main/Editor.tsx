@@ -13,7 +13,11 @@ import { LocaleContext } from '../../context/LocaleContext';
 import { setError } from '../../redux/features/appSlice';
 import { validJson, validQuery } from '../../utils/editor-validation';
 import { prettifyQuery } from '../../utils/prettify';
-import { STANDARD_ICON } from '../../utils/documentation-helper';
+import {
+  BIG_ICON,
+  SMALL_ICON,
+  STANDARD_ICON,
+} from '../../utils/documentation-helper';
 
 function Editor() {
   const [query, setQuery] = useState(BASIC_TYPES_QUERY);
@@ -21,7 +25,7 @@ function Editor() {
   const [collapsed, setCollapsed] = useState(false);
   const [headers, setHeaders] = useState('');
   const [visibleTab, setVisibleTab] = useState<'vars' | 'headers'>('vars');
-  const { texts } = useContext(LocaleContext);
+  const { texts, locale } = useContext(LocaleContext);
   const [triggerRequest] = useLazySendRequestQuery();
   const [triggerSchema] = useLazyGetSchemaQuery();
 
@@ -45,7 +49,7 @@ function Editor() {
 
   const handleGetDocsClick = () => {
     if (endpoint) {
-      triggerSchema(endpoint);
+      triggerSchema({ endpoint, locale });
     } else {
       dispatch(setError(texts.errorMessages['docs/no-enpoint']));
     }
@@ -83,6 +87,7 @@ function Editor() {
       q: query,
       vars: varsParsed,
       headers: headersParsed,
+      locale,
     });
   };
 
@@ -140,7 +145,7 @@ function Editor() {
             <img
               src="./play.svg"
               onClick={sendRequest}
-              className="w-9 h-9 cursor-pointer hover:opacity-70"
+              className={BIG_ICON}
               alt="Run query"
               title="Run query"
             />
@@ -156,7 +161,7 @@ function Editor() {
           onChange={onChangeMain}
         />
       </div>
-      <div className="flex gap-3">
+      <div className="flex gap-3 switch-vars">
         <span
           onClick={() => setVisibleTab('vars')}
           className={
@@ -181,7 +186,7 @@ function Editor() {
           <img
             src="./expand.svg"
             onClick={() => setCollapsed(false)}
-            className={STANDARD_ICON}
+            className={SMALL_ICON}
             alt="Show Variables and Headers"
             title="Show Variables and Headers"
           />
@@ -189,7 +194,7 @@ function Editor() {
           <img
             src="./collapse.svg"
             onClick={() => setCollapsed(true)}
-            className={STANDARD_ICON}
+            className={SMALL_ICON}
             alt="Hide Variables and Headers"
             title="Hide Variables and Headers"
           />

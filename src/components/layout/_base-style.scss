@@ -13,6 +13,13 @@ $lightGreyColor: #b9b5bb;
 $darkBlueColor: #0f2857;
 $lightBlueColor: #7186ad;
 
+img,
+.switch-vars span {
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
 .button {
   width: 120px;
   height: 35px;

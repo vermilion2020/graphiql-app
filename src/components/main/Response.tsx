@@ -8,21 +8,28 @@ import Loader from '../common/Loader';
 function Response() {
   const { texts } = useContext(LocaleContext);
   const { response, loading } = useAppSelector((state) => state.requestState);
+  let parserResponse = '';
+  try {
+    parserResponse = JSON.stringify(JSON.parse(response), null, 2);
+  } catch (e) {
+    parserResponse = '';
+  }
 
   return (
     <>
-      <h2>{texts.main.response}</h2>
+      <h2 className="font-bold mb-2">{texts.main.response}</h2>
       <div className="border-gray-200 border-solid border-4 rounded-md p-1">
-        {loading ?
-          <Loader /> :
+        {loading ? (
+          <Loader />
+        ) : (
           <CodeMirror
-            value={JSON.stringify(JSON.parse(response), null, 2)}
+            value={parserResponse}
             readOnly
-            height="70vh"
+            height="69vh"
             className="text-left"
             extensions={[javascript({ jsx: true })]}
           />
-        }
+        )}
       </div>
     </>
   );

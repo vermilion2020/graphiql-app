@@ -13,8 +13,14 @@
       height: 35px;
       padding: 0 5px;
       width: 93%;
+      max-width: 350px;
       border: solid 2px #a9a9a9;
       border-radius: 0.5rem;
+
+      &.invalid,
+      &.invalid:focus {
+        border: solid 2px #a11818;
+      }
     }
 
     .save-icon {

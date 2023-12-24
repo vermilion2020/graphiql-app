@@ -140,6 +140,10 @@ export const en = {
     'docs/no-enpoint':
       'No endpoint provided. Save an endpoint to view the documentation',
     'endpoint/empty': `You can't save en empty endpoint`,
+    'request/url': 'Invalid URL is provided. Scheme check request was failed',
+    'request/docs': 'An error occurs while SDL request',
+    'request/query':
+      'An endpoint responses with an error. Check the query or try later',
   },
 };
 
@@ -283,5 +287,10 @@ export const ru: typeof en = {
     'docs/no-enpoint':
       'Не сохранен эндроинт. Добавьте эндпоинт, чтобы увидеть документацию',
     'endpoint/empty': 'Вы не можете сохранить пустой эндпоинт',
+    'request/url':
+      'Вы запрашиваете некорректный URL или сервер отвечает с ошибкой. Проверьте URL или попробуйте позже',
+    'request/docs': 'Во время SDL запроса произошла ошибка',
+    'request/query':
+      'Сервер ответил с ошибкой. Проверьте тело запроса или попробуйте позже',
   },
 };
