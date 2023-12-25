@@ -13,13 +13,12 @@ const AppLayout = () => {
   useEffect(() => {
     const handle = setInterval(
       () => {
-        console.log('setInterval');
         if (exp_token && exp_token * 1000 < Date.now()) {
           dispatch(setSignOut());
           navigate('/');
         }
       },
-      1 * 60 * 1000
+      5 * 60 * 1000
     );
 
     // clean up setInterval
