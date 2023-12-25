@@ -22,7 +22,7 @@ function Footer() {
             <use xlinkHref="./sprite-footer.svg#logo-git"></use>
           </svg>
           <p>vermilion2020</p>
-        </Link>{' '}
+        </Link>
         <Link
           to="https://github.com/Mali-zi"
           className="github-link"

@@ -1,8 +1,9 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { IRequestState } from '../../model/state.interface';
+import { DEFAULT_URL } from '../../model/queries';
 
 const initialState: IRequestState = {
-  endpoint: localStorage.getItem('endpoint') ?? '',
+  endpoint: localStorage.getItem('endpoint') ?? DEFAULT_URL,
   response: '',
   loading: false,
   endpointValid: true,

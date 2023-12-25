@@ -15,7 +15,7 @@ export interface IEditorContext {
 }
 
 export const EditorContext = createContext<IEditorContext>({
-  query: BASIC_TYPES_QUERY,
+  query: '',
   vars: '',
   headers: '',
   collapsed: false,

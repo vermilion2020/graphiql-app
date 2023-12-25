@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  getIdToken,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+} from 'firebase/auth';
 import { auth } from '../../firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
@@ -7,7 +11,7 @@ import { useContext } from 'react';
 import { LocaleContext } from '../../context/LocaleContext';
 import ArrowCircle from '../../assets/icons/ArrowCircle ';
 import { useAppDispatch } from '../../redux';
-import { setError, setSingIn } from '../../redux/features/appSlice';
+import { setError, setSingIn, setToken } from '../../redux/features/appSlice';
 import { getErrorMessage } from '../../utils/errorMessage';
 
 export interface ISignInForm {
@@ -30,20 +34,25 @@ function SignInForm() {
   const navigate = useNavigate();
   const [isDisabled, setIsDisabled] = useState(true);
 
-  const onSubmit = (
+  const onSubmit = async (
     { email, password }: ISignInForm,
     e?: React.BaseSyntheticEvent
   ) => {
     e?.preventDefault();
+    localStorage.clear();
 
-    signInWithEmailAndPassword(auth, email, password)
+    await signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        if (user) {
-          dispatch(setSingIn(user.uid));
-          navigate('/main');
-        }
+        dispatch(setSingIn(user.uid));
+        onAuthStateChanged(auth, async (user) => {
+          if (user) {
+            const token = await getIdToken(user, false);
+            dispatch(setToken(token));
+            navigate('/main');
+          }
+        });
       })
       .catch(({ code }) => {
         const message = getErrorMessage(code, texts);

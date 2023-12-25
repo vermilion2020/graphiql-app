@@ -6,6 +6,8 @@ import { useCallback, useContext } from 'react';
 import Toolbar from './toolbar/Toolbar';
 import { EditorContext } from '../../context/EditorContext';
 import VarsToggle from './vars-toggle/VarsToggle';
+import { BASIC_TYPES_QUERY } from '../../model/queries';
+const codeClasses = ' border-gray-200 border-solid border-4 rounded-md p-1';
 
 function Editor() {
   const {
@@ -46,9 +48,10 @@ function Editor() {
     <>
       <SaveEndpoint />
       <Toolbar />
-      <div className="border-gray-200 border-solid border-4 rounded-md p-1">
+      <div className={codeClasses}>
         <CodeMirror
           value={query}
+          placeholder={BASIC_TYPES_QUERY}
           height={editorHeight}
           className="text-left"
           extensions={[javascript({ jsx: true }), indentUnit.of(' ')]}
@@ -57,9 +60,10 @@ function Editor() {
       </div>
       <VarsToggle />
       {visibleTab === 'vars' && !collapsed && (
-        <div className="vars-container border-gray-200 border-solid border-4 rounded-md p-1">
+        <div className={`vars-container ${codeClasses}`}>
           <CodeMirror
             value={vars}
+            placeholder={JSON.stringify({"var": "val"}, null, 2)}
             height="200px"
             className="text-left"
             extensions={[javascript({ jsx: true })]}
@@ -68,9 +72,10 @@ function Editor() {
         </div>
       )}
       {visibleTab === 'headers' && !collapsed && (
-        <div className="headers-container border-gray-200 border-solid border-4 rounded-md p-1">
+        <div className={`headers-container ${codeClasses}`}>
           <CodeMirror
             value={headers}
+            placeholder={JSON.stringify({"Content-Type": "application/json"}, null, 2)}
             height="200px"
             className="text-left"
             extensions={[javascript({ jsx: true })]}

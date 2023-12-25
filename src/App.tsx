@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import MainPage from './pages/Main.tsx';
+import MainPage from './pages/MainPage.tsx';
 import NotFoundPage from './pages/NotFound';
 import { Provider } from 'react-redux';
 import { store, persistor } from './redux/index.ts';
