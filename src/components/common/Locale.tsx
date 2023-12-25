@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { LOCALES, Locales } from '../../model/transaltes';
+import { LOCALES, Locales } from '../../model/translates';
 import { LocaleContext } from '../../context/LocaleContext';
 function Locale() {
   const [opened, setOpened] = useState(false);
