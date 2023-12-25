@@ -11,6 +11,8 @@ import ArrowCircle from '../../assets/icons/ArrowCircle ';
 import { setError } from '../../redux/features/appSlice';
 import { useAppDispatch } from '../../redux/index';
 import { getErrorMessage } from '../../utils/errorMessage';
+import Spinner from '../spinner/Spinner';
+import { FirebaseError } from 'firebase/app';
 
 export interface IFormInput {
   email: string;
@@ -62,6 +64,31 @@ function SignUpForm() {
 
   const navigate = useNavigate();
   const [isDisabled, setIsDisabled] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const signUpUser = async (email: string, password: string) => {
+    setIsLoading(true);
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      if (user) {
+        dispatch(setError(null));
+        navigate('/sign-in');
+      }
+  } catch (error: unknown) {
+      if (error instanceof FirebaseError) {
+        const message = getErrorMessage(error.code, texts);
+        dispatch(setError(message));
+      } else {
+        throw error;
+      }
+    }
+  };
+
 
   const onSubmit = async (
     data: IFormInput,
@@ -70,19 +97,7 @@ function SignUpForm() {
     e?.preventDefault();
 
     const { email, password } = data;
-    await createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed Up
-        const user = userCredential.user;
-        if (user) {
-          dispatch(setError(null));
-          navigate('/sign-in');
-        }
-      })
-      .catch(({ code }) => {
-        const message = getErrorMessage(code, texts);
-        dispatch(setError(message));
-      });
+    signUpUser(email, password).then(() => setIsLoading(false));
     reset();
   };
 
@@ -191,6 +206,9 @@ function SignUpForm() {
           </div>
 
           <div className="mt-4">
+          {isLoading ? (
+            <Spinner text={texts.signUp.loading} />
+          ) : (
             <button
               type="submit"
               disabled={isDisabled}
@@ -199,6 +217,7 @@ function SignUpForm() {
             >
               {texts.signUp.title}
             </button>
+          )}
           </div>
         </form>
         <p className="mt-3">
