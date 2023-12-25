@@ -1,4 +1,4 @@
-import { en } from '../model/transaltes';
+import { en } from '../model/translates';
 
 export type authErrorCode =
   | 'auth/credential-already-in-use'

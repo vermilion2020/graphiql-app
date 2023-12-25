@@ -20,6 +20,7 @@
     "@uiw/react-codemirror": "^4.21.21",
     "@vitejs/plugin-react": "^4.0.3",
     "firebase": "^10.7.1",
+    "jwt-decode": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.48.2",
