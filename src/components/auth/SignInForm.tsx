@@ -10,7 +10,7 @@ import { useForm } from 'react-hook-form';
 import { useContext } from 'react';
 import { LocaleContext } from '../../context/LocaleContext';
 import ArrowCircle from '../../assets/icons/ArrowCircle ';
-import { useAppDispatch } from '../../redux';
+import { useAppDispatch, useAppSelector } from '../../redux';
 import { setError, setSingIn, setToken } from '../../redux/features/appSlice';
 import { getErrorMessage } from '../../utils/errorMessage';
 
@@ -22,6 +22,8 @@ export interface ISignInForm {
 function SignInForm() {
   const { texts } = useContext(LocaleContext);
   const dispatch = useAppDispatch();
+  const { isLoggedIn } = useAppSelector((state) => state.appState);
+  const navigate = useNavigate();
 
   const { register, handleSubmit, reset, formState } = useForm<ISignInForm>({
     defaultValues: {
@@ -31,7 +33,12 @@ function SignInForm() {
     mode: 'onChange',
   });
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/main');
+    }
+  }, [isLoggedIn, navigate]);
+
   const [isDisabled, setIsDisabled] = useState(true);
 
   const onSubmit = async (

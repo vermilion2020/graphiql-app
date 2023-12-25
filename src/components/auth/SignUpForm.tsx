@@ -9,7 +9,7 @@ import { useContext } from 'react';
 import { LocaleContext } from '../../context/LocaleContext';
 import ArrowCircle from '../../assets/icons/ArrowCircle ';
 import { setError } from '../../redux/features/appSlice';
-import { useAppDispatch } from '../../redux/index';
+import { useAppDispatch, useAppSelector } from '../../redux/index';
 import { getErrorMessage } from '../../utils/errorMessage';
 
 export interface IFormInput {
@@ -22,6 +22,14 @@ export interface IFormInput {
 function SignUpForm() {
   const { texts } = useContext(LocaleContext);
   const dispatch = useAppDispatch();
+  const { isLoggedIn } = useAppSelector((state) => state.appState);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/main');
+    }
+  }, [isLoggedIn, navigate]);
 
   const schema = yup
     .object({
@@ -60,7 +68,6 @@ function SignUpForm() {
     resolver: yupResolver(schema),
   });
 
-  const navigate = useNavigate();
   const [isDisabled, setIsDisabled] = useState(true);
 
   const onSubmit = async (
@@ -72,7 +79,6 @@ function SignUpForm() {
     const { email, password } = data;
     await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed Up
         const user = userCredential.user;
         if (user) {
           dispatch(setError(null));
