@@ -15,7 +15,6 @@ const AppLayout = () => {
       () => {
         console.log('setInterval');
         if (exp_token && exp_token * 1000 < Date.now()) {
-          console.log("токен истек")
           dispatch(setSignOut());
           navigate('/');
         }

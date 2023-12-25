@@ -49,7 +49,6 @@ function SignInForm() {
         onAuthStateChanged(auth, async (user) => {
           if (user) {
             const token = await getIdToken(user, false);
-            console.log('token', token);
             dispatch(setToken(token));
             navigate('/main');
           }

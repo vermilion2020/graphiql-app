@@ -25,7 +25,6 @@ export const AppSlice = createSlice({
         const decodedToken = jwtDecode(action.payload);
         if (decodedToken.exp) {
           state.exp_token = decodedToken.exp;
-          console.log('state.exp_token', state.exp_token);
         }
         state.error = null;
       }
