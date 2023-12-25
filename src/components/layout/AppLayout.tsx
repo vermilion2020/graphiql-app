@@ -8,12 +8,12 @@ import { setSignOut } from '../../redux/features/appSlice';
 const AppLayout = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const exp_token = useAppSelector((state) => state.appState.exp_token);
+  const expToken = useAppSelector((state) => state.appState.expToken);
 
   useEffect(() => {
     const handle = setInterval(
       () => {
-        if (exp_token && exp_token * 1000 < Date.now()) {
+        if (expToken && expToken * 1000 < Date.now()) {
           dispatch(setSignOut());
           navigate('/');
         }

@@ -3,14 +3,14 @@ import { jwtDecode } from 'jwt-decode';
 
 export interface IAppState {
   uid: null | string;
-  exp_token: number | null;
+  expToken: number | null;
   isLoggedIn: boolean;
   error: string | null;
 }
 
 const initialState: IAppState = {
   uid: null,
-  exp_token: null,
+  expToken: null,
   isLoggedIn: false,
   error: null,
 };
@@ -24,7 +24,7 @@ export const AppSlice = createSlice({
       if (action.payload) {
         const decodedToken = jwtDecode(action.payload);
         if (decodedToken.exp) {
-          state.exp_token = decodedToken.exp;
+          state.expToken = decodedToken.exp;
         }
         state.error = null;
       }
@@ -40,7 +40,7 @@ export const AppSlice = createSlice({
       state.error = action.payload;
     },
     setSignOut: (state) => {
-      state.exp_token = null;
+      state.expToken = null;
       state.isLoggedIn = false;
       state.error = null;
       state.uid = null;
