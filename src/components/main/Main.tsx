@@ -18,7 +18,7 @@ function Main() {
       navigate('/');
     }
   }, [isLoggedIn, navigate]);
-  
+
   const editorClasses =
     schemaTypes ?? loading
       ? 'flex flex-col flex-nowrap gap-y-3 w-5/12 sector-container'

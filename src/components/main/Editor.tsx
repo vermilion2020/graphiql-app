@@ -63,7 +63,7 @@ function Editor() {
         <div className={`vars-container ${codeClasses}`}>
           <CodeMirror
             value={vars}
-            placeholder={JSON.stringify({"var": "val"}, null, 2)}
+            placeholder={JSON.stringify({ var: 'val' }, null, 2)}
             height="200px"
             className="text-left"
             extensions={[javascript({ jsx: true })]}
@@ -75,7 +75,11 @@ function Editor() {
         <div className={`headers-container ${codeClasses}`}>
           <CodeMirror
             value={headers}
-            placeholder={JSON.stringify({"Content-Type": "application/json"}, null, 2)}
+            placeholder={JSON.stringify(
+              { 'Content-Type': 'application/json' },
+              null,
+              2
+            )}
             height="200px"
             className="text-left"
             extensions={[javascript({ jsx: true })]}

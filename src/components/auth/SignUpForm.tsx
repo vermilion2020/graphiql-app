@@ -86,7 +86,7 @@ function SignUpForm() {
         dispatch(setError(null));
         navigate('/sign-in');
       }
-  } catch (error: unknown) {
+    } catch (error: unknown) {
       if (error instanceof FirebaseError) {
         const message = getErrorMessage(error.code, texts);
         dispatch(setError(message));
@@ -95,7 +95,6 @@ function SignUpForm() {
       }
     }
   };
-
 
   const onSubmit = async (
     data: IFormInput,
@@ -215,18 +214,18 @@ function SignUpForm() {
           </div>
 
           <div className="mt-4">
-          {isLoading ? (
-            <Spinner text={texts.signUp.loading} />
-          ) : (
-            <button
-              type="submit"
-              disabled={isDisabled}
-              className="rounded-md bg-buttonBg-600 px-3 py-2 text-sm font-semibold 
+            {isLoading ? (
+              <Spinner text={texts.signUp.loading} />
+            ) : (
+              <button
+                type="submit"
+                disabled={isDisabled}
+                className="rounded-md bg-buttonBg-600 px-3 py-2 text-sm font-semibold 
               text-white shadow-sm hover:bg-buttonBg-400 disabled:bg-disabledButton"
-            >
-              {texts.signUp.title}
-            </button>
-          )}
+              >
+                {texts.signUp.title}
+              </button>
+            )}
           </div>
         </form>
         <p className="mt-3">
