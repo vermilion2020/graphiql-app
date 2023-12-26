@@ -13,6 +13,8 @@ import ArrowCircle from '../../assets/icons/ArrowCircle ';
 import { useAppDispatch, useAppSelector } from '../../redux';
 import { setError, setSingIn, setToken } from '../../redux/features/appSlice';
 import { getErrorMessage } from '../../utils/errorMessage';
+import Spinner from '../spinner/Spinner';
+import { FirebaseError } from 'firebase/app';
 
 export interface ISignInForm {
   email: string;
@@ -40,31 +42,43 @@ function SignInForm() {
   }, [isLoggedIn, navigate]);
 
   const [isDisabled, setIsDisabled] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const signInUser = async (email: string, password: string) => {
+    setIsLoading(true);
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      dispatch(setSingIn(user.uid));
+
+      onAuthStateChanged(auth, async (user) => {
+        if (user) {
+          const token = await getIdToken(user, false);
+          dispatch(setToken(token));
+          dispatch(setError(null));
+          navigate('/main');
+        }
+      });
+    } catch (error: unknown) {
+      if (error instanceof FirebaseError) {
+        const message = getErrorMessage(error.code, texts);
+        dispatch(setError(message));
+      } else {
+        throw error;
+      }
+    }
+  };
 
   const onSubmit = async (
     { email, password }: ISignInForm,
     e?: React.BaseSyntheticEvent
   ) => {
     e?.preventDefault();
-    localStorage.clear();
-
-    await signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        dispatch(setSingIn(user.uid));
-        onAuthStateChanged(auth, async (user) => {
-          if (user) {
-            const token = await getIdToken(user, false);
-            dispatch(setToken(token));
-            navigate('/main');
-          }
-        });
-      })
-      .catch(({ code }) => {
-        const message = getErrorMessage(code, texts);
-        dispatch(setError(message));
-      });
+    signInUser(email, password).then(() => setIsLoading(false));
     reset();
   };
 
@@ -136,14 +150,18 @@ function SignInForm() {
             </div>
           </label>
 
-          <button
-            type="submit"
-            disabled={isDisabled}
-            className="rounded-md bg-buttonBg-600 px-3 py-2 text-sm font-semibold 
-              text-white shadow-sm hover:bg-buttonBg-400 disabled:bg-disabledButton"
-          >
-            {texts.signIn.btnText}
-          </button>
+          {isLoading ? (
+            <Spinner text={texts.signIn.loading} />
+          ) : (
+            <button
+              type="submit"
+              disabled={isDisabled}
+              className="rounded-md bg-buttonBg-600 px-3 py-2 text-sm font-semibold 
+            text-white shadow-sm hover:bg-buttonBg-400 disabled:bg-disabledButton"
+            >
+              {texts.signIn.btnText}
+            </button>
+          )}
         </form>
         <p className="mt-3">
           {texts.signIn.question}

@@ -77,6 +77,7 @@ export const en = {
     emailErr: 'Email address is required',
     emailMes: 'Please enter a valid email',
     passwordErr: 'Password is required',
+    loading: 'Loading...',
   },
   signUp: {
     title: 'Sign Up',
@@ -102,6 +103,7 @@ export const en = {
     confirmPasswordMatch: 'Passwords must match',
     confirmPasswordErr: 'Confirm password is required',
     acceptErr: 'Your agreement is required',
+    loading: 'Loading...',
   },
   notFound: {
     title: 'Not Found',
@@ -223,6 +225,7 @@ export const ru: typeof en = {
     emailErr: 'Требуется адрес электронной почты',
     emailMes: 'Введите действующий адрес электронной почты',
     passwordErr: 'Требуется пароль',
+    loading: 'Загрузка...',
   },
   signUp: {
     title: 'Регистрация',
@@ -250,6 +253,7 @@ export const ru: typeof en = {
     confirmPasswordMatch: 'Пароли должны совпадать',
     confirmPasswordErr: 'Требуется подтвердить пароль',
     acceptErr: 'Требуется ваше согласие',
+    loading: 'Загрузка...',
   },
   notFound: {
     title: 'Страница не найдена',
