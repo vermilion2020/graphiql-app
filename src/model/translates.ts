@@ -136,6 +136,9 @@ export const en = {
       'No endpoint provided. Save an endpoint to view the documentation',
     'endpoint/empty': `You can't save en empty endpoint`,
   },
+  errorBoundary: {
+    h1: 'Something went wrong :(',
+  },
 };
 
 export const ru: typeof en = {
@@ -273,5 +276,8 @@ export const ru: typeof en = {
     'docs/no-enpoint':
       'Не сохранен эндроинт. Добавьте эндпоинт, чтобы увидеть документацию',
     'endpoint/empty': 'Вы не можете сохранить пустой эндпоинт',
+  },
+  errorBoundary: {
+    h1: 'Что-то пошло не так :(',
   },
 };
