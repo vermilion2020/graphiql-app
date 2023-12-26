@@ -9,7 +9,7 @@ import { useContext } from 'react';
 import { LocaleContext } from '../../context/LocaleContext';
 import ArrowCircle from '../../assets/icons/ArrowCircle ';
 import { setError } from '../../redux/features/appSlice';
-import { useAppDispatch } from '../../redux/index';
+import { useAppDispatch, useAppSelector } from '../../redux/index';
 import { getErrorMessage } from '../../utils/errorMessage';
 import Spinner from '../spinner/Spinner';
 import { FirebaseError } from 'firebase/app';
@@ -24,6 +24,14 @@ export interface IFormInput {
 function SignUpForm() {
   const { texts } = useContext(LocaleContext);
   const dispatch = useAppDispatch();
+  const { isLoggedIn } = useAppSelector((state) => state.appState);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/main');
+    }
+  }, [isLoggedIn, navigate]);
 
   const schema = yup
     .object({
@@ -62,7 +70,6 @@ function SignUpForm() {
     resolver: yupResolver(schema),
   });
 
-  const navigate = useNavigate();
   const [isDisabled, setIsDisabled] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -79,7 +86,7 @@ function SignUpForm() {
         dispatch(setError(null));
         navigate('/sign-in');
       }
-  } catch (error: unknown) {
+    } catch (error: unknown) {
       if (error instanceof FirebaseError) {
         const message = getErrorMessage(error.code, texts);
         dispatch(setError(message));
@@ -89,7 +96,6 @@ function SignUpForm() {
     }
   };
 
-
   const onSubmit = async (
     data: IFormInput,
     e?: React.BaseSyntheticEvent
@@ -97,7 +103,9 @@ function SignUpForm() {
     e?.preventDefault();
 
     const { email, password } = data;
+
     signUpUser(email, password).then(() => setIsLoading(false));
+
     reset();
   };
 
@@ -206,18 +214,18 @@ function SignUpForm() {
           </div>
 
           <div className="mt-4">
-          {isLoading ? (
-            <Spinner text={texts.signUp.loading} />
-          ) : (
-            <button
-              type="submit"
-              disabled={isDisabled}
-              className="rounded-md bg-buttonBg-600 px-3 py-2 text-sm font-semibold 
+            {isLoading ? (
+              <Spinner text={texts.signUp.loading} />
+            ) : (
+              <button
+                type="submit"
+                disabled={isDisabled}
+                className="rounded-md bg-buttonBg-600 px-3 py-2 text-sm font-semibold 
               text-white shadow-sm hover:bg-buttonBg-400 disabled:bg-disabledButton"
-            >
-              {texts.signUp.title}
-            </button>
-          )}
+              >
+                {texts.signUp.title}
+              </button>
+            )}
           </div>
         </form>
         <p className="mt-3">

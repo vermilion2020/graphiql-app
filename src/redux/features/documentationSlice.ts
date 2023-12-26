@@ -9,6 +9,7 @@ const initialState: IDocumentationState = {
   typeDisplayed: null,
   mutationsDisplayed: false,
   queriesDisplayed: false,
+  loading: false,
 };
 
 export const documentationSlice = createSlice({
@@ -48,6 +49,9 @@ export const documentationSlice = createSlice({
       state.mutationsDisplayed = false;
       state.typeDisplayed = null;
     },
+    setLoading: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
+    },
   },
 });
 
@@ -61,4 +65,5 @@ export const {
   setSchemaMutations,
   setMutationsDisplayed,
   clearDocs,
+  setLoading,
 } = documentationSlice.actions;

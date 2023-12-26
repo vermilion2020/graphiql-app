@@ -1,4 +1,4 @@
-export default function Spinner({text}: {text: string}) {
+export default function Spinner({ text }: { text: string }) {
   return (
     <button
       disabled

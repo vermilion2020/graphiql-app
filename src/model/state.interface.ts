@@ -12,9 +12,13 @@ export interface IDocumentationState {
   typeDisplayed: string | null;
   queriesDisplayed: boolean;
   mutationsDisplayed: boolean;
+  loading: boolean;
 }
 
 export interface IRequestState {
   endpoint: string;
   response: string;
+  loading: boolean;
+  endpointValid: boolean;
+  endpointEdit: boolean;
 }

@@ -13,13 +13,13 @@ function Header() {
   const dispatch = useAppDispatch();
   const { isLoggedIn } = useAppSelector((state) => state.appState);
 
-  const handleLogout = async() => {
+  const handleLogout = async () => {
     try {
       await signOut(auth);
       dispatch(setSignOut());
       navigate('/');
     } catch (error) {
-      dispatch(setError("There was an error"));
+      dispatch(setError('There was an error'));
     }
   };
 

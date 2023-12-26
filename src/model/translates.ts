@@ -25,11 +25,12 @@ export const en = {
       inputFields: 'Input Fields for',
       fields: 'Fields for',
       noType: `Type doesn't exist`,
+      back: 'Docs',
     },
     errors: {
       vars: 'Error in variables',
       headers: 'Error in headers',
-      query: 'Error in query',
+      query: 'Error in a query',
     },
   },
   welcome: {
@@ -37,27 +38,32 @@ export const en = {
     signIn: 'Sign In',
     signUp: 'Sign Up',
     main: 'MAIN PAGE',
-    project: 'This application is an educational project on GraphiQL developed within RSSchool React course',
-    course: 'RSSchool React is a free-of-charge course for JavaScript / Front-End developers who want to get acquainted with React library for web application development',
+    project:
+      'This application is an educational project on GraphiQL developed within RSSchool React course',
+    course:
+      'RSSchool React is a free-of-charge course for JavaScript / Front-End developers who want to get acquainted with React library for web application development',
     tecks: 'Technologies',
     developers: {
       title: 'Developers',
       mila: {
         name: 'Mila',
         description: 'Team lead, Front-end developer',
-        contribution: 'Contribution to the project:'
+        contribution:
+          'Contribution to the project: basic structure of the project, main page - requests, documentation, prettifier',
       },
       natali: {
         name: 'Natali',
         description: 'Front-end developer',
-        contribution: 'Contribution to the project: sign-in / sign-up pages, authentication with use of Firebase'
-    },
+        contribution:
+          'Contribution to the project: sign-in / sign-up pages, authentication with use of Firebase, adaptive / responsive layout',
+      },
       victor: {
         name: 'Victor',
         description: 'Front-end developer',
-        contribution: 'Contribution to the project: welcome page, endpoint saving'
-      }
-    }
+        contribution:
+          'Contribution to the project: welcome page, endpoint saving, validation for query body, variables and headers',
+      },
+    },
   },
   signIn: {
     title: 'Sign In',
@@ -137,6 +143,10 @@ export const en = {
     'docs/no-enpoint':
       'No endpoint provided. Save an endpoint to view the documentation',
     'endpoint/empty': `You can't save en empty endpoint`,
+    'request/url': 'Invalid URL is provided. Scheme check request was failed',
+    'request/docs': 'An error occurs while SDL request',
+    'request/query':
+      'An endpoint responses with an error. Check the query or try later',
   },
 };
 
@@ -163,6 +173,7 @@ export const ru: typeof en = {
       inputFields: 'Поля ввода для',
       fields: 'Поля для',
       noType: `Такого типа не существует`,
+      back: 'Назад',
     },
     errors: {
       vars: 'Ошибка в переменных',
@@ -175,27 +186,32 @@ export const ru: typeof en = {
     signIn: 'Вход',
     signUp: 'Регистрация',
     main: 'НА ГЛАВНУЮ',
-    project: 'Данное приложение является учебным проектом по GraphiQL, разработанным в рамках курса RSSchool React',
-    course: 'RSSchool React - бесплатный курс для JavaScript / Front-End-разработчиков, желающих ознакомиться с библиотекой React для разработки web-приложений',
+    project:
+      'Данное приложение является учебным проектом по GraphiQL, разработанным в рамках курса RSSchool React',
+    course:
+      'RSSchool React - бесплатный курс для JavaScript / Front-End-разработчиков, желающих ознакомиться с библиотекой React для разработки web-приложений',
     tecks: 'Технологии',
     developers: {
       title: 'Разработчики',
       mila: {
         name: 'Мила',
         description: 'Тимлид, Front-end-разработчик',
-        contribution: 'Личный вклад в проект: '
+        contribution:
+          'Личный вклад в проект: базовая структура проекта, главная страница - запросы, документация, претифаер',
       },
       natali: {
         name: 'Натали',
         description: 'Front-end-разработчик',
-        contribution: 'Личный вклад в проект: страницы входа и регистрации, аутентификация с использованием Firebase'
+        contribution:
+          'Личный вклад в проект: страницы входа и регистрации, аутентификация с использованием Firebase, адаптивный дизайн',
       },
       victor: {
         name: 'Виктор',
         description: 'Front-end-разработчик',
-        contribution: 'Личный вклад в проект: страница-приветствие, сохранение конечной точки'
-      }
-    }
+        contribution:
+          'Личный вклад в проект: страница-приветствие, сохранение конечной точки, валидация тела запроса, переменных и заголовков',
+      },
+    },
   },
   signIn: {
     title: 'Вход',
@@ -277,5 +293,10 @@ export const ru: typeof en = {
     'docs/no-enpoint':
       'Не сохранен эндроинт. Добавьте эндпоинт, чтобы увидеть документацию',
     'endpoint/empty': 'Вы не можете сохранить пустой эндпоинт',
+    'request/url':
+      'Вы запрашиваете некорректный URL или сервер отвечает с ошибкой. Проверьте URL или попробуйте позже',
+    'request/docs': 'Во время SDL запроса произошла ошибка',
+    'request/query':
+      'Сервер ответил с ошибкой. Проверьте тело запроса или попробуйте позже',
   },
 };
