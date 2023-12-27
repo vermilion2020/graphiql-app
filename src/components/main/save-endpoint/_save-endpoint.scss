@@ -1,0 +1,38 @@
+.save-endpoint-wrapper {
+  width: 97%;
+
+  .form {
+    display: flex;
+    justify-content: left;
+    align-self: center;
+    gap: 10px;
+    margin-left: 0.5rem;
+    margin-top: 3px;
+
+    .text-input {
+      height: 35px;
+      padding: 0 5px;
+      width: 93%;
+      max-width: 350px;
+      border: solid 2px #a9a9a9;
+      border-radius: 0.5rem;
+
+      &.invalid,
+      &.invalid:focus {
+        border: solid 2px #a11818;
+      }
+    }
+
+    .save-icon {
+      background-image: url('./checked.svg');
+      background-size: 1.5rem;
+      background-repeat: no-repeat;
+    }
+
+    .edit-icon {
+      background-image: url('./edit.svg');
+      background-size: 1.5rem;
+      background-repeat: no-repeat;
+    }
+  }
+}

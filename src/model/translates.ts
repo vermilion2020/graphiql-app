@@ -25,11 +25,12 @@ export const en = {
       inputFields: 'Input Fields for',
       fields: 'Fields for',
       noType: `Type doesn't exist`,
+      back: 'Docs',
     },
     errors: {
       vars: 'Error in variables',
       headers: 'Error in headers',
-      query: 'Error in query',
+      query: 'Error in a query',
     },
   },
   welcome: {
@@ -47,19 +48,20 @@ export const en = {
       mila: {
         name: 'Mila',
         description: 'Team lead, Front-end developer',
-        contribution: 'Contribution to the project:',
+        contribution:
+          'Contribution to the project: basic structure of the project, main page - requests, documentation, prettifier',
       },
       natali: {
         name: 'Natali',
         description: 'Front-end developer',
         contribution:
-          'Contribution to the project: sign-in / sign-up pages, authentication with use of Firebase',
+          'Contribution to the project: sign-in / sign-up pages, authentication with use of Firebase, adaptive / responsive layout',
       },
       victor: {
         name: 'Victor',
         description: 'Front-end developer',
         contribution:
-          'Contribution to the project: welcome page, endpoint saving',
+          'Contribution to the project: welcome page, endpoint saving, validation for query body, variables and headers',
       },
     },
   },
@@ -75,6 +77,7 @@ export const en = {
     emailErr: 'Email address is required',
     emailMes: 'Please enter a valid email',
     passwordErr: 'Password is required',
+    loading: 'Loading...',
   },
   signUp: {
     title: 'Sign Up',
@@ -100,6 +103,7 @@ export const en = {
     confirmPasswordMatch: 'Passwords must match',
     confirmPasswordErr: 'Confirm password is required',
     acceptErr: 'Your agreement is required',
+    loading: 'Loading...',
   },
   notFound: {
     title: 'Not Found',
@@ -139,6 +143,10 @@ export const en = {
     'docs/no-enpoint':
       'No endpoint provided. Save an endpoint to view the documentation',
     'endpoint/empty': `You can't save en empty endpoint`,
+    'request/url': 'Invalid URL is provided. Scheme check request was failed',
+    'request/docs': 'An error occurs while SDL request',
+    'request/query':
+      'An endpoint responses with an error. Check the query or try later',
   },
   errorBoundary: {
     p1: 'An error occured in the application, or the environment variables for Firebase were not set.',
@@ -169,6 +177,7 @@ export const ru: typeof en = {
       inputFields: 'Поля ввода для',
       fields: 'Поля для',
       noType: `Такого типа не существует`,
+      back: 'Назад',
     },
     errors: {
       vars: 'Ошибка в переменных',
@@ -191,19 +200,20 @@ export const ru: typeof en = {
       mila: {
         name: 'Мила',
         description: 'Тимлид, Front-end-разработчик',
-        contribution: 'Личный вклад в проект: ',
+        contribution:
+          'Личный вклад в проект: базовая структура проекта, главная страница - запросы, документация, претифаер',
       },
       natali: {
         name: 'Натали',
         description: 'Front-end-разработчик',
         contribution:
-          'Личный вклад в проект: страницы входа и регистрации, аутентификация с использованием Firebase',
+          'Личный вклад в проект: страницы входа и регистрации, аутентификация с использованием Firebase, адаптивный дизайн',
       },
       victor: {
         name: 'Виктор',
         description: 'Front-end-разработчик',
         contribution:
-          'Личный вклад в проект: страница-приветствие, сохранение конечной точки',
+          'Личный вклад в проект: страница-приветствие, сохранение конечной точки, валидация тела запроса, переменных и заголовков',
       },
     },
   },
@@ -219,6 +229,7 @@ export const ru: typeof en = {
     emailErr: 'Требуется адрес электронной почты',
     emailMes: 'Введите действующий адрес электронной почты',
     passwordErr: 'Требуется пароль',
+    loading: 'Загрузка...',
   },
   signUp: {
     title: 'Регистрация',
@@ -246,6 +257,7 @@ export const ru: typeof en = {
     confirmPasswordMatch: 'Пароли должны совпадать',
     confirmPasswordErr: 'Требуется подтвердить пароль',
     acceptErr: 'Требуется ваше согласие',
+    loading: 'Загрузка...',
   },
   notFound: {
     title: 'Страница не найдена',
@@ -285,6 +297,11 @@ export const ru: typeof en = {
     'docs/no-enpoint':
       'Не сохранен эндроинт. Добавьте эндпоинт, чтобы увидеть документацию',
     'endpoint/empty': 'Вы не можете сохранить пустой эндпоинт',
+    'request/url':
+      'Вы запрашиваете некорректный URL или сервер отвечает с ошибкой. Проверьте URL или попробуйте позже',
+    'request/docs': 'Во время SDL запроса произошла ошибка',
+    'request/query':
+      'Сервер ответил с ошибкой. Проверьте тело запроса или попробуйте позже',
   },
   errorBoundary: {
     p1: 'В приложении произошла ошибка или не были установлены переменные окружения для Firebase.',
