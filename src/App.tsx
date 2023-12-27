@@ -30,7 +30,6 @@ function App() {
 
 function WrappedApp() {
   return (
-
     <BrowserRouter>
       <LocaleState>
         <Provider store={store}>
@@ -42,7 +41,6 @@ function WrappedApp() {
         </Provider>
       </LocaleState>
     </BrowserRouter>
-    
   );
 }
 

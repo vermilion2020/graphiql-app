@@ -24,8 +24,7 @@ try {
   app = initializeApp(firebaseConfig);
   // Initialize Firebase Authentication and get a reference to the service
   auth = getAuth(app);
-}
-catch(e) {
+} catch (e) {
   authError = e as string;
 }
 
