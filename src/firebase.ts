@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { FirebaseApp, initializeApp } from 'firebase/app';
+import { Auth, getAuth } from 'firebase/auth';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -15,9 +15,19 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_APPID,
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+let app = {} as FirebaseApp;
+let auth = {} as Auth;
+let authError: string | null = null;
 
-// Initialize Firebase Authentication and get a reference to the service
-export const auth = getAuth(app);
+try {
+  // Initialize Firebase
+  app = initializeApp(firebaseConfig);
+  // Initialize Firebase Authentication and get a reference to the service
+  auth = getAuth(app);
+}
+catch(e) {
+  authError = e as string;
+}
+
+export { auth, authError };
 export default app;

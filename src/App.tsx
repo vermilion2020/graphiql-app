@@ -10,6 +10,7 @@ import { LocaleState } from './context/LocaleContext.tsx';
 import AppLayout from './components/layout/AppLayout.tsx';
 import AuthLayout from './components/layout/AuthLayout.tsx';
 import { PersistGate } from 'redux-persist/integration/react';
+import ErrorBoundary from './components/error-boundary/ErrorBoundary.tsx';
 
 function App() {
   return (
@@ -29,15 +30,19 @@ function App() {
 
 function WrappedApp() {
   return (
+
     <BrowserRouter>
       <LocaleState>
         <Provider store={store}>
           <PersistGate persistor={persistor}>
-            <App />
+            <ErrorBoundary>
+              <App />
+            </ErrorBoundary>
           </PersistGate>
         </Provider>
       </LocaleState>
     </BrowserRouter>
+    
   );
 }
 

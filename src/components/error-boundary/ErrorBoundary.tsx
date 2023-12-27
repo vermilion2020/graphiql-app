@@ -31,7 +31,7 @@ class ErrorBoundary extends Component<Props, State> {
       'min-w-max rounded-md bg-buttonBg-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-buttonBg-400 disabled:bg-disabledButton hover:text-white';
     if (this.state.hasError) {
       return (
-        <div className="flex flex-col max-w-120 h-full justify-center gap-3 items-center">
+        <div className="flex flex-col max-w-120 h-full justify-center gap-3 items-center mt-4">
           <p>{texts.errorBoundary.p1}</p>
           <p>{texts.errorBoundary.p2}</p>
           <NavLink to="https://t.me/vermishe1ka">
@@ -53,9 +53,9 @@ class ErrorBoundary extends Component<Props, State> {
               alt="Sad cat"
             ></img>
           </div>
-          <NavLink to="/" className={buttonClass}>
+          <a href="/" className={buttonClass}>
             {texts.menu.welcome}
-          </NavLink>
+          </a>
         </div>
       );
     }
