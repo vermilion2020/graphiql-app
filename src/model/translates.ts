@@ -137,7 +137,8 @@ export const en = {
     'endpoint/empty': `You can't save en empty endpoint`,
   },
   errorBoundary: {
-    h1: 'Something went wrong :(',
+    p1: 'An error occured in the application, or the environment variables for Firebase were not set.',
+    p2: 'If you failed to solve the problem on your own, do not hesitate to contact us:',
   },
 };
 
@@ -278,6 +279,7 @@ export const ru: typeof en = {
     'endpoint/empty': 'Вы не можете сохранить пустой эндпоинт',
   },
   errorBoundary: {
-    h1: 'Что-то пошло не так :(',
+    p1: 'В приложении произошла ошибка или не были установлены переменные окружения для Firebase.',
+    p2: 'Если у Вас не получается решить проблему, свяжитесь с нами:',
   },
 };
