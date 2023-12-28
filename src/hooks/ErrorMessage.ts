@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { authError } from '../firebase';
 import { useAppDispatch, useAppSelector } from '../redux';
 import { setError } from '../redux/features/appSlice';
 import { HIDE_MODAL_TIMEOUT } from '../utils/errorMessage';
@@ -15,6 +16,10 @@ export function useErrorMessage() {
       return () => {
         clearTimeout(timeoutId);
       };
+    }
+
+    if (authError) {
+      throw new Error(authError);
     }
   }, [dispatch, error]);
 

@@ -148,6 +148,10 @@ export const en = {
     'request/query':
       'An endpoint responses with an error. Check the query or try later',
   },
+  errorBoundary: {
+    p1: 'An error occured in the application, or the environment variables for Firebase were not set.',
+    p2: 'If you failed to solve the problem on your own, do not hesitate to contact us:',
+  },
 };
 
 export const ru: typeof en = {
@@ -298,5 +302,9 @@ export const ru: typeof en = {
     'request/docs': 'Во время SDL запроса произошла ошибка',
     'request/query':
       'Сервер ответил с ошибкой. Проверьте тело запроса или попробуйте позже',
+  },
+  errorBoundary: {
+    p1: 'В приложении произошла ошибка или не были установлены переменные окружения для Firebase.',
+    p2: 'Если у Вас не получается решить проблему, свяжитесь с нами:',
   },
 };
