@@ -38,6 +38,7 @@ export const en = {
     signIn: 'Sign In',
     signUp: 'Sign Up',
     main: 'MAIN PAGE',
+    noEnv: 'Sorry, but to continue the local functioning of the application, you should put .env file to the project root folder.',
     project:
       'This application is an educational project on GraphiQL developed within RSSchool React course',
     course:
@@ -190,6 +191,7 @@ export const ru: typeof en = {
     signIn: 'Вход',
     signUp: 'Регистрация',
     main: 'НА ГЛАВНУЮ',
+    noEnv: 'Извините, но для продолжения локальной работы приложения необходимо поместить файл .env в корневую папку проекта.',
     project:
       'Данное приложение является учебным проектом по GraphiQL, разработанным в рамках курса RSSchool React',
     course:
