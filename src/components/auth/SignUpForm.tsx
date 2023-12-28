@@ -74,7 +74,6 @@ function SignUpForm() {
   const [isLoading, setIsLoading] = useState(false);
 
   const signUpUser = async (email: string, password: string) => {
-    setIsLoading(true);
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
@@ -101,9 +100,9 @@ function SignUpForm() {
     e?: React.BaseSyntheticEvent
   ): Promise<void> => {
     e?.preventDefault();
+    setIsLoading(true);
 
     const { email, password } = data;
-
     signUpUser(email, password).then(() => setIsLoading(false));
 
     reset();
@@ -135,6 +134,7 @@ function SignUpForm() {
               type="email"
               id="email"
               autoComplete="email"
+              disabled={isLoading}
               placeholder={texts.signUp.emailPlaceholder}
               className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
             focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
@@ -156,6 +156,7 @@ function SignUpForm() {
               type="password"
               id="password"
               autoComplete="new-password"
+              disabled={isLoading}
               placeholder={texts.signUp.passwordPlaceholder}
               className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
             focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
@@ -176,6 +177,7 @@ function SignUpForm() {
             <input
               type="password"
               id="confirmPassword"
+              disabled={isLoading}
               placeholder={texts.signUp.confirmPasswordPlaceholder}
               autoComplete="none"
               className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
