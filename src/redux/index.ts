@@ -3,6 +3,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import appReducer from './features/appSlice';
 import requestReducer from './features/requestSlice';
 import documentationReducer from './features/documentationSlice';
+import editorReducer from './features/editorSlice';
 import storage from 'redux-persist/lib/storage';
 import {
   persistReducer,
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   appState: appReducer,
   requestState: requestReducer,
   documentationState: documentationReducer,
+  editorState: editorReducer,
   [schemaApi.reducerPath]: schemaApi.reducer,
 });
 

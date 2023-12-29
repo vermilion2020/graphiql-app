@@ -1,17 +1,18 @@
-import { EditorContext } from '../../../context/EditorContext';
 import { LocaleContext } from '../../../context/LocaleContext';
+import { useAppDispatch, useAppSelector } from '../../../redux';
+import { setCollapsed, setVisibleTab } from '../../../redux/features/editorSlice';
 import { SMALL_ICON } from '../../../utils/documentation-helper';
 import { useContext } from 'react';
 
 function VarsToggle() {
-  const { setVisibleTab, setCollapsed, collapsed, visibleTab } =
-    useContext(EditorContext);
+  const { collapsed, visibleTab } = useAppSelector((state) => state.editorState);
   const { texts } = useContext(LocaleContext);
+  const dispatch = useAppDispatch();
 
   return (
     <div className="flex gap-3 switch-vars">
       <span
-        onClick={() => setVisibleTab('vars')}
+        onClick={() => dispatch(setVisibleTab('vars'))}
         className={
           visibleTab === 'vars'
             ? 'text-teal-500 font-bold'
@@ -21,7 +22,7 @@ function VarsToggle() {
         {texts.main.variables}
       </span>
       <span
-        onClick={() => setVisibleTab('headers')}
+        onClick={() => dispatch(setVisibleTab('headers'))}
         className={
           visibleTab === 'headers'
             ? 'text-teal-500 font-bold'
@@ -33,7 +34,7 @@ function VarsToggle() {
       {collapsed ? (
         <img
           src="./expand.svg"
-          onClick={() => setCollapsed(false)}
+          onClick={() => dispatch(setCollapsed(false))}
           className={SMALL_ICON}
           alt="Show Variables and Headers"
           title="Show Variables and Headers"
@@ -41,7 +42,7 @@ function VarsToggle() {
       ) : (
         <img
           src="./collapse.svg"
-          onClick={() => setCollapsed(true)}
+          onClick={() => dispatch(setCollapsed(true))}
           className={SMALL_ICON}
           alt="Hide Variables and Headers"
           title="Hide Variables and Headers"

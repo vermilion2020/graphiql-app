@@ -1,7 +1,6 @@
 import Documentation from '../documentation/Documentation';
 import Editor from './Editor';
 import Response from './Response';
-import { EditorState } from '../../context/EditorContext';
 import { useAppSelector } from '../../redux';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -35,9 +34,7 @@ function Main() {
         <Documentation />
       </div>
       <div className={editorClasses}>
-        <EditorState>
-          <Editor />
-        </EditorState>
+        <Editor />
       </div>
       <div className="w-4/12 sector-container">
         <Response />

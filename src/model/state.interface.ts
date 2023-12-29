@@ -22,3 +22,11 @@ export interface IRequestState {
   endpointValid: boolean;
   endpointEdit: boolean;
 }
+
+export interface IEditorState {
+  collapsed: boolean;
+  visibleTab: 'vars' | 'headers';
+  query: string;
+  vars: string;
+  headers: string;
+}

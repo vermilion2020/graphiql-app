@@ -1,4 +1,3 @@
-import { EditorContext } from '../../../context/EditorContext';
 import { LocaleContext } from '../../../context/LocaleContext';
 import { useAppDispatch, useAppSelector } from '../../../redux';
 import {
@@ -7,13 +6,14 @@ import {
 } from '../../../redux/api/schemaApi';
 import { setError } from '../../../redux/features/appSlice';
 import { clearDocs } from '../../../redux/features/documentationSlice';
+import { setQuery } from '../../../redux/features/editorSlice';
 import { BIG_ICON, STANDARD_ICON } from '../../../utils/documentation-helper';
 import { validJson, validQuery } from '../../../utils/editor-validation';
 import { prettifyQuery } from '../../../utils/prettify';
 import { useContext } from 'react';
 
 function Toolbar() {
-  const { query, setQuery, headers, vars } = useContext(EditorContext);
+  const { query, vars, headers } = useAppSelector((state) => state.editorState);
   const { texts, locale } = useContext(LocaleContext);
   const [triggerSchema] = useLazyGetSchemaQuery();
   const [triggerRequest] = useLazySendRequestQuery();
@@ -41,7 +41,7 @@ function Toolbar() {
     }
     const results = prettifyQuery(query);
     if (results.status === 'ok') {
-      setQuery(results.query);
+      dispatch(setQuery(results.query));
     } else {
       dispatch(setError(texts.main.errors.query));
     }
@@ -101,7 +101,7 @@ function Toolbar() {
             )}
             {schemaQueries && (
               <img
-                src="./docs.svg"
+                src="./hide-docs.svg"
                 onClick={hideDocs}
                 className={STANDARD_ICON}
                 alt="Hide docs"
