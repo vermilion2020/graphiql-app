@@ -8,10 +8,11 @@ import VarsToggle from './vars-toggle/VarsToggle';
 import { BASIC_TYPES_QUERY } from '../../model/queries';
 import { useAppDispatch, useAppSelector } from '../../redux';
 import { setHeaders, setQuery, setVars } from '../../redux/features/editorSlice';
+import InfoPopup from '../common/infoPopup';
 const codeClasses = ' border-gray-200 border-solid border-4 rounded-md p-1';
 
 function Editor() {
-  const { collapsed, visibleTab, query, vars, headers } = useAppSelector((state) => state.editorState);
+  const { collapsed, visibleTab, query, vars, headers, infoDisplayed } = useAppSelector((state) => state.editorState);
   const dispatch = useAppDispatch();
   const editorHeight = collapsed ? '58vh' : '34vh';
 
@@ -79,6 +80,7 @@ function Editor() {
           />
         </div>
       )}
+      {infoDisplayed && <InfoPopup />}
     </>
   );
 }

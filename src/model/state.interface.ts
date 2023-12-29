@@ -29,4 +29,5 @@ export interface IEditorState {
   query: string;
   vars: string;
   headers: string;
+  infoDisplayed: boolean;
 }

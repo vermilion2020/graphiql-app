@@ -6,7 +6,7 @@ import {
 } from '../../../redux/api/schemaApi';
 import { setError } from '../../../redux/features/appSlice';
 import { clearDocs } from '../../../redux/features/documentationSlice';
-import { setQuery } from '../../../redux/features/editorSlice';
+import { setInfoDisplayed, setQuery } from '../../../redux/features/editorSlice';
 import { BIG_ICON, STANDARD_ICON } from '../../../utils/documentation-helper';
 import { validJson, validQuery } from '../../../utils/editor-validation';
 import { prettifyQuery } from '../../../utils/prettify';
@@ -46,6 +46,10 @@ function Toolbar() {
       dispatch(setError(texts.main.errors.query));
     }
   };
+
+  const showTooltip = () => {
+    dispatch(setInfoDisplayed(true));
+  }
 
   const sendRequest = () => {
     if (!validQuery(query)) {
@@ -111,6 +115,13 @@ function Toolbar() {
             <img
               src="./prettify.svg"
               onClick={prettify}
+              className={STANDARD_ICON}
+              alt="Prettify"
+              title="Prettify"
+            />
+            <img
+              src="./info.svg"
+              onClick={showTooltip}
               className={STANDARD_ICON}
               alt="Prettify"
               title="Prettify"

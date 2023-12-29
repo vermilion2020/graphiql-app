@@ -6,7 +6,8 @@ const initialState: IEditorState = {
   visibleTab: 'vars',
   query: '',
   vars: '',
-  headers: ''
+  headers: '',
+  infoDisplayed: false,
 };
 
 export const editorSlice = createSlice({
@@ -28,9 +29,12 @@ export const editorSlice = createSlice({
     setHeaders: (state, action: PayloadAction<string>) => {
       state.headers = action.payload;
     },
+    setInfoDisplayed: (state, action: PayloadAction<boolean>) => {
+      state.infoDisplayed = action.payload;
+    },
   },
 });
 
 export default editorSlice.reducer;
 
-export const { setCollapsed, setVisibleTab, setQuery, setVars, setHeaders } = editorSlice.actions;
+export const { setCollapsed, setVisibleTab, setQuery, setVars, setHeaders, setInfoDisplayed } = editorSlice.actions;
