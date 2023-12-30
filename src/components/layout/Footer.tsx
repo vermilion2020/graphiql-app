@@ -1,55 +1,43 @@
-import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../redux';
 import PopupError from '../auth/PopupError';
 import { useErrorMessage } from '../../hooks/ErrorMessage';
+import GitHub from '../../assets/icons/GitHub';
+import RSSchool from '../../assets/icons/RSSchool';
 
 function Footer() {
   const { error } = useAppSelector((state) => state.appState);
   useErrorMessage();
 
   return (
-    <footer className="app-footer">
+    <footer className="footer-wrapper">
       {!!error && <PopupError />}
       <div className="footer-container">
-        <p className="copyright">{new Date().getFullYear()}</p>
-        <Link
-          to="https://github.com/vermilion2020"
-          className="github-link"
-          target="_blank"
-          title="Mila"
-        >
-          <svg className="icon-git">
-            <use xlinkHref="./sprite-footer.svg#logo-git"></use>
-          </svg>
-          <p>vermilion2020</p>
-        </Link>
-        <Link
-          to="https://github.com/Mali-zi"
-          className="github-link"
-          target="_blank"
-          title="Natasha"
-        >
-          <svg className="icon-git">
-            <use xlinkHref="./sprite-footer.svg#logo-git"></use>
-          </svg>
-          <p>Mali-zi</p>
-        </Link>{' '}
-        <Link
-          to="https://github.com/vvsar"
-          className="github-link"
-          target="_blank"
-          title="Viktor"
-        >
-          <svg className="icon-git">
-            <use xlinkHref="./sprite-footer.svg#logo-git"></use>
-          </svg>
-          <p>vvsar</p>
-        </Link>{' '}
-        <Link to="https://rs.school/react/" target="_blank" className="link-rs">
-          <svg className="icon-rs">
-            <use xlinkHref="./sprite-footer.svg#logo-rs-school"></use>
-          </svg>
-        </Link>
+          <a href="https://rs.school/react/">
+            <RSSchool />
+          </a>
+        <div className="copyright-link-wrapper">
+          <p className="copyright">{new Date().getFullYear()}</p>
+          <div className="link-wrapper">
+            <div className="inline hover:scale-105 transition ease-in-out delay-150 hover:transition-all">
+              <a href="https://github.com/vermilion2020" title="Mila">
+                <GitHub />
+                <span className="font-semibold">vermilion2020</span>
+              </a>
+            </div>
+            <div className="inline hover:scale-105">
+              <a href="https://github.com/Mali-zi" title="Natasha">
+                <GitHub />
+                <span className="font-semibold">mali-zi</span>
+              </a>
+            </div>
+            <div className="inline hover:scale-105">
+              <a href="https://github.com/vvsar" title="Viktor">
+                <GitHub />
+                <span className="font-semibold">vvsar</span>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
   );

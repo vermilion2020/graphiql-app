@@ -91,12 +91,12 @@ function SignInForm() {
   }, [formState]);
 
   return (
-    <div className="flex flex-row items-center justify-center min-h-full">
-      <div className="flex flex-col justify-center xs:p-4 lg:px-8 border rounded-lg lg:shadow-xl xs:shadow-md">
+    <div className="form-wrapper">
+      <div className="flex flex-col justify-center xs:p-4 lg:px-8 border rounded-lg lg:shadow-xl xs:shadow-md bg-white">
         <Link to="/" className="font-semibold leading-6 ps-1">
           <ArrowCircle />
         </Link>
-        <h2 className="mt-8 mb-4 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+        <h2 className="mt-8 mb-4 text-center text-2xl font-bold leading-9 tracking-tight text-buttonColor-400">
           {texts.signIn.title}
         </h2>
         <form className="bg-white max-w-xs" onSubmit={handleSubmit(onSubmit)}>
@@ -113,7 +113,7 @@ function SignInForm() {
               className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
             focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
             disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
-            invalid:border-pink-500 invalid:text-pink-600
+            invalid:border-pink-500 invalid:text-pink-600 
             focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
               {...register('email', {
                 required: `${texts.signIn.emailErr}`,
@@ -158,8 +158,8 @@ function SignInForm() {
             <button
               type="submit"
               disabled={isDisabled}
-              className="rounded-md bg-buttonBg-600 px-3 py-2 text-sm font-semibold 
-            text-white shadow-sm hover:bg-buttonBg-400 disabled:bg-disabledButton"
+              className="rounded-md bg-buttonBg-400 px-3 py-2 text-sm font-semibold 
+            text-white shadow-sm hover:bg-buttonBg-300 disabled:bg-disabledButton"
             >
               {texts.signIn.btnText}
             </button>
@@ -169,7 +169,7 @@ function SignInForm() {
           {texts.signIn.question}
           <Link
             to="/sign-up"
-            className="font-semibold leading-6 ps-1 text-buttonColor-900"
+            className="font-semibold leading-6 ps-1"
           >
             {texts.signIn.linkText}
           </Link>

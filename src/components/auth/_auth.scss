@@ -4,3 +4,12 @@
   color: $errorColor;
   margin: 0.2rem;
 }
+
+.form-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items: center;
+  min-height: fit-content;
+}
+

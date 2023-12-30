@@ -13,6 +13,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import ErrorBoundary from './components/error-boundary/ErrorBoundary.tsx';
 import { useEffect } from 'react';
 import { firebaseConfig } from './firebase.ts';
+import Snowflakes from './components/snowflakes/Snowflakes.tsx';
 
 function App() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ function App() {
     if (firebaseConfig.apiKey === 'mock_key') {
       navigate('/');
     }
-  }, [navigate])
+  }, [navigate]);
 
   return (
     <Routes>
@@ -45,6 +46,7 @@ function WrappedApp() {
         <Provider store={store}>
           <PersistGate persistor={persistor}>
             <ErrorBoundary>
+              <Snowflakes />
               <App />
             </ErrorBoundary>
           </PersistGate>

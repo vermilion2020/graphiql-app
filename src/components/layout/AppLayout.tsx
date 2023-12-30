@@ -4,6 +4,7 @@ import Header from './Header';
 import Footer from './Footer';
 import { useEffect } from 'react';
 import { setSignOut } from '../../redux/features/appSlice';
+import imageSrc from '../../assets/bg_new.png';
 
 const AppLayout = () => {
   const navigate = useNavigate();
@@ -21,18 +22,18 @@ const AppLayout = () => {
       5 * 60 * 1000
     );
 
-    // clean up setInterval
     return () => clearInterval(handle);
   });
 
   return (
-    <>
+    <div className="app-wrapper">
       <Header />
       <main className="app-container">
         <Outlet />
       </main>
       <Footer />
-    </>
+      <img src={imageSrc} alt="bg-img" className="bg-img" />
+    </div>
   );
 };
 

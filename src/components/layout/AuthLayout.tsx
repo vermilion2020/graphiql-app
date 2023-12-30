@@ -1,13 +1,19 @@
 import { Outlet } from 'react-router-dom';
 import Footer from './Footer';
+import imageSrc from '../../assets/bg_new.png';
+import WelcomeHeader from './WelcomeHeader';
 
 const AuthLayout = () => (
-  <>
-    <main className="app-container">
+  <div className="app-wrapper">
+    <div className="app-container">
+      <WelcomeHeader />
       <Outlet />
-    </main>
-    <Footer />
-  </>
+      <Footer />
+    </div>
+    <div className="bg-img">
+      <img src={imageSrc} alt="bg-img" />
+    </div>
+  </div>
 );
 
 export default AuthLayout;
