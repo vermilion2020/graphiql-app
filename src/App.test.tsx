@@ -12,7 +12,7 @@ describe('App tests', () => {
       screen.getByRole('heading', {
         level: 1,
       })
-    ).toHaveTextContent('GraphiQL');
+    ).toHaveTextContent('GraphQL editor');
   });
   <WrappedApp />;
 });

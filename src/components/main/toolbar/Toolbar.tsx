@@ -6,7 +6,10 @@ import {
 } from '../../../redux/api/schemaApi';
 import { setError } from '../../../redux/features/appSlice';
 import { clearDocs } from '../../../redux/features/documentationSlice';
-import { setInfoDisplayed, setQuery } from '../../../redux/features/editorSlice';
+import {
+  setInfoDisplayed,
+  setQuery,
+} from '../../../redux/features/editorSlice';
 import { BIG_ICON, STANDARD_ICON } from '../../../utils/documentation-helper';
 import { validJson, validQuery } from '../../../utils/editor-validation';
 import { prettifyQuery } from '../../../utils/prettify';
@@ -49,7 +52,7 @@ function Toolbar() {
 
   const showTooltip = () => {
     dispatch(setInfoDisplayed(true));
-  }
+  };
 
   const sendRequest = () => {
     if (!validQuery(query)) {
@@ -99,6 +102,7 @@ function Toolbar() {
                 src="./docs.svg"
                 onClick={handleGetDocsClick}
                 className={STANDARD_ICON}
+                data-testid="show-docs-btn"
                 alt="Show docs"
                 title="Show docs"
               />
@@ -108,6 +112,7 @@ function Toolbar() {
                 src="./hide-docs.svg"
                 onClick={hideDocs}
                 className={STANDARD_ICON}
+                data-testid="hide-docs-btn"
                 alt="Hide docs"
                 title="Hide docs"
               />
@@ -116,6 +121,7 @@ function Toolbar() {
               src="./prettify.svg"
               onClick={prettify}
               className={STANDARD_ICON}
+              data-testid="prettify-btn"
               alt="Prettify"
               title="Prettify"
             />
@@ -123,6 +129,7 @@ function Toolbar() {
               src="./info.svg"
               onClick={showTooltip}
               className={STANDARD_ICON}
+              data-testid="info-btn"
               alt="Prettify"
               title="Prettify"
             />
@@ -132,6 +139,7 @@ function Toolbar() {
               src="./play.svg"
               onClick={sendRequest}
               className={BIG_ICON}
+              data-testid="run-query-btn"
               alt="Run query"
               title="Run query"
             />

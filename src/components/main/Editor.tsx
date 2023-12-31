@@ -1,18 +1,22 @@
 import SaveEndpoint from './save-endpoint/SaveEndpoint';
 import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
-import { indentUnit } from '@codemirror/language';
 import { useCallback } from 'react';
 import Toolbar from './toolbar/Toolbar';
 import VarsToggle from './vars-toggle/VarsToggle';
 import { BASIC_TYPES_QUERY } from '../../model/queries';
 import { useAppDispatch, useAppSelector } from '../../redux';
-import { setHeaders, setQuery, setVars } from '../../redux/features/editorSlice';
+import {
+  setHeaders,
+  setQuery,
+  setVars,
+} from '../../redux/features/editorSlice';
 import InfoPopup from '../common/infoPopup';
 const codeClasses = ' border-gray-200 border-solid border-4 rounded-md p-1';
 
 function Editor() {
-  const { collapsed, visibleTab, query, vars, headers, infoDisplayed } = useAppSelector((state) => state.editorState);
+  const { collapsed, visibleTab, query, vars, headers, infoDisplayed } =
+    useAppSelector((state) => state.editorState);
   const dispatch = useAppDispatch();
   const editorHeight = collapsed ? '58vh' : '34vh';
 
@@ -43,11 +47,12 @@ function Editor() {
       <Toolbar />
       <div className={codeClasses}>
         <CodeMirror
+          data-testid="query-editor"
           value={query}
           placeholder={BASIC_TYPES_QUERY}
           height={editorHeight}
           className="text-left"
-          extensions={[javascript({ jsx: true }), indentUnit.of(' ')]}
+          extensions={[javascript({ typescript: true })]}
           onChange={onChangeMain}
         />
       </div>
@@ -59,7 +64,7 @@ function Editor() {
             placeholder={JSON.stringify({ var: 'val' }, null, 2)}
             height="200px"
             className="text-left"
-            extensions={[javascript({ jsx: true })]}
+            extensions={[javascript({ typescript: true })]}
             onChange={onChangeVars}
           />
         </div>
@@ -75,7 +80,7 @@ function Editor() {
             )}
             height="200px"
             className="text-left"
-            extensions={[javascript({ jsx: true })]}
+            extensions={[javascript({ typescript: true })]}
             onChange={onChangeHeaders}
           />
         </div>

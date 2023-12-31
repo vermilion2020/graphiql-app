@@ -37,4 +37,11 @@ export const editorSlice = createSlice({
 
 export default editorSlice.reducer;
 
-export const { setCollapsed, setVisibleTab, setQuery, setVars, setHeaders, setInfoDisplayed } = editorSlice.actions;
+export const {
+  setCollapsed,
+  setVisibleTab,
+  setQuery,
+  setVars,
+  setHeaders,
+  setInfoDisplayed,
+} = editorSlice.actions;

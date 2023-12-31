@@ -30,7 +30,11 @@ export const TEST_QUERY = `query ($ids: [ID!]! = "ids") {
 }`;
 
 export const TEST_VARS = `{
-  "ids": [1,2,3]
+  "ids": [
+    1,
+    2,
+    3
+  ]
 }`;
 
 export const TEST_HEADERS = `{

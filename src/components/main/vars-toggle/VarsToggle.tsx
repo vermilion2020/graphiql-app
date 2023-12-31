@@ -1,11 +1,16 @@
 import { LocaleContext } from '../../../context/LocaleContext';
 import { useAppDispatch, useAppSelector } from '../../../redux';
-import { setCollapsed, setVisibleTab } from '../../../redux/features/editorSlice';
+import {
+  setCollapsed,
+  setVisibleTab,
+} from '../../../redux/features/editorSlice';
 import { SMALL_ICON } from '../../../utils/documentation-helper';
 import { useContext } from 'react';
 
 function VarsToggle() {
-  const { collapsed, visibleTab } = useAppSelector((state) => state.editorState);
+  const { collapsed, visibleTab } = useAppSelector(
+    (state) => state.editorState
+  );
   const { texts } = useContext(LocaleContext);
   const dispatch = useAppDispatch();
 

@@ -75,7 +75,6 @@ export const schemaApi = createApi({
 
           dispatch(setError(error));
           dispatch(setLoading(false));
-          console.log(e);
         }
       },
     }),
@@ -111,7 +110,6 @@ export const schemaApi = createApi({
 
           dispatch(setError(error));
           dispatch(setEndpointValid(false));
-          console.log(e);
         }
       },
     }),
@@ -143,11 +141,9 @@ export const schemaApi = createApi({
             locale === 'Ru'
               ? ru.errorMessages['request/query']
               : en.errorMessages['request/query'];
-
           dispatch(setError(error));
           dispatch(setResponse(''));
           dispatch(setRLoading(false));
-          console.log(e);
         }
       },
     }),
