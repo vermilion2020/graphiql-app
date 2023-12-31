@@ -7,7 +7,7 @@ interface IQueriesProps {
 
 function Queries({ queriesData }: IQueriesProps) {
   return (
-    <div>
+    <div data-testid="queries-list">
       {queriesData.fields &&
         queriesData.fields.map((f, i) => <Query query={f} key={i} />)}
     </div>

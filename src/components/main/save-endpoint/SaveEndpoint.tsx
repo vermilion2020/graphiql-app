@@ -36,6 +36,7 @@ function SaveEndpoint() {
           <>
             <input
               type="url"
+              data-testid="url-input"
               className={!endpointValid ? 'text-input invalid' : 'text-input'}
               placeholder={texts.main.saveEndpoint.heading}
               value={url}
@@ -45,6 +46,7 @@ function SaveEndpoint() {
             ></input>
             <button
               type="submit"
+              data-testid="save-btn"
               className={`${SMALL_ICON} save-icon`}
             ></button>
           </>
@@ -53,6 +55,7 @@ function SaveEndpoint() {
           <>
             <div className="flex font-bold self-center mt-[10px]">{url}</div>
             <button
+              data-testid="edit-btn"
               onClick={() => dispatch(setEndpointEdit(true))}
               className={`${SMALL_ICON} edit-icon`}
             ></button>

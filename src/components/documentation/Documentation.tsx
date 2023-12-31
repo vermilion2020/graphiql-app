@@ -46,6 +46,7 @@ function Documentation() {
               <div>
                 {texts.main.docs.query}:
                 <span
+                  data-testid="query-btn"
                   onClick={() => dispatch(setQueriesDisplayed(true))}
                   className="cursor-pointer hover:underline"
                 >

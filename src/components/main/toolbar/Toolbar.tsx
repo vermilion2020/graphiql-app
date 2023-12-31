@@ -14,9 +14,10 @@ import { BIG_ICON, STANDARD_ICON } from '../../../utils/documentation-helper';
 import { validJson, validQuery } from '../../../utils/editor-validation';
 import { prettifyQuery } from '../../../utils/prettify';
 import { useContext } from 'react';
+import InfoPopup from '../../common/infoPopup';
 
 function Toolbar() {
-  const { query, vars, headers } = useAppSelector((state) => state.editorState);
+  const { query, vars, headers, infoDisplayed } = useAppSelector((state) => state.editorState);
   const { texts, locale } = useContext(LocaleContext);
   const [triggerSchema] = useLazyGetSchemaQuery();
   const [triggerRequest] = useLazySendRequestQuery();
@@ -144,6 +145,7 @@ function Toolbar() {
               title="Run query"
             />
           </div>
+          {infoDisplayed && <InfoPopup />}
         </div>
       )}
     </>

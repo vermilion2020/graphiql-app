@@ -15,6 +15,7 @@ function FieldsList({ fieldsData }: IFieldsList) {
       {fieldsData &&
         fieldsData.map((f, i) => (
           <div
+            data-testid="field-type"
             onClick={() => dispatch(setTypeDisplayed(f.name))}
             key={i}
             className={TYPE_CLASSES}

@@ -84,4 +84,18 @@ describe('Toolbar', async () => {
     // Expect
     expect(store.getState().documentationState.schemaQueries).toBeNull();
   });
+
+  it('Info popup is shown when clicking Info button', async () => {
+    // Arrange
+    renderWithProviders(
+      <Toolbar />,
+      { store }
+    );
+
+    // Act
+    fireEvent.click(screen.getByTestId('info-btn'));
+
+    // Expect
+    expect(screen.getByTestId('info-popup')).toBeVisible();
+  });
 });

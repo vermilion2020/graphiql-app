@@ -16,7 +16,7 @@ function SType({ sTypeName }: IFieldProps) {
   const { texts } = useContext(LocaleContext);
 
   return (
-    <div>
+    <div data-testid="type-data">
       {}
       {sType?.kind === 'OBJECT' && (
         <h3 className="font-bold my-2">{`${texts.main.docs.fields} ${sType.name}`}</h3>

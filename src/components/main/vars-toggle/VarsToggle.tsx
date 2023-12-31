@@ -17,6 +17,7 @@ function VarsToggle() {
   return (
     <div className="flex gap-3 switch-vars">
       <span
+        data-testid="vars-toggle"
         onClick={() => dispatch(setVisibleTab('vars'))}
         className={
           visibleTab === 'vars'
@@ -27,6 +28,7 @@ function VarsToggle() {
         {texts.main.variables}
       </span>
       <span
+        data-testid="headers-toggle"
         onClick={() => dispatch(setVisibleTab('headers'))}
         className={
           visibleTab === 'headers'
