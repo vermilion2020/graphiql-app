@@ -16,30 +16,12 @@ body {
 body {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  min-height: 450px;
+  height: fit-content;
+  min-height: 100vh;
   overflow: scroll;
   font-family: Helvetica, sans-serif;
   scroll-behavior: smooth;
-  background: #0b0020;
-  background: -webkit-linear-gradient(
-    to bottom right,
-    #001522 20%,
-    #003354 52%,
-    #001522 86%
-  );
-  background: -moz-linear-gradient(
-    to bottom right,
-    #001522 20%,
-    #003354 52%,
-    #001522 86%
-  );
-  background: linear-gradient(
-    to bottom right,
-    #001522 20%,
-    #003354 52%,
-    #001522 86%
-  );
+  background: #000a22;
 }
 
 body::-webkit-scrollbar,

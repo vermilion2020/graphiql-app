@@ -9,7 +9,7 @@ import './Welcome.scss';
 function WelcomePage() {
   const { texts } = useContext(LocaleContext);
   return (
-    <div className="flex flex-col justify-start items-center grow bg-buttonBg-700 p-12 rounded-2xl bg-buttonBg-600 shadow-md mt-8 backdrop-opacity-70 bg-buttonBg-900/70">
+    <div className="welcome-page">
       {firebaseConfig.apiKey === 'mock_key' ? (
         <h1 className="flex flex-row justify-center px-3 box-decoration-slice text-white text-center leading-10">
         {texts.welcome.noEnv}
@@ -23,7 +23,7 @@ function WelcomePage() {
             {texts.welcome.tecks}: React, Redux, Typescript, Vite, RTK,
             Firebase, Tailwind, GraphQL
           </p>
-          <h2 className="mt-8 text-lg">{texts.welcome.developers.title}</h2>
+          <div className="my-8 text-2xl">{texts.welcome.developers.title}</div>
           <hr className="border-white border-1 w-full m-1"></hr>
           <div className="flex w-full flex-col justify-center">
             <div className="flex max-sm:flex-col my-3 gap-3 items-start max-sm:items-center">
@@ -35,10 +35,10 @@ function WelcomePage() {
                 />
               </div>
               <div className="flex flex-col w-full justify-start max-sm:items-center">
-                <h3 className="mb-1 font-bold">
+                <div className="mb-1 text-xl mb-4">
                   {texts.welcome.developers.mila.name}
-                </h3>
-                <p className="mb-1">
+                </div>
+                <p className="mb-2">
                   {texts.welcome.developers.mila.description}
                 </p>
                 <p className="mb-1 text-justify self-start max-sm:break-normal max-sm:hyphens-auto">
@@ -56,10 +56,10 @@ function WelcomePage() {
                 />
               </div>
               <div className="flex flex-col w-full justify-start max-sm:items-center">
-                <h3 className="mb-1 font-bold">
+              <div className="mb-1 text-xl mb-4">
                   {texts.welcome.developers.natali.name}
-                </h3>
-                <p className="mb-1">
+                </div>
+                <p className="mb-2">
                   {texts.welcome.developers.natali.description}
                 </p>
                 <p className="mb-1 text-justify max-sm:self-start max-sm:break-normal max-sm:hyphens-auto">
@@ -77,10 +77,10 @@ function WelcomePage() {
                 />
               </div>
               <div className="flex flex-col w-full justify-start max-sm:items-center">
-                <h3 className="mb-1 font-bold">
+              <div className="mb-1 text-xl mb-4">
                   {texts.welcome.developers.victor.name}
-                </h3>
-                <p className="mb-1">
+                </div>
+                <p className="mb-2">
                   {texts.welcome.developers.victor.description}
                 </p>
                 <p className="mb-1 text-justify max-sm:self-start max-sm:break-normal max-sm:hyphens-auto">

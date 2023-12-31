@@ -17,7 +17,7 @@ function Locale() {
   };
 
   return (
-    <div className="locale">
+    <div>
       <div
         className="locale--current"
         data-testid="locale-current"

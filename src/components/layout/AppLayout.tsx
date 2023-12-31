@@ -4,7 +4,7 @@ import Header from './Header';
 import Footer from './Footer';
 import { useEffect } from 'react';
 import { setSignOut } from '../../redux/features/appSlice';
-import imageSrc from '../../assets/bg_new.png';
+import imageSrc from '../../assets/bg.png';
 
 const AppLayout = () => {
   const navigate = useNavigate();
@@ -32,7 +32,9 @@ const AppLayout = () => {
         <Outlet />
       </main>
       <Footer />
-      <img src={imageSrc} alt="bg-img" className="bg-img" />
+      <div className="bg-img">
+        <img src={imageSrc} alt="bg-image" className="bg-image" />
+      </div>
     </div>
   );
 };

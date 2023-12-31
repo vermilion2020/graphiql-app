@@ -10,10 +10,9 @@ export default function WelcomeHeader() {
 
   const isLoggedIn = useAppSelector((state) => state.appState.isLoggedIn);
   const buttonClass = 'text-white uppercase ';
-  // 'min-w-max rounded-md bg-buttonBg-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-buttonBg-400 disabled:bg-disabledButton hover:text-white bg-gradient-to-r from-buttonColor-900 to-emerald-800';
-  // 'min-w-max rounded-md bg-buttonBg-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-buttonBg-400 disabled:bg-disabledButton opacity-40';
+
   return (
-    <div className="flex flex-row w-full justify-end gap-12 mt-4 px-4">
+    <div className="flex flex-row w-full justify-end items-center gap-12 mt-4 xs:mt-16 px-6 lg:px-28 ">
       {isLoggedIn ? (
         <>
           <NavLink to="/main">{texts.welcome.main}</NavLink>

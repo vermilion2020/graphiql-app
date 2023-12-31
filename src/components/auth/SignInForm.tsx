@@ -92,14 +92,14 @@ function SignInForm() {
 
   return (
     <div className="form-wrapper">
-      <div className="flex flex-col justify-center xs:p-4 lg:px-8 border rounded-lg lg:shadow-xl xs:shadow-md bg-white">
+      <div className="flex flex-col justify-center my-4 p-4 xs:p-8 xs:my-8 lg:px-16 w-full border rounded-lg lg:shadow-xl xs:shadow-md bg-white">
         <Link to="/" className="font-semibold leading-6 ps-1">
           <ArrowCircle />
         </Link>
         <h2 className="mt-8 mb-4 text-center text-2xl font-bold leading-9 tracking-tight text-buttonColor-400">
           {texts.signIn.title}
         </h2>
-        <form className="bg-white max-w-xs" onSubmit={handleSubmit(onSubmit)}>
+        <form className="bg-white w-full max-w-96 xs:max-w-72" onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="email" className="block h-24 text-left">
             <span className="block text-sm font-medium text-gray-900">
               {texts.signIn.emailLabel}
@@ -158,7 +158,7 @@ function SignInForm() {
             <button
               type="submit"
               disabled={isDisabled}
-              className="rounded-md bg-buttonBg-400 px-3 py-2 text-sm font-semibold 
+              className="rounded-md bg-buttonBg-600 px-3 py-2 text-sm font-semibold 
             text-white shadow-sm hover:bg-buttonBg-300 disabled:bg-disabledButton"
             >
               {texts.signIn.btnText}

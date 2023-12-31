@@ -118,7 +118,7 @@ function SignUpForm() {
 
   return (
     <div className="flex flex-row items-center justify-center min-h-full">
-      <div className="flex flex-col justify-center xs:p-4 lg:px-8 border rounded-lg lg:shadow-xl xs:shadow-md bg-white">
+      <div className="flex flex-col justify-center my-4 p-4 xs:p-8 xs:my-8 lg:px-16 w-full border rounded-lg lg:shadow-xl xs:shadow-md bg-white">
         <Link to="/" className="">
           <ArrowCircle />
         </Link>
@@ -198,7 +198,7 @@ function SignUpForm() {
               <input
                 id="accept"
                 type="checkbox"
-                className="h-4 w-4 accent-buttonColor-400"
+                className="h-4 w-4 accent-buttonColor-600 hover:accent-buttonColor-300"
                 {...register('accept')}
               />
             </div>
@@ -222,7 +222,7 @@ function SignUpForm() {
               <button
                 type="submit"
                 disabled={isDisabled}
-                className="rounded-md bg-buttonBg-400 px-3 py-2 text-sm font-semibold 
+                className="rounded-md bg-buttonBg-600 px-3 py-2 text-sm font-semibold 
               text-white shadow-sm hover:bg-buttonBg-300 disabled:bg-disabledButton"
               >
                 {texts.signUp.title}

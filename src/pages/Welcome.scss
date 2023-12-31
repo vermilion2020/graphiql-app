@@ -1,2 +1,28 @@
+.welcome-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 2rem auto;
+  padding: 3rem;
+  border: 4px solid #0000;
+  border-radius: 100px 0;
+  background: linear-gradient(90deg, rgba(0,21,34,1), rgba(0, 161, 215, 0.3)) padding-box, linear-gradient(
+    var(--angle),
+    rgba(0, 21, 34, 0.5),
+    rgba(0, 163, 215, 0.3)
+  ) border-box;
+animation: 8s rotate linear infinite;
+}
 
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}
 
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
