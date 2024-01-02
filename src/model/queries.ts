@@ -23,7 +23,8 @@ export const DEFINITION_QUERY =
 export const BASIC_TYPES_QUERY =
   '{ __schema { queryType { fields { name } } }}';
 
-export const TEST_QUERY = `query ($ids: [ID!]! = "ids") {
+export const TEST_QUERY = 
+`query ($ids: [ID!]! = "ids") {
   charactersByIds(ids: $ids) {
     name
   }

@@ -131,8 +131,8 @@ function Toolbar() {
               onClick={showTooltip}
               className={STANDARD_ICON}
               data-testid="info-btn"
-              alt="Prettify"
-              title="Prettify"
+              alt="Info"
+              title="Info"
             />
           </div>
           <div className="mr-2">

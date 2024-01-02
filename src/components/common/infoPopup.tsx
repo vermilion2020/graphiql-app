@@ -7,6 +7,7 @@ import {
   setQuery,
   setVars,
 } from '../../redux/features/editorSlice';
+import { STANDARD_ICON } from '../../utils/documentation-helper';
 
 function InfoPopup() {
   const dispatch = useAppDispatch();
@@ -23,7 +24,7 @@ function InfoPopup() {
   };
 
   return (
-    <div className="fixed inset-0 z-10 overflow-y-auto">
+    <div className="fixed inset-0 z-10 overflow-y-auto box-border">
       <div className="fixed inset-0 w-full h-full bg-black opacity-40" />
       <div className="flex flex-row items-center justify-center min-h-screen px-4 py-8" data-testid="info-popup">
         <div className="relative max-w-xs bg-white rounded-lg shadow bg-red-600 ">
@@ -37,27 +38,31 @@ function InfoPopup() {
           </button>
           <div className="p-4 md:p-5 border rounded-lg shadow-xl bg-white text-left">
             <h3 className="mb-4 text-gray-500">GraphQL Info</h3>
-            <div>You can test this app with the request</div>
-            <div>
-              {`query ($id: [ID!]! = "id") {
-                charactersByIds(ids: $id) {
-                  name
-                }
-              }`}
-            </div>
-            <div>And variables:</div>
-            <div>
-              {`{
-                  "id": [1,2,3]
-                }`}
-            </div>
-            <button
+            <div className="font-semibold text-sm">An example GraphQL query might look like:</div>
+            <pre>
+              <code>
+              {TEST_QUERY}
+              </code>
+            </pre>
+            <div className="font-semibold text-sm">And variables:</div>
+            <pre>
+              <code>
+              {TEST_VARS}
+              </code>
+            </pre><br />
+            <div
               onClick={setTestData}
-              className="rounded-md bg-buttonBg-600 px-3 py-2 text-sm font-semibold 
-              text-white shadow-sm hover:bg-buttonBg-400 disabled:bg-disabledButton"
+              className="flex items-center gap-3 hover:cursor-pointer hover:underline"
             >
+              <img
+                src="./checked.svg"
+                className={STANDARD_ICON}
+                data-testid="hide-docs-btn"
+                alt="Hide docs"
+                title="Hide docs"
+              />
               Set testing data
-            </button>
+            </div>
           </div>
         </div>
       </div>
