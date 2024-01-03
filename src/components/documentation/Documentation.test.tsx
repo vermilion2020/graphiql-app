@@ -5,6 +5,8 @@ import { store } from '../../redux';
 import Documentation from './Documentation';
 import { setLoading, setQueriesDisplayed, setSchemaQueries, setSchemaTypes } from '../../redux/features/documentationSlice';
 import { SchemaType } from '../../model/schema.interface';
+import Query from './Query';
+import { TEST_Q } from '../../model/testDocsData';
 
 describe('Response', async () => {
   it('Preloader is shown while data is fetching', async () => {
@@ -49,5 +51,19 @@ describe('Response', async () => {
 
     // Expect
     expect(screen.getByTestId('type-data')).toBeVisible();
+  });
+
+  it('Query item is displayed properly', async () => {
+    // Arrange
+    store.dispatch(setQueriesDisplayed(false));
+    store.dispatch(setSchemaTypes([{name: "type field"}] as SchemaType[]));
+    renderWithProviders(
+      <Query query={TEST_Q} />,
+      { store }
+    );
+
+    // Expect
+    expect(screen.getByText(TEST_Q.name)).toBeVisible();
+    expect(screen.getByText(TEST_Q.type.name)).toBeVisible();
   });
 });

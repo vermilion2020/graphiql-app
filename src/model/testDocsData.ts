@@ -1,3 +1,27 @@
+export const TEST_Q = {
+    "name": "character",
+    "args": [
+        {
+            "name": "id",
+            "type": {
+                "kind": "NON_NULL",
+                "name": '',
+                "ofType": {
+                    "kind": "SCALAR",
+                    "name": "ID",
+                }
+            },
+            "defaultValue": ''
+        }
+    ],
+    "type": {
+        "kind": "OBJECT",
+        "name": "Character",
+    },
+    "isDeprecated": false,
+    "deprecationReason": null
+};
+
 export const DOCS_TEST_DATA = {
   "data": {
       "__schema": {
