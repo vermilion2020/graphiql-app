@@ -5,6 +5,7 @@ h1 {
 
 html {
   height: 100%;
+  box-sizing: border-box;
 }
 
 html,
@@ -16,10 +17,9 @@ body {
 body {
   display: flex;
   flex-direction: column;
-  height: fit-content;
   min-height: 100vh;
-  overflow: scroll;
   font-family: Helvetica, sans-serif;
+  overflow: auto;
   scroll-behavior: smooth;
   background: #000a22;
 }
@@ -47,22 +47,9 @@ body::-webkit-scrollbar-thumb,
   border: 3px solid $whiteBgFontColor;
 }
 
-.main-container {
-  width: 90vw;
-  margin: 20px auto;
-}
-
-@media screen and (max-width: 1400px) {
-  .main-container {
-    width: 1200px;
-    padding: 0 20px;
-  }
-}
-
 @media screen and (max-width: 1240px) {
-  .main-container {
-    width: 94vw;
-    padding: 0 20px;
+  html {
+    font-size: 16px;
   }
 }
 
@@ -70,12 +57,10 @@ body::-webkit-scrollbar-thumb,
   html {
     font-size: 14px;
   }
+}
 
-  .main-container {
-    flex-direction: column;
-  }
-
-  .sector-container {
-    width: 90vw;
+@media screen and (max-width: 1920px) {
+  html {
+    font-size: 18px;
   }
 }

@@ -12,30 +12,36 @@ function Footer() {
     <footer className="footer-wrapper">
       {!!error && <PopupError />}
       <div className="footer-container">
-          <a href="https://rs.school/react/">
-            <RSSchool />
-          </a>
+        <a href="https://rs.school/react/">
+          <RSSchool />
+        </a>
         <div className="copyright-link-wrapper">
           <p className="copyright">{new Date().getFullYear()}</p>
-          <div className="link-wrapper">
-            <div className="inline hover:scale-105 transition ease-in-out delay-150 hover:transition-all">
-              <a href="https://github.com/vermilion2020" title="Mila">
-                <GitHub />
-                <span className="font-semibold">vermilion2020</span>
-              </a>
-            </div>
-            <div className="inline hover:scale-105">
-              <a href="https://github.com/Mali-zi" title="Natasha">
-                <GitHub />
-                <span className="font-semibold">mali-zi</span>
-              </a>
-            </div>
-            <div className="inline hover:scale-105">
-              <a href="https://github.com/vvsar" title="Viktor">
-                <GitHub />
-                <span className="font-semibold">vvsar</span>
-              </a>
-            </div>
+          <div className="links-wrapper">
+            <a
+              href="https://github.com/vermilion2020"
+              title="Mila"
+              className="font-semibold align-middle grow git-icon"
+            >
+              <GitHub />
+              &#32;vermilion2020
+            </a>
+            <a
+              href="https://github.com/Mali-zi"
+              title="Natasha"
+              className="font-semibold align-middle grow git-icon"
+            >
+              <GitHub />
+              &#32;mali-zi
+            </a>
+            <a
+              href="https://github.com/vvsar"
+              title="Viktor"
+              className="font-semibold align-middle grow git-icon"
+            >
+              <GitHub />
+              &#32;vvsar
+            </a>
           </div>
         </div>
       </div>

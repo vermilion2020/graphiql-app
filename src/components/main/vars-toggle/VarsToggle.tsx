@@ -9,13 +9,13 @@ function VarsToggle() {
   const { texts } = useContext(LocaleContext);
 
   return (
-    <div className="flex gap-3 switch-vars">
+    <div className="flex gap-3 switch-vars flex-none text-white">
       <span
         onClick={() => setVisibleTab('vars')}
         className={
           visibleTab === 'vars'
-            ? 'text-teal-500 font-bold'
-            : 'cursor-pointer hover:text-teal-400'
+            ? 'text-buttonColor-300 font-bold'
+            : 'cursor-pointer hover:text-buttonColor-300'
         }
       >
         {texts.main.variables}
@@ -24,8 +24,8 @@ function VarsToggle() {
         onClick={() => setVisibleTab('headers')}
         className={
           visibleTab === 'headers'
-            ? 'text-teal-500 font-bold'
-            : 'cursor-pointer hover:text-teal-400'
+            ? 'text-buttonColor-300 font-bold text-white'
+            : 'cursor-pointer hover:text-buttonColor-300'
         }
       >
         {texts.main.headers}

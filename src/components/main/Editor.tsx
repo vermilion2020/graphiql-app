@@ -21,8 +21,6 @@ function Editor() {
     visibleTab,
   } = useContext(EditorContext);
 
-  const editorHeight = collapsed ? '58vh' : '34vh';
-
   const onChangeMain = useCallback(
     (val: string) => {
       setQuery(val);
@@ -48,12 +46,13 @@ function Editor() {
     <>
       <SaveEndpoint />
       <Toolbar />
-      <div className={codeClasses}>
+      <div className="grow">
         <CodeMirror
           value={query}
           placeholder={BASIC_TYPES_QUERY}
-          height={editorHeight}
-          className="text-left"
+          minHeight="200px"
+          height="100%"
+          className="main-editor"
           extensions={[javascript({ jsx: true }), indentUnit.of(' ')]}
           onChange={onChangeMain}
         />
@@ -65,7 +64,7 @@ function Editor() {
             value={vars}
             placeholder={JSON.stringify({ var: 'val' }, null, 2)}
             height="200px"
-            className="text-left"
+            className="main-editor"
             extensions={[javascript({ jsx: true })]}
             onChange={onChangeVars}
           />
@@ -81,7 +80,7 @@ function Editor() {
               2
             )}
             height="200px"
-            className="text-left"
+            className="main-editor"
             extensions={[javascript({ jsx: true })]}
             onChange={onChangeHeaders}
           />

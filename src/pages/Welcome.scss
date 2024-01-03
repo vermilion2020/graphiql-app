@@ -1,11 +1,9 @@
 .welcome-page {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 2rem auto;
-  padding: 3rem;
-  border: 4px solid #0000;
+  height: fit-content;
+  width: 100%;
+  max-width: 1024px;
+  padding: 2rem;
+  border: 3px solid #0000;
   border-radius: 100px 0;
   background: linear-gradient(90deg, rgba(0,21,34,1), rgba(0, 161, 215, 0.3)) padding-box, linear-gradient(
     var(--angle),
@@ -25,4 +23,15 @@ animation: 8s rotate linear infinite;
   syntax: "<angle>";
   initial-value: 0deg;
   inherits: false;
+}
+
+@media screen and (max-width: 450px) {
+  .welcome-page {
+    padding: 1rem 0.2rem;
+    border-radius: 40px 0;
+    }
+
+  .welcome-page h1 {
+    font-size: 1.5rem;
+  }
 }

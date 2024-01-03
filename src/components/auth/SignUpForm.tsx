@@ -117,15 +117,15 @@ function SignUpForm() {
   }, [formState]);
 
   return (
-    <div className="flex flex-row items-center justify-center min-h-full">
+    <div className="form-wrapper">
       <div className="flex flex-col justify-center my-4 p-4 xs:p-8 xs:my-8 lg:px-16 w-full border rounded-lg lg:shadow-xl xs:shadow-md bg-white">
-        <Link to="/" className="">
+        <Link to="/">
           <ArrowCircle />
         </Link>
-        <h2 className="mt-8 mb-4 text-center text-2xl font-bold leading-9 tracking-tight text-buttonColor-400">
+        <h2 className="mt-8 mb-4 text-center text-2xl font-bold leading-9 tracking-tight text-buttonColor-600">
           {texts.signUp.formTitle}
         </h2>
-        <form className="bg-white max-w-xs" onSubmit={handleSubmit(onSubmit)}>
+        <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="email" className="block h-24 text-left">
             <span className="block text-sm font-medium text-gray-900">
               {texts.signUp.emailLabel}
@@ -219,25 +219,17 @@ function SignUpForm() {
             {isLoading ? (
               <Spinner text={texts.signUp.loading} />
             ) : (
-              <button
-                type="submit"
-                disabled={isDisabled}
-                className="rounded-md bg-buttonBg-600 px-3 py-2 text-sm font-semibold 
-              text-white shadow-sm hover:bg-buttonBg-300 disabled:bg-disabledButton"
-              >
+              <button type="submit" disabled={isDisabled} className="btn">
                 {texts.signUp.title}
               </button>
             )}
           </div>
         </form>
         <p className="mt-3">
-          {texts.signUp.question}
-          <Link
-            to="/sign-in"
-            className="font-semibold leading-6 ps-1"
-          >
-            {texts.signUp.linkText}
-          </Link>
+          {texts.signUp.question}&#32;
+            <Link to="/sign-in">
+              <span className="mt-3 font-semibold">{texts.signUp.linkText}</span>
+            </Link>
         </p>
       </div>
     </div>

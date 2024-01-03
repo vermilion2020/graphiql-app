@@ -12,8 +12,16 @@ const AppLayout = () => {
   const expToken = useAppSelector((state) => state.appState.expToken);
 
   useEffect(() => {
+    console.log('expToken', expToken);
+
     const handle = setInterval(
       () => {
+        if (expToken && expToken * 1000 < Date.now()) {
+          dispatch(setSignOut());
+          navigate('/');
+        }
+
+        console.log('expToken in setInterval', expToken);
         if (expToken && expToken * 1000 < Date.now()) {
           dispatch(setSignOut());
           navigate('/');
@@ -23,15 +31,15 @@ const AppLayout = () => {
     );
 
     return () => clearInterval(handle);
-  });
+  }, []);
 
   return (
     <div className="app-wrapper">
-      <Header />
-      <main className="app-container">
+      <div className="app-container">
+        <Header />
         <Outlet />
-      </main>
-      <Footer />
+        <Footer />
+      </div>
       <div className="bg-img">
         <img src={imageSrc} alt="bg-image" className="bg-image" />
       </div>

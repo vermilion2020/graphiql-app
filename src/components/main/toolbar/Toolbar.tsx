@@ -88,7 +88,7 @@ function Toolbar() {
   return (
     <>
       {endpoint && (
-        <div className="flex w-full justify-between">
+        <div className="flex w-full justify-between flex-none">
           <div className="flex gap-2 ml-2">
             {!schemaQueries && (
               <img

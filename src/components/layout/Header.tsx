@@ -6,6 +6,9 @@ import { LocaleContext } from '../../context/LocaleContext';
 import Locale from '../common/Locale';
 import { setError, setSignOut } from '../../redux/features/appSlice';
 import { useAppDispatch, useAppSelector } from '../../redux';
+import GraphQL from '../../assets/icons/GraphQL';
+import LogOut from '../../assets/icons/LogOut';
+import Smile from '../../assets/icons/Smile';
 
 function Header() {
   const { texts } = useContext(LocaleContext);
@@ -24,27 +27,46 @@ function Header() {
   };
 
   return (
-    <header className="app-header">
-      <h1>GraphiQL</h1>
-      <NavLink
-        className={({ isActive }) =>
-          isActive ? 'menu-link active-link' : 'menu-link'
-        }
-        to="/"
-        title={texts.menu.welcome}
+    <header className="header-wrapper">
+      <a
+        href="https://graphql.org/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GraphQL logo"
+        title="GraphQL logo"
       >
-        {texts.menu.welcome}
-      </NavLink>
-      <Locale />
-      {isLoggedIn && (
-        <button
-          type="button"
-          className="btn btn-primary me-3 hover:text-buttonColor-400"
-          onClick={handleLogout}
+        <GraphQL />
+      </a>
+
+      <div className="menu-wrapper">
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? 'menu-link active-link' : 'menu-link'
+          }
+          to="/"
+          title={texts.menu.welcome}
         >
-          {texts.menu.signOut}
-        </button>
-      )}
+          <Smile />
+          <span className="menu-item">
+            &#32;
+            {texts.menu.welcome}
+          </span>
+        </NavLink>
+        {isLoggedIn && (
+          <button
+            type="button"
+            className="btn-link menu-link"
+            onClick={handleLogout}
+          >
+            <LogOut />
+            <span className="menu-item">
+              &#32;
+              {texts.menu.signOut}
+            </span>
+          </button>
+        )}
+        <Locale />
+      </div>
     </header>
   );
 }

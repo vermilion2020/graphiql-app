@@ -36,26 +36,26 @@ function SaveEndpoint() {
           <>
             <input
               type="url"
-              className={!endpointValid ? 'text-input invalid' : 'text-input'}
+              className={!endpointValid ? 'text-input bg-white invalid' : 'text-input bg-white'}
               placeholder={texts.main.saveEndpoint.heading}
               value={url}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setUrl(e.target.value.trim())
               }
-            ></input>
+            />
             <button
               type="submit"
               className={`${SMALL_ICON} save-icon`}
-            ></button>
+            />
           </>
         )}
         {!endpointEdit && endpoint && (
           <>
-            <div className="flex font-bold self-center mt-[10px]">{url}</div>
+            <div className="flex font-semibold text-white self-center mt-[10px] overflow-auto">{url}</div>
             <button
               onClick={() => dispatch(setEndpointEdit(true))}
               className={`${SMALL_ICON} edit-icon`}
-            ></button>
+            />
           </>
         )}
       </form>

@@ -1,0 +1,56 @@
+.header-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  padding: 3rem 7rem 0 7rem;
+
+  @media screen and (max-width: 1280px) {
+    padding: 1rem 3rem 0 3rem;
+    gap: 2rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 0.5rem 1rem 0 1rem;
+    gap: 1.5rem;
+  }
+}
+
+.menu-item {
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+
+.menu-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 3rem;
+
+  @media screen and (max-width: 768px) {
+    gap: 1.5rem;
+  }
+
+  @media screen and (max-width: 450px) {
+    gap: 0.75rem;
+  }
+}
+
+.graphQL {
+  height: 100%;
+  min-height: 8rem;
+  width: auto;
+
+  @media screen and (max-width: 1440px) {
+    min-height: 6rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    min-height: 4rem;
+  }
+}

@@ -1,9 +1,7 @@
-// main colors
-$activeLinkColor: #00538a;
-$baseLinkColor: #003354;
-$hoverLinkColor: #00538a;
+$activeLinkColor: #1073c9;
+$baseLinkColor: #0b5394;
+$hoverLinkColor: #00a3d7;
 
-// font bg colors
 $whiteBgFontColor: #fff;
 $errorColor: rgb(145, 30, 30);
 $blackBgFontColor: #001522;
@@ -13,27 +11,21 @@ $lightGreyColor: #b9b5bb;
 $darkBlueColor: #001522;
 $lightBlueColor: #7186ad;
 
-
-img,
-.switch-vars span {
-  -webkit-transition: all 0.4s ease;
-  -o-transition: all 0.4s ease;
-  transition: all 0.4s ease;
-}
-
 .btn {
-  height: 35px;
   border: 0;
-  border-radius: 0.3rem;
+  border-radius: 0.5rem;
   cursor: pointer;
-  background-color: $activeLinkColor;
+  background-color: $baseLinkColor;
   color: $whiteBgFontColor;
-  -webkit-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+
 
   &:hover {
     background-color: $hoverLinkColor;
+    transform: scale(1.05, 1.05);
+    transition: all 0.3s ease;
   }
 
   &.disabled,
@@ -43,18 +35,25 @@ img,
   }
 }
 
-a {
+a, .btn-link {
   font-weight: 500;
   color: $baseLinkColor;
   text-decoration: inherit;
 
   &.menu-link {
     color: $whiteBgFontColor;
+    text-transform: uppercase;
+  }
+
+  &.menu-link:hover {
+    color: $hoverLinkColor;
   }
 
   &:hover,
   &.active-link:hover {
     color: $hoverLinkColor;
+    transform: scale(1.05, 1.05);
+    transition: all 0.3s ease;
   }
 
   &.active-link {

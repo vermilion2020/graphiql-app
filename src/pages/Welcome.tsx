@@ -4,7 +4,6 @@ import milaPhotoUrl from '../assets/developers/mila.jpg';
 import nataliPhotoUrl from '../assets/developers/natali.jpg';
 import victorPhotoUrl from '../assets/developers/victor.jpg';
 import { firebaseConfig } from '../firebase';
-import './Welcome.scss';
 
 function WelcomePage() {
   const { texts } = useContext(LocaleContext);
@@ -15,15 +14,15 @@ function WelcomePage() {
         {texts.welcome.noEnv}
         </h1>
       ) : (
-        <div className="flex flex-col justify-center items-center max-w-3xl px-3 box-decoration-slice text-white">
-          <h1 className="mb-8">{texts.welcome.title}</h1>
+        <div className="flex flex-col justify-center items-center max-w-4xl px-3 box-decoration-slice text-white">
+          <h1 className="mb-4">{texts.welcome.title}</h1>
           <p className="self-start py-2">{texts.welcome.project}</p>
           <p className="self-start py-2">{texts.welcome.course}</p>
           <p className="self-start py-2">
             {texts.welcome.tecks}: React, Redux, Typescript, Vite, RTK,
             Firebase, Tailwind, GraphQL
           </p>
-          <div className="my-8 text-2xl">{texts.welcome.developers.title}</div>
+          <div className="mt-8 mb-4 text-2xl">{texts.welcome.developers.title}</div>
           <hr className="border-white border-1 w-full m-1"></hr>
           <div className="flex w-full flex-col justify-center">
             <div className="flex max-sm:flex-col my-3 gap-3 items-start max-sm:items-center">

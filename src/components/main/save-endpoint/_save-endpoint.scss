@@ -1,21 +1,23 @@
 .save-endpoint-wrapper {
   width: 97%;
+  flex: none;
 
   .form {
     display: flex;
+    flex-direction: row;
     justify-content: left;
-    align-self: center;
+    align-items: center;
     gap: 10px;
-    margin-left: 0.5rem;
-    margin-top: 3px;
+    margin-bottom: 0.5rem;
 
     .text-input {
       height: 35px;
       padding: 0 5px;
-      width: 93%;
+      width: 80%;
       max-width: 350px;
       border: solid 2px #a9a9a9;
       border-radius: 0.5rem;
+      background-color: #fff;
 
       &.invalid,
       &.invalid:focus {
