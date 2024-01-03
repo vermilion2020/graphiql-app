@@ -7,7 +7,7 @@ import { setError } from '../../redux/features/appSlice';
 import { MemoryRouter } from 'react-router-dom';
 
 describe('Not Found page', async () => {
-  it('Not found page is shown for not-existing routes', async () => {
+  it('Correct error message is shown, when an error occurs', async () => {
     // Arrange
     const errorMessage = 'Test error message';
     store.dispatch(setError(errorMessage));

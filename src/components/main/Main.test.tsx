@@ -6,7 +6,7 @@ import { setSingIn } from '../../redux/features/appSlice';
 import { App } from '../../App';
 
 describe('Not Found page', async () => {
-  it('Not found page is shown for not-existing routes', async () => {
+  it('Welcome page is shown, when user is signed in', async () => {
     // Arrange
     store.dispatch(setSingIn(false));
     renderWithProviders(

@@ -16,8 +16,10 @@ const codeClasses = ' border-gray-200 border-solid border-4 rounded-md p-1';
 function Editor() {
   const { collapsed, visibleTab, query, vars, headers } =
     useAppSelector((state) => state.editorState);
+  const { testMode } = useAppSelector((state) => state.appState);
   const dispatch = useAppDispatch();
   const editorHeight = collapsed ? '58vh' : '34vh';
+  const extensions = testMode ? [] : [javascript({ jsx: true })];
 
   const onChangeMain = useCallback(
     (val: string) => {
@@ -51,7 +53,7 @@ function Editor() {
           placeholder={BASIC_TYPES_QUERY}
           height={editorHeight}
           className="text-left"
-          extensions={[javascript({ typescript: true })]}
+          extensions={extensions}
           onChange={onChangeMain}
         />
       </div>
@@ -63,7 +65,7 @@ function Editor() {
             placeholder={JSON.stringify({ var: 'val' }, null, 2)}
             height="200px"
             className="text-left"
-            extensions={[javascript({ typescript: true })]}
+            extensions={extensions}
             onChange={onChangeVars}
           />
         </div>
@@ -79,7 +81,7 @@ function Editor() {
             )}
             height="200px"
             className="text-left"
-            extensions={[javascript({ typescript: true })]}
+            extensions={extensions}
             onChange={onChangeHeaders}
           />
         </div>
