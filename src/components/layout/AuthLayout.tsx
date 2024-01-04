@@ -12,13 +12,11 @@ const AuthLayout = () => {
   const expToken = useAppSelector((state) => state.appState.expToken);
 
   useEffect(() => {
-    () => {
-      if (expToken && expToken * 1000 > Date.now()) {
-        navigate('/main');
-      } else {
-        dispatch(setSignOut());
-      }
-    };
+    if (expToken && expToken * 1000 > Date.now()) {
+      navigate('/main');
+    } else {
+      dispatch(setSignOut());
+    }
   }, []);
 
   return (

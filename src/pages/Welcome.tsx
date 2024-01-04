@@ -11,7 +11,7 @@ function WelcomePage() {
     <div className="welcome-page">
       {firebaseConfig.apiKey === 'mock_key' ? (
         <h1 className="flex flex-row justify-center px-3 box-decoration-slice text-white text-center leading-10">
-        {texts.welcome.noEnv}
+          {texts.welcome.noEnv}
         </h1>
       ) : (
         <div className="flex flex-col justify-center items-center max-w-4xl px-3 box-decoration-slice text-white">
@@ -22,7 +22,9 @@ function WelcomePage() {
             {texts.welcome.tecks}: React, Redux, Typescript, Vite, RTK,
             Firebase, Tailwind, GraphQL
           </p>
-          <div className="mt-8 mb-4 text-2xl">{texts.welcome.developers.title}</div>
+          <div className="mt-8 mb-4 text-2xl">
+            {texts.welcome.developers.title}
+          </div>
           <hr className="border-white border-1 w-full m-1"></hr>
           <div className="flex w-full flex-col justify-center">
             <div className="flex max-sm:flex-col my-3 gap-3 items-start max-sm:items-center">
@@ -55,7 +57,7 @@ function WelcomePage() {
                 />
               </div>
               <div className="flex flex-col w-full justify-start max-sm:items-center">
-              <div className="mb-1 text-xl mb-4">
+                <div className="mb-1 text-xl mb-4">
                   {texts.welcome.developers.natali.name}
                 </div>
                 <p className="mb-2">
@@ -76,7 +78,7 @@ function WelcomePage() {
                 />
               </div>
               <div className="flex flex-col w-full justify-start max-sm:items-center">
-              <div className="mb-1 text-xl mb-4">
+                <div className="mb-1 text-xl mb-4">
                   {texts.welcome.developers.victor.name}
                 </div>
                 <p className="mb-2">

@@ -12,16 +12,13 @@ const AppLayout = () => {
   const expToken = useAppSelector((state) => state.appState.expToken);
 
   useEffect(() => {
-    console.log('expToken', expToken);
+    if (expToken && expToken * 1000 < Date.now()) {
+      dispatch(setSignOut());
+      navigate('/');
+    }
 
     const handle = setInterval(
       () => {
-        if (expToken && expToken * 1000 < Date.now()) {
-          dispatch(setSignOut());
-          navigate('/');
-        }
-
-        console.log('expToken in setInterval', expToken);
         if (expToken && expToken * 1000 < Date.now()) {
           dispatch(setSignOut());
           navigate('/');
