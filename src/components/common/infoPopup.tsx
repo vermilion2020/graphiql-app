@@ -1,4 +1,5 @@
 import CloseIcon from '../../assets/icons/CloseIcon';
+import DoneIcon from '../../assets/icons/DoneIcon';
 import { TEST_HEADERS, TEST_QUERY, TEST_VARS } from '../../model/queries';
 import { useAppDispatch } from '../../redux';
 import {
@@ -7,7 +8,6 @@ import {
   setQuery,
   setVars,
 } from '../../redux/features/editorSlice';
-import { STANDARD_ICON } from '../../utils/documentation-helper';
 
 function InfoPopup() {
   const dispatch = useAppDispatch();
@@ -52,15 +52,11 @@ function InfoPopup() {
             </pre><br />
             <div
               onClick={setTestData}
-              className="flex items-center gap-3 hover:cursor-pointer hover:underline"
+              className="flex items-center gap-3 hover:cursor-pointer hover:underline h-[30px]"
             >
-              <img
-                src="./checked.svg"
-                className={STANDARD_ICON}
-                data-testid="hide-docs-btn"
-                alt="Hide docs"
-                title="Hide docs"
-              />
+              <button type="submit" className="edit-toggle" data-testid="save-btn">
+                <DoneIcon />
+              </button>
               Set testing data
             </div>
           </div>

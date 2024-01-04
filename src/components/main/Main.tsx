@@ -18,25 +18,18 @@ function Main() {
     }
   }, [isLoggedIn, navigate]);
 
-  const editorClasses =
-    schemaTypes ?? loading
-      ? 'flex flex-col flex-nowrap gap-y-3 w-5/12 sector-container'
-      : 'flex flex-col flex-nowrap gap-y-3 w-8/12 sector-container';
   return (
-    <div className="main-container m-auto flex pt-4 gap-x-4">
+    <div className="main-container">
       <div
-        className={
-          schemaTypes ?? loading
-            ? 'w-3/12 sector-container'
-            : 'w-0 h-0 sector-container'
-        }
+        className={schemaTypes ?? loading ? ' md:flex-none h-full md:w-3/12 w-full' : ' h-0 w-0'}
       >
         <Documentation />
       </div>
-      <div className={editorClasses}>
+      <div className=" md:grow flex flex-col flex-nowrap gap-y-2 md:w-5/12 w-full self-stretch">
         <Editor />
       </div>
-      <div className="w-4/12 sector-container">
+
+      <div className=" md:flex-none md:w-4/12 w-full h-full">
         <Response />
       </div>
     </div>

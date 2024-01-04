@@ -1,6 +1,7 @@
 import SaveEndpoint from './save-endpoint/SaveEndpoint';
 import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
+import { indentUnit } from '@codemirror/language';
 import { useCallback } from 'react';
 import Toolbar from './toolbar/Toolbar';
 import VarsToggle from './vars-toggle/VarsToggle';
@@ -18,8 +19,7 @@ function Editor() {
     useAppSelector((state) => state.editorState);
   const { testMode } = useAppSelector((state) => state.appState);
   const dispatch = useAppDispatch();
-  const editorHeight = collapsed ? '58vh' : '34vh';
-  const extensions = testMode ? [] : [javascript({ jsx: true })];
+  const extensions = testMode ? [] : [javascript({ jsx: true }), indentUnit.of(' ')];
 
   const onChangeMain = useCallback(
     (val: string) => {
@@ -46,13 +46,14 @@ function Editor() {
     <>
       <SaveEndpoint />
       <Toolbar />
-      <div className={codeClasses}>
+      <div className="grow">
         <CodeMirror
           data-testid="query-editor"
           value={query}
           placeholder={BASIC_TYPES_QUERY}
-          height={editorHeight}
-          className="text-left"
+          minHeight="200px"
+          height="100%"
+          className="main-editor"
           extensions={extensions}
           onChange={onChangeMain}
         />
@@ -64,7 +65,7 @@ function Editor() {
             value={vars}
             placeholder={JSON.stringify({ var: 'val' }, null, 2)}
             height="200px"
-            className="text-left"
+            className="main-editor"
             extensions={extensions}
             onChange={onChangeVars}
           />
@@ -80,7 +81,7 @@ function Editor() {
               2
             )}
             height="200px"
-            className="text-left"
+            className="main-editor"
             extensions={extensions}
             onChange={onChangeHeaders}
           />

@@ -37,13 +37,13 @@ function Documentation() {
       {loading ? (
         <Loader />
       ) : (
-        <div className="text-left h-[74vh] overflow-scroll docs-container">
+        <div className="text-left min-h-[30vh] md:h-full overflow-auto docs-container w-full px-2">
           {schemaQueries && (
-            <h2 className="text-center font-bold">{texts.main.docs.title}</h2>
+            <h2 className="text-left font-semibold text-white">{texts.main.docs.title}</h2>
           )}
-          <div className="heading mt-2 mb-2">
+          <div className="heading mt-4 mb-2">
             {mainPartDisplayed && schemaQueries && (
-              <div>
+              <div className="text-left">
                 {texts.main.docs.query}:
                 <span
                   data-testid="query-btn"

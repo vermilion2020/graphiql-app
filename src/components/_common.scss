@@ -3,28 +3,25 @@ h1 {
   line-height: 1.1;
 }
 
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
 
-  color-scheme: light dark;
-  color: $mainBgFontColor;
-  background-color: $whiteBgFontColor;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
   display: flex;
-  place-items: center;
-  font-family: Arial, Helvetica, sans-serif;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Helvetica, sans-serif;
+  overflow: auto;
   scroll-behavior: smooth;
+  background: #000a22;
 }
 
 body::-webkit-scrollbar,
@@ -50,52 +47,9 @@ body::-webkit-scrollbar-thumb,
   border: 3px solid $whiteBgFontColor;
 }
 
-#root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-#root,
-.app-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.app-container {
-  flex-grow: 1;
-}
-
-.content {
-  flex-grow: 1;
-  text-align: center;
-  box-sizing: border-box;
-}
-
-.main-container {
-  width: 90vw;
-  margin: 20px auto;
-}
-
-@media screen and (max-width: 1400px) {
-  .main-container {
-    width: 1200px;
-    padding: 0 20px;
-  }
-}
-
 @media screen and (max-width: 1240px) {
-  .main-container {
-    width: 94vw;
-    padding: 0 20px;
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  .footer-container {
-    padding: 0 0.8rem;
+  html {
+    font-size: 16px;
   }
 }
 
@@ -103,12 +57,10 @@ body::-webkit-scrollbar-thumb,
   html {
     font-size: 14px;
   }
+}
 
-  .main-container {
-    flex-direction: column;
-  }
-
-  .sector-container {
-    width: 90vw;
+@media screen and (max-width: 1920px) {
+  html {
+    font-size: 18px;
   }
 }

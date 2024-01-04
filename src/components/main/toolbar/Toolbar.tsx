@@ -1,3 +1,6 @@
+import DescriptionIcon from '../../../assets/icons/DescriptionIcon';
+import FormatIcon from '../../../assets/icons/FormatIcon';
+import RunIcon from '../../../assets/icons/RunIcon';
 import { LocaleContext } from '../../../context/LocaleContext';
 import { useAppDispatch, useAppSelector } from '../../../redux';
 import {
@@ -10,11 +13,12 @@ import {
   setInfoDisplayed,
   setQuery,
 } from '../../../redux/features/editorSlice';
-import { BIG_ICON, STANDARD_ICON } from '../../../utils/documentation-helper';
+
 import { validJson, validQuery } from '../../../utils/editor-validation';
 import { prettifyQuery } from '../../../utils/prettify';
 import { useContext } from 'react';
 import InfoPopup from '../../common/infoPopup';
+import InfoIcon from '../../../assets/icons/InfoIcon';
 
 function Toolbar() {
   const { query, vars, headers, infoDisplayed } = useAppSelector((state) => state.editorState);
@@ -96,54 +100,39 @@ function Toolbar() {
   return (
     <>
       {endpoint && (
-        <div className="flex w-full justify-between">
-          <div className="flex gap-2 ml-2">
+        <div className="flex w-full justify-between items-center flex-none h-10">
+          <div className="flex gap-4 h-full">
             {!schemaQueries && (
-              <img
-                src="./docs.svg"
+              <button
+                type="button"
+                className="edit-toggle"
                 onClick={handleGetDocsClick}
-                className={STANDARD_ICON}
                 data-testid="show-docs-btn"
-                alt="Show docs"
-                title="Show docs"
-              />
+              >
+                <DescriptionIcon />
+              </button>
             )}
             {schemaQueries && (
-              <img
-                src="./hide-docs.svg"
-                onClick={hideDocs}
-                className={STANDARD_ICON}
-                data-testid="hide-docs-btn"
-                alt="Hide docs"
-                title="Hide docs"
-              />
+              <button type="button" className="edit-toggle" onClick={hideDocs} data-testid="hide-docs-btn">
+                <DescriptionIcon />
+              </button>
             )}
-            <img
-              src="./prettify.svg"
-              onClick={prettify}
-              className={STANDARD_ICON}
-              data-testid="prettify-btn"
-              alt="Prettify"
-              title="Prettify"
-            />
-            <img
-              src="./info.svg"
-              onClick={showTooltip}
-              className={STANDARD_ICON}
-              data-testid="info-btn"
-              alt="Info"
-              title="Info"
-            />
+            <button type="button" className="edit-toggle" onClick={prettify} data-testid="prettify-btn">
+              <FormatIcon />
+            </button>
+            <button type="button" className="edit-toggle" onClick={showTooltip} data-testid="info-btn">
+              <InfoIcon />
+            </button>
           </div>
-          <div className="mr-2">
-            <img
-              src="./play.svg"
+          <div className="h-full">
+            <button
+              type="button"
+              className="edit-toggle"
               onClick={sendRequest}
-              className={BIG_ICON}
               data-testid="run-query-btn"
-              alt="Run query"
-              title="Run query"
-            />
+            >
+              <RunIcon />
+            </button>
           </div>
           {infoDisplayed && <InfoPopup />}
         </div>

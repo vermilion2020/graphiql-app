@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import MainPage from './pages/MainPage.tsx';
 import NotFoundPage from './pages/NotFound';
 import { Provider } from 'react-redux';
@@ -11,8 +11,19 @@ import AppLayout from './components/layout/AppLayout.tsx';
 import AuthLayout from './components/layout/AuthLayout.tsx';
 import { PersistGate } from 'redux-persist/integration/react';
 import ErrorBoundary from './components/error-boundary/ErrorBoundary.tsx';
+import { useEffect } from 'react';
+import { firebaseConfig } from './firebase.ts';
+import Snowflakes from './components/snowflakes/Snowflakes.tsx';
 
 function App() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (firebaseConfig.apiKey === 'mock_key') {
+      navigate('/');
+    }
+  }, [navigate]);
+
   return (
     <Routes>
       <Route element={<AuthLayout />}>
@@ -35,6 +46,7 @@ function WrappedApp() {
         <Provider store={store}>
           <PersistGate persistor={persistor}>
             <ErrorBoundary>
+              <Snowflakes />
               <App />
             </ErrorBoundary>
           </PersistGate>

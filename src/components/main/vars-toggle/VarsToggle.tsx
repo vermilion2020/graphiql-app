@@ -1,11 +1,12 @@
-import { LocaleContext } from '../../../context/LocaleContext';
-import { useAppDispatch, useAppSelector } from '../../../redux';
 import {
   setCollapsed,
   setVisibleTab,
 } from '../../../redux/features/editorSlice';
-import { SMALL_ICON } from '../../../utils/documentation-helper';
+import { LocaleContext } from '../../../context/LocaleContext';
+import { useAppDispatch, useAppSelector } from '../../../redux';
 import { useContext } from 'react';
+import ExpandIcon from '../../../assets/icons/ExpandIcon';
+import CollapseIcon from '../../../assets/icons/CollapseIcon';
 
 function VarsToggle() {
   const { collapsed, visibleTab } = useAppSelector(
@@ -15,14 +16,14 @@ function VarsToggle() {
   const dispatch = useAppDispatch();
 
   return (
-    <div className="flex gap-3 switch-vars">
+    <div className="flex justify-start items-center gap-3 switch-vars flex-none text-white h-7 mt-2">
       <span
         data-testid="vars-toggle"
         onClick={() => dispatch(setVisibleTab('vars'))}
         className={
           visibleTab === 'vars'
-            ? 'text-teal-500 font-bold'
-            : 'cursor-pointer hover:text-teal-400'
+            ? 'text-buttonColor-300 font-semibold'
+            : 'cursor-pointer hover:text-buttonColor-300'
         }
       >
         {texts.main.variables}
@@ -32,28 +33,28 @@ function VarsToggle() {
         onClick={() => dispatch(setVisibleTab('headers'))}
         className={
           visibleTab === 'headers'
-            ? 'text-teal-500 font-bold'
-            : 'cursor-pointer hover:text-teal-400'
+            ? 'text-buttonColor-300 font-semibold'
+            : 'cursor-pointer hover:text-buttonColor-300'
         }
       >
         {texts.main.headers}
       </span>
       {collapsed ? (
-        <img
-          src="./expand.svg"
+        <button
+          type="button"
+          className="edit-toggle"
           onClick={() => dispatch(setCollapsed(false))}
-          className={SMALL_ICON}
-          alt="Show Variables and Headers"
-          title="Show Variables and Headers"
-        />
+        >
+          <ExpandIcon />
+        </button>
       ) : (
-        <img
-          src="./collapse.svg"
+        <button
+          type="button"
+          className="edit-toggle"
           onClick={() => dispatch(setCollapsed(true))}
-          className={SMALL_ICON}
-          alt="Hide Variables and Headers"
-          title="Hide Variables and Headers"
-        />
+        >
+          <CollapseIcon />
+        </button>
       )}
     </div>
   );

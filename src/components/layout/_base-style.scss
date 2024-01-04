@@ -1,39 +1,30 @@
-// main colors
-$activeLinkColor: #1f5dc0;
-$baseLinkColor: #1c478b;
-$hoverLinkColor: #2f79f0;
+$activeLinkColor: #1073c9;
+$baseLinkColor: #0b5394;
+$hoverLinkColor: #00a3d7;
 
-// font bg colors
 $whiteBgFontColor: #fff;
 $errorColor: rgb(145, 30, 30);
-$blackBgFontColor: #000;
-$mainBgFontColor: #282c34;
+$blackBgFontColor: #001522;
+$mainBgFontColor: #003354;
 $darkGreyFontColor: #636975;
 $lightGreyColor: #b9b5bb;
-$darkBlueColor: #0f2857;
+$darkBlueColor: #001522;
 $lightBlueColor: #7186ad;
 
-img,
-.switch-vars span {
-  -webkit-transition: all 0.4s ease;
-  -o-transition: all 0.4s ease;
-  transition: all 0.4s ease;
-}
-
-.button {
-  width: 120px;
-  height: 35px;
-  border-radius: 0.3rem;
-  cursor: pointer;
-  background-color: $activeLinkColor;
-  color: $whiteBgFontColor;
+.btn {
   border: 0;
-  -webkit-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background-color: $baseLinkColor;
+  color: $whiteBgFontColor;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
 
   &:hover {
     background-color: $hoverLinkColor;
+    transform: scale(1.05, 1.05);
+    transition: all 0.3s ease;
   }
 
   &.disabled,
@@ -43,18 +34,25 @@ img,
   }
 }
 
-a {
+a, .btn-link {
   font-weight: 500;
   color: $baseLinkColor;
   text-decoration: inherit;
 
   &.menu-link {
     color: $whiteBgFontColor;
+    text-transform: uppercase;
+  }
+
+  &.menu-link:hover {
+    color: $hoverLinkColor;
   }
 
   &:hover,
   &.active-link:hover {
     color: $hoverLinkColor;
+    transform: scale(1.05, 1.05);
+    transition: all 0.3s ease;
   }
 
   &.active-link {

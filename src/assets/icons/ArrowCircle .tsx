@@ -6,7 +6,7 @@ const ArrowCircle = () => {
       viewBox="0 0 32 32"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="fill-buttonColor-900 hover:fill-buttonColor-400"
+      className="fill-buttonColor-600 hover:fill-buttonColor-300"
     >
       <path
         fillRule="evenodd"

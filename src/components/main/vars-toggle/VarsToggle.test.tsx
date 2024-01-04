@@ -18,6 +18,6 @@ describe('Toolbar', async () => {
     fireEvent.click(screen.getByTestId('headers-toggle'));
 
     // Expect
-    expect(screen.getByTestId('headers-toggle')).toHaveClass('text-teal-500');
+    expect(screen.getByTestId('headers-toggle')).toHaveClass('text-buttonColor-300');
   });
 });
