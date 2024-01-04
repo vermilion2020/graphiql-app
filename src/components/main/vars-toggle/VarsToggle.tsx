@@ -1,6 +1,7 @@
+import CollapseIcon from '../../../assets/icons/CollapseIcon';
+import ExpandIcon from '../../../assets/icons/ExpandIcon';
 import { EditorContext } from '../../../context/EditorContext';
 import { LocaleContext } from '../../../context/LocaleContext';
-import { SMALL_ICON } from '../../../utils/documentation-helper';
 import { useContext } from 'react';
 
 function VarsToggle() {
@@ -9,12 +10,12 @@ function VarsToggle() {
   const { texts } = useContext(LocaleContext);
 
   return (
-    <div className="flex gap-3 switch-vars flex-none text-white">
+    <div className="flex justify-start items-center gap-3 switch-vars flex-none text-white h-7 mt-2">
       <span
         onClick={() => setVisibleTab('vars')}
         className={
           visibleTab === 'vars'
-            ? 'text-buttonColor-300 font-bold'
+            ? 'text-buttonColor-300 font-semibold'
             : 'cursor-pointer hover:text-buttonColor-300'
         }
       >
@@ -24,28 +25,28 @@ function VarsToggle() {
         onClick={() => setVisibleTab('headers')}
         className={
           visibleTab === 'headers'
-            ? 'text-buttonColor-300 font-bold text-white'
+            ? 'text-buttonColor-300 font-semibold'
             : 'cursor-pointer hover:text-buttonColor-300'
         }
       >
         {texts.main.headers}
       </span>
       {collapsed ? (
-        <img
-          src="./expand.svg"
+        <button
+          type="button"
+          className="edit-toggle"
           onClick={() => setCollapsed(false)}
-          className={SMALL_ICON}
-          alt="Show Variables and Headers"
-          title="Show Variables and Headers"
-        />
+        >
+          <ExpandIcon />
+        </button>
       ) : (
-        <img
-          src="./collapse.svg"
+        <button
+          type="button"
+          className="edit-toggle"
           onClick={() => setCollapsed(true)}
-          className={SMALL_ICON}
-          alt="Hide Variables and Headers"
-          title="Hide Variables and Headers"
-        />
+        >
+          <CollapseIcon />
+        </button>
       )}
     </div>
   );
