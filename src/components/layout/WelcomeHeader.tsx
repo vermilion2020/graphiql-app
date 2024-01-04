@@ -17,15 +17,7 @@ export default function WelcomeHeader() {
 
   return (
     <header className="header-wrapper">
-      <a
-        href="https://graphql.org/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="GraphQL logo"
-        title="GraphQL logo"
-      >
-        <GraphQL />
-      </a>
+      <GraphQL />
       <div className="menu-wrapper">
         {isLoggedIn ? (
           <>
@@ -45,8 +37,7 @@ export default function WelcomeHeader() {
         ) : (
           firebaseConfig.apiKey !== 'mock_key' && (
             <>
-              <NavLink 
-              to="/sign-in" className={buttonClass}>
+              <NavLink to="/sign-in" className={buttonClass}>
                 <SignInIcon />
                 <span className="menu-item">
                   &#32;

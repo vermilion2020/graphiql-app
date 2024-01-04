@@ -55,7 +55,7 @@ function SaveEndpoint() {
         )}
         {!endpointEdit && endpoint && (
           <>
-            <div className="flex font-semibold text-white self-center mt-[10px] overflow-auto">
+            <div className="flex font-semibold text-white self-center mt-[10px] truncate">
               {url}
             </div>
             <button

@@ -4,21 +4,25 @@
   padding-bottom: 5rem;
   font-size: 1.25rem;
   font-weight: 600;
-  padding: 3rem 7rem 3rem 7rem;
+  padding: 2rem 7rem;
+
+  @media screen and (max-width: 1440px) {
+    padding: 1rem 3rem;
+  }
 
   @media screen and (max-width: 1280px) {
-    padding: 1rem 3rem 1rem 3rem;
+    padding: 1rem 3rem;
     font-size: 1rem;
   }
 
   @media screen and (max-width: 768px) {
-    padding: 0.5rem 1rem 1rem 1rem;
-    font-size: 0.75rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
   }
 
   @media screen and (max-width: 450px) {
-    padding: 0.5rem 1rem 0.25rem 1rem;
-    font-size: 0.6rem;
+    padding: 0.25rem 1rem;
+    font-size: 0.65rem;
   }
 }
 
