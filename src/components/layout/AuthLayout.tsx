@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../redux';
 import WelcomeHeader from './WelcomeHeader';
 import Footer from './Footer';
@@ -7,14 +7,11 @@ import { setSignOut } from '../../redux/features/appSlice';
 import imageSrc from '../../assets/bg.png';
 
 const AuthLayout = () => {
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const expToken = useAppSelector((state) => state.appState.expToken);
 
   useEffect(() => {
-    if (expToken && expToken * 1000 > Date.now()) {
-      navigate('/main');
-    } else {
+    if (expToken && expToken * 1000 < Date.now()) {
       dispatch(setSignOut());
     }
   }, []);
