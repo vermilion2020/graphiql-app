@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { LOCALES, Locales } from '../../model/translates';
 import { LocaleContext } from '../../context/LocaleContext';
+
 function Locale() {
   const [opened, setOpened] = useState(false);
   const { locale, setLocale } = useContext(LocaleContext);
@@ -16,7 +17,7 @@ function Locale() {
   };
 
   return (
-    <div className="locale">
+    <div>
       <div
         className="locale--current"
         data-testid="locale-current"

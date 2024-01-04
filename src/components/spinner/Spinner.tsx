@@ -3,7 +3,7 @@ export default function Spinner({ text }: { text: string }) {
     <button
       disabled
       type="button"
-      className="rounded-md bg-buttonBg-600 px-3 py-2 text-sm font-semibold 
+      className="rounded-md bg-buttonBg-400 px-3 py-2 text-sm font-semibold 
       text-white shadow-sm"
     >
       <svg

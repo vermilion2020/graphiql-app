@@ -17,7 +17,7 @@ function Response() {
 
   return (
     <>
-      <h2 className="font-bold mb-2">{texts.main.response}</h2>
+      <h2 className="font-semibold text-white mb-2 ">{texts.main.response}</h2>
       <div className="border-gray-200 border-solid border-4 rounded-md p-1">
         {loading ? (
           <Loader />
@@ -26,7 +26,7 @@ function Response() {
             value={parserResponse}
             readOnly
             height="69vh"
-            className="text-left"
+            className="main-editor"
             extensions={[javascript({ jsx: true })]}
           />
         )}

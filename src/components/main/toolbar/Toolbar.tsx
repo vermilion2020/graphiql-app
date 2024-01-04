@@ -1,3 +1,6 @@
+import DescriptionIcon from '../../../assets/icons/DescriptionIcon';
+import FormatIcon from '../../../assets/icons/FormatIcon';
+import RunIcon from '../../../assets/icons/RunIcon';
 import { EditorContext } from '../../../context/EditorContext';
 import { LocaleContext } from '../../../context/LocaleContext';
 import { useAppDispatch, useAppSelector } from '../../../redux';
@@ -7,7 +10,6 @@ import {
 } from '../../../redux/api/schemaApi';
 import { setError } from '../../../redux/features/appSlice';
 import { clearDocs } from '../../../redux/features/documentationSlice';
-import { BIG_ICON, STANDARD_ICON } from '../../../utils/documentation-helper';
 import { validJson, validQuery } from '../../../utils/editor-validation';
 import { prettifyQuery } from '../../../utils/prettify';
 import { useContext } from 'react';
@@ -88,42 +90,34 @@ function Toolbar() {
   return (
     <>
       {endpoint && (
-        <div className="flex w-full justify-between">
-          <div className="flex gap-2 ml-2">
+        <div className="flex w-full justify-between items-center flex-none h-10">
+          <div className="flex gap-4 h-full">
             {!schemaQueries && (
-              <img
-                src="./docs.svg"
+              <button
+                type="button"
+                className="edit-toggle"
                 onClick={handleGetDocsClick}
-                className={STANDARD_ICON}
-                alt="Show docs"
-                title="Show docs"
-              />
+              >
+                <DescriptionIcon />
+              </button>
             )}
             {schemaQueries && (
-              <img
-                src="./docs.svg"
-                onClick={hideDocs}
-                className={STANDARD_ICON}
-                alt="Hide docs"
-                title="Hide docs"
-              />
+              <button type="button" className="edit-toggle" onClick={hideDocs}>
+                <DescriptionIcon />
+              </button>
             )}
-            <img
-              src="./prettify.svg"
-              onClick={prettify}
-              className={STANDARD_ICON}
-              alt="Prettify"
-              title="Prettify"
-            />
+            <button type="button" className="edit-toggle" onClick={prettify}>
+              <FormatIcon />
+            </button>
           </div>
-          <div className="mr-2">
-            <img
-              src="./play.svg"
+          <div className="h-full">
+            <button
+              type="button"
+              className="edit-toggle"
               onClick={sendRequest}
-              className={BIG_ICON}
-              alt="Run query"
-              title="Run query"
-            />
+            >
+              <RunIcon />
+            </button>
           </div>
         </div>
       )}

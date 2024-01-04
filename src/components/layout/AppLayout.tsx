@@ -4,6 +4,7 @@ import Header from './Header';
 import Footer from './Footer';
 import { useEffect } from 'react';
 import { setSignOut } from '../../redux/features/appSlice';
+import imageSrc from '../../assets/bg.png';
 
 const AppLayout = () => {
   const navigate = useNavigate();
@@ -11,6 +12,11 @@ const AppLayout = () => {
   const expToken = useAppSelector((state) => state.appState.expToken);
 
   useEffect(() => {
+    if (expToken && expToken * 1000 < Date.now()) {
+      dispatch(setSignOut());
+      navigate('/');
+    }
+
     const handle = setInterval(
       () => {
         if (expToken && expToken * 1000 < Date.now()) {
@@ -21,18 +27,20 @@ const AppLayout = () => {
       5 * 60 * 1000
     );
 
-    // clean up setInterval
     return () => clearInterval(handle);
-  });
+  }, []);
 
   return (
-    <>
-      <Header />
-      <main className="app-container">
+    <div className="app-wrapper">
+      <div className="app-container">
+        <Header />
         <Outlet />
-      </main>
-      <Footer />
-    </>
+        <Footer />
+      </div>
+      <div className="bg-img">
+        <img src={imageSrc} alt="bg-image" className="bg-image" />
+      </div>
+    </div>
   );
 };
 

@@ -38,10 +38,11 @@ export const en = {
     signIn: 'Sign In',
     signUp: 'Sign Up',
     main: 'MAIN PAGE',
+    noEnv: 'Sorry, but to continue the local functioning of the application, you should put .env file to the project root folder.',
     project:
-      'This application is an educational project on GraphiQL developed within RSSchool React course',
+      'This application is an educational project on GraphiQL developed within RS School React course',
     course:
-      'RSSchool React is a free-of-charge course for JavaScript / Front-End developers who want to get acquainted with React library for web application development',
+      'RS School React is a free-of-charge course for JavaScript/Front-End developers, who want to get acquainted with React library for web application development',
     tecks: 'Technologies',
     developers: {
       title: 'Developers',
@@ -190,28 +191,29 @@ export const ru: typeof en = {
     signIn: 'Вход',
     signUp: 'Регистрация',
     main: 'НА ГЛАВНУЮ',
+    noEnv: 'Извините, но для продолжения локальной работы приложения необходимо поместить файл .env в корневую папку проекта.',
     project:
-      'Данное приложение является учебным проектом по GraphiQL, разработанным в рамках курса RSSchool React',
+      'Данное приложение является учебным проектом по GraphiQL, разработанным в рамках курса RS School React',
     course:
-      'RSSchool React - бесплатный курс для JavaScript / Front-End-разработчиков, желающих ознакомиться с библиотекой React для разработки web-приложений',
+      'RS School React – бесплатный курс для JavaScript/Frontend-разработчиков, желающих ознакомиться с библиотекой React для разработки web-приложений',
     tecks: 'Технологии',
     developers: {
       title: 'Разработчики',
       mila: {
         name: 'Мила',
-        description: 'Тимлид, Front-end-разработчик',
+        description: 'Тимлид, Frontend-разработчик',
         contribution:
-          'Личный вклад в проект: базовая структура проекта, главная страница - запросы, документация, претифаер',
+          'Личный вклад в проект: базовая структура проекта, главная страница – запросы, документация, претифаер',
       },
       natali: {
         name: 'Натали',
-        description: 'Front-end-разработчик',
+        description: 'Frontend-разработчик',
         contribution:
           'Личный вклад в проект: страницы входа и регистрации, аутентификация с использованием Firebase, адаптивный дизайн',
       },
       victor: {
         name: 'Виктор',
-        description: 'Front-end-разработчик',
+        description: 'Frontend-разработчик',
         contribution:
           'Личный вклад в проект: страница-приветствие, сохранение конечной точки, валидация тела запроса, переменных и заголовков',
       },

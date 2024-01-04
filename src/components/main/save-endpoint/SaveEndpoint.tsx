@@ -3,11 +3,12 @@ import { LocaleContext } from '../../../context/LocaleContext';
 import { useAppDispatch, useAppSelector } from '../../../redux';
 import { useLazyCheckSchemaQuery } from '../../../redux/api/schemaApi';
 import { setError } from '../../../redux/features/appSlice';
-import { SMALL_ICON } from '../../../utils/documentation-helper';
 import {
   setEndpointEdit,
   setEndpointValid,
 } from '../../../redux/features/requestSlice';
+import EditIcon from '../../../assets/icons/EditIcon';
+import DoneIcon from '../../../assets/icons/DoneIcon';
 
 function SaveEndpoint() {
   const { endpoint, endpointValid, endpointEdit } = useAppSelector(
@@ -36,26 +37,34 @@ function SaveEndpoint() {
           <>
             <input
               type="url"
-              className={!endpointValid ? 'text-input invalid' : 'text-input'}
+              className={
+                !endpointValid
+                  ? 'text-input bg-white invalid'
+                  : 'text-input bg-white'
+              }
               placeholder={texts.main.saveEndpoint.heading}
               value={url}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setUrl(e.target.value.trim())
               }
-            ></input>
-            <button
-              type="submit"
-              className={`${SMALL_ICON} save-icon`}
-            ></button>
+            />
+            <button type="submit" className="edit-toggle">
+              <DoneIcon />
+            </button>
           </>
         )}
         {!endpointEdit && endpoint && (
           <>
-            <div className="flex font-bold self-center mt-[10px]">{url}</div>
+            <div className="flex font-semibold text-white self-center mt-[10px] truncate">
+              {url}
+            </div>
             <button
+              type="submit"
+              className="edit-toggle"
               onClick={() => dispatch(setEndpointEdit(true))}
-              className={`${SMALL_ICON} edit-icon`}
-            ></button>
+            >
+              <EditIcon />
+            </button>
           </>
         )}
       </form>
