@@ -27,7 +27,7 @@ function Header() {
   };
 
   return (
-    <header className="header-wrapper">
+    <>
       <GraphQL />
       <nav className="menu-wrapper">
         <NavLink
@@ -58,7 +58,7 @@ function Header() {
         )}
         <Locale />
       </nav>
-    </header>
+    </>
   );
 }
 

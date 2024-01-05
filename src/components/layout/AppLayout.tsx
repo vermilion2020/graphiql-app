@@ -5,6 +5,7 @@ import Footer from './Footer';
 import { useEffect } from 'react';
 import { setSignOut } from '../../redux/features/appSlice';
 import imageSrc from '../../assets/bg.png';
+import Sticky from './Sticky';
 
 const AppLayout = () => {
   const navigate = useNavigate();
@@ -33,7 +34,9 @@ const AppLayout = () => {
   return (
     <div className="app-wrapper">
       <div className="app-container">
-        <Header />
+        <Sticky>
+          <Header />
+        </Sticky>
         <Outlet />
         <Footer />
       </div>

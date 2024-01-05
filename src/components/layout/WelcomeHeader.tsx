@@ -16,7 +16,7 @@ export default function WelcomeHeader() {
   const buttonClass = 'text-white uppercase';
 
   return (
-    <header className="header-wrapper">
+    <>
       <GraphQL />
       <nav className="menu-wrapper">
         {isLoggedIn ? (
@@ -56,6 +56,6 @@ export default function WelcomeHeader() {
         )}
         <Locale />
       </nav>
-    </header>
+    </>
   );
 }
