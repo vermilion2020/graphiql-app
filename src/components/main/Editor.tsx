@@ -15,11 +15,14 @@ import {
 const codeClasses = ' border-gray-200 border-solid border-4 rounded-md p-1';
 
 function Editor() {
-  const { collapsed, visibleTab, query, vars, headers } =
-    useAppSelector((state) => state.editorState);
+  const { collapsed, visibleTab, query, vars, headers } = useAppSelector(
+    (state) => state.editorState
+  );
   const { testMode } = useAppSelector((state) => state.appState);
   const dispatch = useAppDispatch();
-  const extensions = testMode ? [] : [javascript({ jsx: true }), indentUnit.of(' ')];
+  const extensions = testMode
+    ? []
+    : [javascript({ jsx: true }), indentUnit.of(' ')];
 
   const onChangeMain = useCallback(
     (val: string) => {
@@ -64,7 +67,8 @@ function Editor() {
           <CodeMirror
             value={vars}
             placeholder={JSON.stringify({ var: 'val' }, null, 2)}
-            height="200px"
+            minHeight="200px"
+            height="100%"
             className="main-editor"
             extensions={extensions}
             onChange={onChangeVars}
@@ -80,7 +84,8 @@ function Editor() {
               null,
               2
             )}
-            height="200px"
+            minHeight="200px"
+            height="100%"
             className="main-editor"
             extensions={extensions}
             onChange={onChangeHeaders}
