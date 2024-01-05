@@ -5,6 +5,7 @@ import WelcomeHeader from './WelcomeHeader';
 import Footer from './Footer';
 import { setSignOut } from '../../redux/features/appSlice';
 import imageSrc from '../../assets/bg.png';
+import Sticky from './Sticky';
 
 const AuthLayout = () => {
   const dispatch = useAppDispatch();
@@ -19,7 +20,9 @@ const AuthLayout = () => {
   return (
     <div className="app-wrapper">
       <div className="app-container">
-        <WelcomeHeader />
+        <Sticky>
+          <WelcomeHeader />
+        </Sticky>
         <Outlet />
         <Footer />
       </div>

@@ -14,8 +14,8 @@ export const editorSlice = createSlice({
   initialState,
   name: 'editorSlice',
   reducers: {
-    setCollapsed: (state, action: PayloadAction<boolean>) => {
-      state.collapsed = action.payload;
+    setCollapsed: (state) => {
+      state.collapsed = !state.collapsed;
     },
     setVisibleTab: (state, action: PayloadAction<'vars' | 'headers'>) => {
       state.visibleTab = action.payload;

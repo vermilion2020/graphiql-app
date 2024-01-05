@@ -33,24 +33,24 @@ function Documentation() {
     !typeDisplayed && !queriesDisplayed && !mutationsDisplayed;
 
   return (
-    <>
+    <div className="min-h-[200px] md:h-full w-full">
       {loading ? (
         <Loader />
       ) : (
-        <div className="text-left min-h-[30vh] md:h-full overflow-auto docs-container w-full px-2">
+        <div className="text-left overflow-auto w-full">
           {schemaQueries && (
             <h2 className="text-left font-semibold text-white">{texts.main.docs.title}</h2>
           )}
           <div className="heading mt-4 mb-2">
             {mainPartDisplayed && schemaQueries && (
-              <div className="text-left">
+              <div className="text-left text-white">
                 {texts.main.docs.query}:
                 <span
                   data-testid="query-btn"
                   onClick={() => dispatch(setQueriesDisplayed(true))}
                   className="cursor-pointer hover:underline"
                 >
-                  <span className="text-orange-600 ms-2">
+                  <span className="text-orange-600 ps-2">
                     {schemaQueries.name}
                   </span>
                 </span>
@@ -63,7 +63,7 @@ function Documentation() {
                   onClick={() => dispatch(setQueriesDisplayed(true))}
                   className="cursor-pointer hover:underline"
                 >
-                  <span className="text-orange-600 ms-2">
+                  <span className="text-orange-600 ps-2">
                     {schemaMutations.name}
                   </span>
                 </span>
@@ -71,7 +71,7 @@ function Documentation() {
             )}
             {(typeDisplayed || queriesDisplayed || mutationsDisplayed) && (
               <span
-                className="text-blue-900 ms-2 cursor-pointer hover:underline"
+                className="text-blue-900 ps-2 cursor-pointer hover:underline"
                 onClick={toDefaultView}
               >
                 {`< ${texts.main.docs.back}`}
@@ -91,7 +91,7 @@ function Documentation() {
           )}
         </div>
       )}
-    </>
+    </div>
   );
 }
 
