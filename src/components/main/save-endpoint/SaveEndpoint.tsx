@@ -30,6 +30,10 @@ function SaveEndpoint() {
     }
   };
 
+  const handleEditToggle = () => {
+    dispatch(setEndpointEdit(true));
+  }
+
   return (
     <div className="save-endpoint-wrapper">
       <form className="form" onSubmit={handleSubmit}>
@@ -56,14 +60,14 @@ function SaveEndpoint() {
         )}
         {!endpointEdit && endpoint && (
           <>
-            <div className="flex font-semibold text-white self-center mt-[10px] truncate">
+            <div className="flex text-white self-center truncate">
               {url}
             </div>
             <button
               data-testid="edit-btn"
               type="submit"
               className="edit-toggle"
-              onClick={() => dispatch(setEndpointEdit(true))}
+              onClick={handleEditToggle}
             >
               <EditIcon />
             </button>

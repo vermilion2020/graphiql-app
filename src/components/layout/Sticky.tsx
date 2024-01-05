@@ -20,9 +20,9 @@ const Sticky: React.FunctionComponent<StickyProps> = ({ children }) => {
   }, []);
 
   return (
-    <div className={`header-wrapper ${scrollPosition > 100 ? "fixed fade-in" : ""}`}>
+    <header className={`header-wrapper ${scrollPosition > 100 ? "fixed fade-in" : ""}`}>
       {children}
-    </div>
+    </header>
   );
 };
 
