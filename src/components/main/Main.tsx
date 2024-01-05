@@ -21,15 +21,15 @@ function Main() {
   return (
     <div className="main-container">
       <div
-        className={schemaTypes ?? loading ? ' md:flex-none h-full md:w-3/12 w-full' : ' h-0 w-0'}
+        className={schemaTypes ?? loading ? 'main-container-left' : ' h-0 w-0'}
       >
         <Documentation />
       </div>
-      <div className=" md:grow flex flex-col flex-nowrap gap-y-2 md:w-5/12 w-full self-stretch">
+      <div className="main-container-center">
         <Editor />
       </div>
 
-      <div className=" md:flex-none md:w-4/12 w-full h-full">
+      <div className="md:w-4/12 md:flex-none w-full">
         <Response />
       </div>
     </div>

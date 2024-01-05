@@ -16,9 +16,9 @@ export default function WelcomeHeader() {
   const buttonClass = 'text-white uppercase';
 
   return (
-    <header className="header-wrapper">
+    <>
       <GraphQL />
-      <div className="menu-wrapper">
+      <nav className="menu-wrapper">
         {isLoggedIn ? (
           <>
             <NavLink
@@ -55,7 +55,7 @@ export default function WelcomeHeader() {
           )
         )}
         <Locale />
-      </div>
-    </header>
+      </nav>
+    </>
   );
 }

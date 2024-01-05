@@ -14,7 +14,7 @@ function WelcomePage() {
           {texts.welcome.noEnv}
         </h1>
       ) : (
-        <div className="flex flex-col justify-center items-center max-w-4xl px-3 box-decoration-slice text-white">
+        <article className="flex flex-col justify-center items-center max-w-4xl px-3 box-decoration-slice text-white">
           <h1 className="mb-4">{texts.welcome.title}</h1>
           <p className="self-start py-2">{texts.welcome.project}</p>
           <p className="self-start py-2">{texts.welcome.course}</p>
@@ -90,7 +90,7 @@ function WelcomePage() {
               </div>
             </div>
           </div>
-        </div>
+        </article>
       )}
     </div>
   );

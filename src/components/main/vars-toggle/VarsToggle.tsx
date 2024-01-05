@@ -15,35 +15,47 @@ function VarsToggle() {
   const { texts } = useContext(LocaleContext);
   const dispatch = useAppDispatch();
 
+  const handleVars = () => {
+    dispatch(setVisibleTab('vars'));
+  };
+
+  const handleHeaders = () => {
+    dispatch(setVisibleTab('headers'));
+  };
+
+  const handleCollapsed = () => {
+    dispatch(setCollapsed());
+  };
+
   return (
-    <div className="flex justify-start items-center gap-3 switch-vars flex-none text-white h-7 mt-2">
-      <span
+    <div className="flex justify-start items-center gap-3 switch-vars flex-none text-buttonColor-200 h-7 mt-2">
+      <button
         data-testid="vars-toggle"
-        onClick={() => dispatch(setVisibleTab('vars'))}
+        onClick={handleVars}
         className={
           visibleTab === 'vars'
-            ? 'text-buttonColor-300 font-semibold'
-            : 'cursor-pointer hover:text-buttonColor-300'
+            ? 'text-buttonColor-300 font-semibold underline'
+            : 'cursor-pointer hover:text-buttonColor-300 '
         }
       >
         {texts.main.variables}
-      </span>
-      <span
+      </button>
+      <button
         data-testid="headers-toggle"
-        onClick={() => dispatch(setVisibleTab('headers'))}
+        onClick={handleHeaders}
         className={
           visibleTab === 'headers'
-            ? 'text-buttonColor-300 font-semibold'
+            ? 'text-buttonColor-300 font-semibold underline'
             : 'cursor-pointer hover:text-buttonColor-300'
         }
       >
         {texts.main.headers}
-      </span>
+      </button>
       {collapsed ? (
         <button
           type="button"
           className="edit-toggle"
-          onClick={() => dispatch(setCollapsed(false))}
+          onClick={handleCollapsed}
         >
           <ExpandIcon />
         </button>
@@ -51,7 +63,7 @@ function VarsToggle() {
         <button
           type="button"
           className="edit-toggle"
-          onClick={() => dispatch(setCollapsed(true))}
+          onClick={handleCollapsed}
         >
           <CollapseIcon />
         </button>
