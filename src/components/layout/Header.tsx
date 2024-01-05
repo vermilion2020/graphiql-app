@@ -29,7 +29,7 @@ function Header() {
   return (
     <header className="header-wrapper">
       <GraphQL />
-      <div className="menu-wrapper">
+      <nav className="menu-wrapper">
         <NavLink
           className={({ isActive }) =>
             isActive ? 'menu-link active-link' : 'menu-link'
@@ -57,7 +57,7 @@ function Header() {
           </button>
         )}
         <Locale />
-      </div>
+      </nav>
     </header>
   );
 }

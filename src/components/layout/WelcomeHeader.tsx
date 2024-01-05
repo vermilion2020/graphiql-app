@@ -18,7 +18,7 @@ export default function WelcomeHeader() {
   return (
     <header className="header-wrapper">
       <GraphQL />
-      <div className="menu-wrapper">
+      <nav className="menu-wrapper">
         {isLoggedIn ? (
           <>
             <NavLink
@@ -55,7 +55,7 @@ export default function WelcomeHeader() {
           )
         )}
         <Locale />
-      </div>
+      </nav>
     </header>
   );
 }
