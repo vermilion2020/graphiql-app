@@ -32,6 +32,12 @@ export const en = {
       headers: 'Error in headers',
       query: 'Error in a query',
     },
+    info: {
+      heading: 'GraphQL Info',
+      btnText: 'Set testing data',
+      exampleVars: 'And variables:',
+      exampleQuery: 'An example GraphQL query might look like:',
+    }
   },
   welcome: {
     title: 'GraphQL editor',
@@ -185,6 +191,12 @@ export const ru: typeof en = {
       headers: 'Ошибка в заголовках',
       query: 'Ошибка в запросе',
     },
+    info: {
+      heading: 'GraphQL Инфо',
+      btnText: 'Заполнить тестовые данные',
+      exampleVars: 'И переменных:',
+      exampleQuery: 'Пример GraphQL запроса:',
+    }
   },
   welcome: {
     title: 'GraphQL редактор',

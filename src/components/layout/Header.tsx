@@ -45,6 +45,7 @@ function Header() {
         </NavLink>
         {isLoggedIn && (
           <button
+            data-testid="logout-btn"
             type="button"
             className="btn-link menu-link"
             onClick={handleLogout}

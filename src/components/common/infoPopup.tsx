@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import CloseIcon from '../../assets/icons/CloseIcon';
 import DoneIcon from '../../assets/icons/DoneIcon';
 import { TEST_HEADERS, TEST_QUERY, TEST_VARS } from '../../model/queries';
@@ -8,8 +9,10 @@ import {
   setQuery,
   setVars,
 } from '../../redux/features/editorSlice';
+import { LocaleContext } from '../../context/LocaleContext';
 
 function InfoPopup() {
+  const { texts } = useContext(LocaleContext);
   const dispatch = useAppDispatch();
 
   const handleClickClose = () => {
@@ -37,14 +40,14 @@ function InfoPopup() {
             <span className="sr-only">Close modal</span>
           </button>
           <div className="p-4 md:p-5 border rounded-lg shadow-xl bg-white text-left">
-            <h3 className="mb-4 text-gray-500">GraphQL Info</h3>
-            <div className="font-semibold text-sm">An example GraphQL query might look like:</div>
+            <h3 className="mb-4 text-gray-500">{texts.main.info.heading}</h3>
+            <div className="font-semibold text-sm">{texts.main.info.exampleQuery}</div>
             <pre>
               <code>
               {TEST_QUERY}
               </code>
             </pre>
-            <div className="font-semibold text-sm">And variables:</div>
+            <div className="font-semibold text-sm">{texts.main.info.exampleVars}</div>
             <pre>
               <code>
               {TEST_VARS}
@@ -57,7 +60,7 @@ function InfoPopup() {
               <button type="submit" className="edit-toggle" data-testid="save-btn">
                 <DoneIcon />
               </button>
-              Set testing data
+              {texts.main.info.btnText}
             </div>
           </div>
         </div>

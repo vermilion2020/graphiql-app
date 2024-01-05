@@ -7,7 +7,10 @@ import Loader from '../common/Loader';
 
 function Response() {
   const { texts } = useContext(LocaleContext);
+  const { testMode } = useAppSelector((state) => state.appState);
+  const extensions = testMode ? [] : [javascript({ jsx: true })];
   const { response, loading } = useAppSelector((state) => state.requestState);
+  
   let parserResponse = '';
   try {
     parserResponse = JSON.stringify(JSON.parse(response), null, 2);
@@ -27,7 +30,7 @@ function Response() {
             readOnly
             height="69vh"
             className="main-editor"
-            extensions={[javascript({ jsx: true })]}
+            extensions={extensions}
           />
         )}
       </div>

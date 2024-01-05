@@ -4,10 +4,13 @@ import { renderWithProviders } from '../../../test-utils';
 import { store } from '../../../redux';
 import { DEFAULT_URL } from '../../../model/queries';
 import SaveEndpoint from './SaveEndpoint';
+import { SEND_QUERY } from '../../../mock';
+import { mswServer } from '../../../setupTests';
 
 describe('Toolbar', async () => {
   it('Edit form is shown when clicking edit icon', async () => {
     // Arrange
+    mswServer.use(SEND_QUERY);
     renderWithProviders(
       <SaveEndpoint />,
       { store }
