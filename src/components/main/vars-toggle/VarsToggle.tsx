@@ -52,11 +52,7 @@ function VarsToggle() {
         {texts.main.headers}
       </button>
       {collapsed ? (
-        <button
-          type="button"
-          className="edit-toggle"
-          onClick={handleCollapsed}
-        >
+        <button type="button" className="edit-toggle" onClick={handleCollapsed}>
           <ExpandIcon />
         </button>
       ) : (

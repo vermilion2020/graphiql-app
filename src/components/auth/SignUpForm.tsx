@@ -144,7 +144,10 @@ function SignUpForm() {
             focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
               {...register('email')}
             />
-            <div className="block text-xs font-medium text-red-600" data-testid="email-error">
+            <div
+              className="block text-xs font-medium text-red-600"
+              data-testid="email-error"
+            >
               {formState.errors.email && formState.errors.email.message}
             </div>
           </label>
@@ -223,7 +226,12 @@ function SignUpForm() {
             {isLoading ? (
               <Spinner text={texts.signUp.loading} />
             ) : (
-              <button type="submit" data-testid="submit-btn" disabled={isDisabled} className="btn">
+              <button
+                type="submit"
+                data-testid="submit-btn"
+                disabled={isDisabled}
+                className="btn"
+              >
                 {texts.signUp.title}
               </button>
             )}
@@ -231,9 +239,9 @@ function SignUpForm() {
         </form>
         <p className="mt-3">
           {texts.signUp.question}&#32;
-            <Link to="/sign-in">
-              <span className="mt-3 font-semibold">{texts.signUp.linkText}</span>
-            </Link>
+          <Link to="/sign-in">
+            <span className="mt-3 font-semibold">{texts.signUp.linkText}</span>
+          </Link>
         </p>
       </div>
     </div>

@@ -124,7 +124,10 @@ function SignInForm() {
                 },
               })}
             />
-            <div className="block text-xs font-medium text-red-600" data-testid="email-error">
+            <div
+              className="block text-xs font-medium text-red-600"
+              data-testid="email-error"
+            >
               {formState.errors.email && formState.errors.email.message}
             </div>
           </label>
@@ -169,9 +172,7 @@ function SignInForm() {
         </form>
         <p className="mt-3">
           {texts.signIn.question}&#32;
-          <Link
-            to="/sign-up"
-          >
+          <Link to="/sign-up">
             <span className="mt-3 font-semibold">{texts.signIn.linkText}</span>
           </Link>
         </p>

@@ -2,7 +2,8 @@ import { http, HttpResponse, delay } from 'msw';
 import { DEFAULT_URL } from './model/queries';
 import { DOCS_TEST_DATA } from './model/testDocsData';
 
-const AUTH_URL_PATTERN = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword*';
+const AUTH_URL_PATTERN =
+  'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword*';
 
 export interface IRequest {
   query: string;
@@ -22,5 +23,5 @@ export const GET_DOCS = http.post(DEFAULT_URL, async () => {
 
 export const MOCK_AUTH = http.post(AUTH_URL_PATTERN, async () => {
   await delay(2000);
-  return HttpResponse.json({'status': 'ok'});
+  return HttpResponse.json({ status: 'ok' });
 });

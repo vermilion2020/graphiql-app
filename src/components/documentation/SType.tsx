@@ -18,7 +18,7 @@ function SType({ sTypeName }: IFieldProps) {
 
   const handleTypeClick = (typeName: string) => {
     dispatch(setTypeDisplayed(typeName));
-  }
+  };
 
   return (
     <div data-testid="type-data" className="text-blue-300">

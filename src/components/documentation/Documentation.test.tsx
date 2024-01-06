@@ -3,7 +3,12 @@ import { fireEvent, screen } from '@testing-library/react';
 import { renderWithProviders } from '../../test-utils';
 import { store } from '../../redux';
 import Documentation from './Documentation';
-import { setLoading, setQueriesDisplayed, setSchemaQueries, setSchemaTypes } from '../../redux/features/documentationSlice';
+import {
+  setLoading,
+  setQueriesDisplayed,
+  setSchemaQueries,
+  setSchemaTypes,
+} from '../../redux/features/documentationSlice';
 import { SchemaType } from '../../model/schema.interface';
 import Query from './Query';
 import { TEST_Q } from '../../model/testDocsData';
@@ -27,7 +32,7 @@ describe('Response', async () => {
   it('Query page is shown when clicking on query link', async () => {
     // Arrange
     store.dispatch(setLoading(false));
-    store.dispatch(setSchemaQueries({name: "Query"} as SchemaType));
+    store.dispatch(setSchemaQueries({ name: 'Query' } as SchemaType));
     renderWithProviders(
       <MemoryRouter>
         <Documentation />
@@ -46,7 +51,7 @@ describe('Response', async () => {
   it('default view is shown when clicking Back button', async () => {
     // Arrange
     store.dispatch(setLoading(false));
-    store.dispatch(setSchemaQueries({name: "Query"} as SchemaType));
+    store.dispatch(setSchemaQueries({ name: 'Query' } as SchemaType));
     renderWithProviders(
       <MemoryRouter>
         <Documentation />
@@ -64,7 +69,7 @@ describe('Response', async () => {
   it('Types page is shown when clicking on type link', async () => {
     // Arrange
     store.dispatch(setQueriesDisplayed(false));
-    store.dispatch(setSchemaTypes([{name: "type field"}] as SchemaType[]));
+    store.dispatch(setSchemaTypes([{ name: 'type field' }] as SchemaType[]));
     renderWithProviders(
       <MemoryRouter>
         <Documentation />
@@ -83,7 +88,7 @@ describe('Response', async () => {
   it('Query item is displayed properly', async () => {
     // Arrange
     store.dispatch(setQueriesDisplayed(false));
-    store.dispatch(setSchemaTypes([{name: "type field"}] as SchemaType[]));
+    store.dispatch(setSchemaTypes([{ name: 'type field' }] as SchemaType[]));
     renderWithProviders(
       <MemoryRouter>
         <Query query={TEST_Q} />

@@ -31,7 +31,8 @@ export const en = {
     errors: {
       vars: 'Error in variables. Variables should be a valid JSON',
       headers: 'Error in headers. Headers should be a valid JSON',
-      query: 'An error found in the query. Use documentation to fix the query and try again',
+      query:
+        'An error found in the query. Use documentation to fix the query and try again',
       emptyQuery: `You can't send an empty query`,
     },
     info: {
@@ -39,14 +40,15 @@ export const en = {
       btnText: 'Set testing data',
       exampleVars: 'And variables:',
       exampleQuery: 'An example GraphQL query might look like:',
-    }
+    },
   },
   welcome: {
     title: 'GraphQL editor',
     signIn: 'Sign In',
     signUp: 'Sign Up',
     main: 'MAIN PAGE',
-    noEnv: 'Sorry, but to continue the local functioning of the application, you should put .env file to the project root folder.',
+    noEnv:
+      'Sorry, but to continue the local functioning of the application, you should put .env file to the project root folder.',
     project:
       'This application is an educational project on GraphiQL developed within RS School React course',
     course:
@@ -192,7 +194,8 @@ export const ru: typeof en = {
     errors: {
       vars: 'Ошибка в переменных. Переменные должны иметь формат JSON',
       headers: 'Ошибка в заголовках. Заголовки должны иметь формат JSON',
-      query: 'Ошибка в запросе. Используйте документацию, чтобы поправить ошибку и попробуйте снова',
+      query:
+        'Ошибка в запросе. Используйте документацию, чтобы поправить ошибку и попробуйте снова',
       emptyQuery: 'Невозможно отправить пустой запрос',
     },
     info: {
@@ -200,14 +203,15 @@ export const ru: typeof en = {
       btnText: 'Заполнить тестовые данные',
       exampleVars: 'И переменных:',
       exampleQuery: 'Пример GraphQL запроса:',
-    }
+    },
   },
   welcome: {
     title: 'GraphQL редактор',
     signIn: 'Вход',
     signUp: 'Регистрация',
     main: 'НА ГЛАВНУЮ',
-    noEnv: 'Извините, но для продолжения локальной работы приложения необходимо поместить файл .env в корневую папку проекта.',
+    noEnv:
+      'Извините, но для продолжения локальной работы приложения необходимо поместить файл .env в корневую папку проекта.',
     project:
       'Данное приложение является учебным проектом по GraphiQL, разработанным в рамках курса RS School React',
     course:

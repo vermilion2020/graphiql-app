@@ -11,26 +11,22 @@ describe('Toolbar', async () => {
   it('Edit form is shown when clicking edit icon', async () => {
     // Arrange
     store.dispatch(setVisibleTab('vars'));
-    renderWithProviders(
-      <VarsToggle />,
-      { store }
-    );
+    renderWithProviders(<VarsToggle />, { store });
 
     // Act
     fireEvent.click(screen.getByTestId('headers-toggle'));
 
     // Expect
-    expect(screen.getByTestId('headers-toggle')).toHaveClass('text-buttonColor-300');
+    expect(screen.getByTestId('headers-toggle')).toHaveClass(
+      'text-buttonColor-300'
+    );
   });
 
   it('Collapse variables editor', async () => {
     // Arrange
     store.dispatch(setVisibleTab('vars'));
     store.dispatch(setTestMode(true));
-    renderWithProviders(
-      <Editor />,
-      { store }
-    );
+    renderWithProviders(<Editor />, { store });
 
     // Act
     fireEvent.click(screen.getByTestId('collapse'));

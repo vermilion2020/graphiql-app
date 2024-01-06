@@ -7,9 +7,7 @@ function NotFound() {
 
   return (
     <div className="not-found text-white" data-testid="not-found">
-      <h2 className="text-2xl">
-        {texts.notFound.title}
-      </h2>
+      <h2 className="text-2xl">{texts.notFound.title}</h2>
       <div className="content--heading">{texts.notFound.heading}</div>
       <div className="content--desctiption">{texts.notFound.description}</div>
       <img className="content--img" src={notFoundImage} alt="Not found" />

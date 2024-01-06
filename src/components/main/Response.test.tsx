@@ -10,10 +10,7 @@ describe('Response', async () => {
   it('Preloader is shown while data is fetching', async () => {
     // Arrange
     store.dispatch(setLoading(true));
-    renderWithProviders(
-      <Response />,
-      { store }
-    );
+    renderWithProviders(<Response />, { store });
 
     // Expect
     expect(screen.getByTestId('loader')).toBeVisible();

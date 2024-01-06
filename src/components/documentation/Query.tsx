@@ -20,7 +20,11 @@ function Query({ query }: IQueryProps) {
   };
 
   const typeBlock = (typeName: string) => (
-    <Link to="#" className={TYPE_CLASSES} onClick={handleClickField.bind(null, typeName)}>
+    <Link
+      to="#"
+      className={TYPE_CLASSES}
+      onClick={handleClickField.bind(null, typeName)}
+    >
       {typeName}
     </Link>
   );

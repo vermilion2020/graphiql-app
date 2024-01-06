@@ -1,9 +1,7 @@
-import Welcome from "../components/welcome/Welcome";
+import Welcome from '../components/welcome/Welcome';
 
 function WelcomePage() {
-  return (
-    <Welcome />
-  );
+  return <Welcome />;
 }
 
 export default WelcomePage;
