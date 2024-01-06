@@ -7,7 +7,7 @@ import { setSingIn, setTestMode } from '../../redux/features/appSlice';
 import { App } from '../../App';
 
 describe('Main page', async () => {
-  it('Welcome page is shown, when user is signed in', async () => {
+  it('Welcome page is shown, when user is not signed in', async () => {
     // Arrange
     store.dispatch(setSingIn(false));
     renderWithProviders(
