@@ -107,6 +107,7 @@ function SignInForm() {
             <input
               type="email"
               id="email"
+              data-testid="email"
               disabled={isLoading}
               placeholder={texts.signIn.emailPlaceholder}
               autoComplete="email"
@@ -123,7 +124,7 @@ function SignInForm() {
                 },
               })}
             />
-            <div className="block text-xs font-medium text-red-600">
+            <div className="block text-xs font-medium text-red-600" data-testid="email-error">
               {formState.errors.email && formState.errors.email.message}
             </div>
           </label>
@@ -135,6 +136,7 @@ function SignInForm() {
             <input
               type="password"
               id="password"
+              data-testid="password"
               disabled={isLoading}
               placeholder={texts.signIn.passwordPlaceholder}
               className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
@@ -157,6 +159,7 @@ function SignInForm() {
           ) : (
             <button
               type="submit"
+              data-testid="submit-btn"
               disabled={isDisabled}
               className="btn"
             >

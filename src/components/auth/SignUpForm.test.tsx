@@ -1,12 +1,11 @@
 import { describe, it } from 'vitest';
 import { renderWithProviders } from '../../test-utils';
 // import { fireEvent, screen, waitFor } from '@testing-library/react';
-import { screen } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { store } from '../../redux';
-import { setSingIn, setTestMode } from '../../redux/features/appSlice';
+import { setSingIn } from '../../redux/features/appSlice';
 import SignUpForm from './SignUpForm';
-import { App } from '../../App';
 import { mswServer } from '../../setupTests';
 import { MOCK_AUTH } from '../../mock';
 
@@ -25,19 +24,43 @@ describe('Sign up form', async () => {
     expect(screen.getByText('Confirm password')).toBeInTheDocument();
   });
 
-  it('Main page is shown, when user is signed in and open Sign-up page', async () => {
+  it('Sign-up page validation', async () => {
     // Arrange
+    const invalidEmail = '123456.ru';
     mswServer.use(MOCK_AUTH);
-    store.dispatch(setSingIn('user_uid'));
-    store.dispatch(setTestMode(true));
     renderWithProviders(
       <MemoryRouter initialEntries={['/sign-up']}>
-        <App />
+        <SignUpForm />
       </MemoryRouter>,
       { store }
     );
 
+    fireEvent.paste(screen.getByTestId('email'), invalidEmail);
+    fireEvent.click(screen.getByTestId('submit-btn'));
+
     // Expect
-    expect(location.pathname).toEqual('/');
+    expect(screen.getByTestId('submit-btn')).toBeDisabled();
+    expect(screen.getByTestId('email-error')).toBeVisible();
+  });
+
+  it('Enter a valid data', async () => {
+    // Arrange
+    const email = 'test123@example.com';
+    const password = '12345678tT/';
+    mswServer.use(MOCK_AUTH);
+    renderWithProviders(
+      <MemoryRouter initialEntries={['/sign-up']}>
+        <SignUpForm />
+      </MemoryRouter>,
+      { store }
+    );
+
+    fireEvent.paste(screen.getByTestId('email'), email);
+    fireEvent.paste(screen.getByTestId('password'), password);
+    fireEvent.paste(screen.getByTestId('confirmPassword'), password);
+    fireEvent.click(screen.getByTestId('accept'));
+
+    // Expect
+    expect(screen.getByTestId('submit-btn')).toHaveAttribute('disabled', '');
   });
 });

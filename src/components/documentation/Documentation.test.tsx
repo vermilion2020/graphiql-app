@@ -40,6 +40,7 @@ describe('Response', async () => {
 
     // Expect
     expect(screen.getByTestId('queries-list')).toBeVisible();
+    expect(screen.getByTestId('back-btn')).toBeVisible();
   });
 
   it('Types page is shown when clicking on type link', async () => {
@@ -58,6 +59,7 @@ describe('Response', async () => {
 
     // Expect
     expect(screen.getByTestId('type-data')).toBeVisible();
+    expect(screen.getByTestId('back-btn')).toBeVisible();
   });
 
   it('Query item is displayed properly', async () => {

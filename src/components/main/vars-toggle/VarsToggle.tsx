@@ -63,6 +63,7 @@ function VarsToggle() {
         <button
           type="button"
           className="edit-toggle"
+          data-testid="collapse"
           onClick={handleCollapsed}
         >
           <CollapseIcon />

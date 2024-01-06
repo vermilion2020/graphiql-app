@@ -65,6 +65,7 @@ function Editor() {
       {visibleTab === 'vars' && !collapsed && (
         <div className={`vars-container ${codeClasses}`}>
           <CodeMirror
+            data-testid="vars-editor"
             value={vars}
             placeholder={JSON.stringify({ var: 'val' }, null, 2)}
             minHeight="200px"
@@ -78,6 +79,7 @@ function Editor() {
       {visibleTab === 'headers' && !collapsed && (
         <div className={`headers-container ${codeClasses}`}>
           <CodeMirror
+            data-testid="headers-editor"
             value={headers}
             placeholder={JSON.stringify(
               { 'Content-Type': 'application/json' },

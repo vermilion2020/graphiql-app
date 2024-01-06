@@ -82,6 +82,7 @@ function Documentation() {
             {(typeDisplayed || queriesDisplayed || mutationsDisplayed) && (
               <Link
                 to="#"
+                data-testid="back-btn"
                 className="text-blue-900 ps-2 cursor-pointer hover:underline"
                 onClick={toDefaultView}
               >
