@@ -12,7 +12,7 @@
 - GraphQL
 - Vitest
 
-## deploy:
+## Deploy:
 
 [Link to Netlify](https://graphiql-app-last-of-us.netlify.app/main)
 
@@ -20,9 +20,10 @@
 
 [Documentation](https://graphql.org/)
 
-## Enviroment
+## Environment:
 
 For proper local work, environment variables with firebase settings should be set.
+
 Example for .env file is ./example.env
 
 ## Commands (use 'npm run ...' to execute):
