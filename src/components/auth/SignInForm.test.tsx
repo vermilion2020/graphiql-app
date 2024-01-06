@@ -5,6 +5,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { store } from '../../redux';
 import { setSingIn } from '../../redux/features/appSlice';
 import SignInForm from './SignInForm';
+import { App } from '../../App';
 
 describe('Sign in form', async () => {
   it('Sign in form is rendered', async () => {
@@ -54,5 +55,21 @@ describe('Sign in form', async () => {
 
     // Expect
     expect(screen.getByTestId('submit-btn')).toHaveAttribute('disabled', '');
+  });
+
+  it('Back button opens Welcome page', async () => {
+    // Arrange
+    store.dispatch(setSingIn(false));
+    renderWithProviders(
+      <MemoryRouter initialEntries={['/sign-in']}>
+        <App />
+      </MemoryRouter>,
+      { store }
+    );
+
+    fireEvent.click(screen.getByTestId('back-btn'));
+
+    // Expect
+    expect(location.pathname).toEqual('/');
   });
 });

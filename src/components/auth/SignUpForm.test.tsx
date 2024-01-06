@@ -8,6 +8,7 @@ import { setSingIn } from '../../redux/features/appSlice';
 import SignUpForm from './SignUpForm';
 import { mswServer } from '../../setupTests';
 import { MOCK_AUTH } from '../../mock';
+import { App } from '../../App';
 
 describe('Sign up form', async () => {
   it('Sign up form is rendered', async () => {
@@ -62,5 +63,21 @@ describe('Sign up form', async () => {
 
     // Expect
     expect(screen.getByTestId('submit-btn')).toHaveAttribute('disabled', '');
+  });
+
+  it('Back button opens Welcome page', async () => {
+    // Arrange
+    store.dispatch(setSingIn(false));
+    renderWithProviders(
+      <MemoryRouter initialEntries={['/sign-up']}>
+        <App />
+      </MemoryRouter>,
+      { store }
+    );
+
+    fireEvent.click(screen.getByTestId('back-btn'));
+
+    // Expect
+    expect(location.pathname).toEqual('/');
   });
 });

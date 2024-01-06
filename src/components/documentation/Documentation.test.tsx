@@ -43,6 +43,24 @@ describe('Response', async () => {
     expect(screen.getByTestId('back-btn')).toBeVisible();
   });
 
+  it('default view is shown when clicking Back button', async () => {
+    // Arrange
+    store.dispatch(setLoading(false));
+    store.dispatch(setSchemaQueries({name: "Query"} as SchemaType));
+    renderWithProviders(
+      <MemoryRouter>
+        <Documentation />
+      </MemoryRouter>,
+      { store }
+    );
+
+    // Act
+    fireEvent.click(screen.getByTestId('back-btn'));
+
+    // Expect
+    expect(screen.getByTestId('query-btn')).toBeVisible();
+  });
+
   it('Types page is shown when clicking on type link', async () => {
     // Arrange
     store.dispatch(setQueriesDisplayed(false));
