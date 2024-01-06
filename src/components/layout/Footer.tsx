@@ -12,7 +12,7 @@ function Footer() {
     <footer className="footer-wrapper">
       {!!error && <PopupError />}
       <div className="footer-container">
-        <a href="https://rs.school/react/">
+        <a href="https://rs.school/react/" target="_blank">
           <RSSchool />
         </a>
         <div className="copyright-link-wrapper">
@@ -20,6 +20,7 @@ function Footer() {
           <div className="links-wrapper">
             <a
               href="https://github.com/vermilion2020"
+              target="_blank"
               title="Mila"
               className="font-semibold align-middle grow git-icon"
             >
@@ -28,6 +29,7 @@ function Footer() {
             </a>
             <a
               href="https://github.com/Mali-zi"
+              target="_blank"
               title="Natasha"
               className="font-semibold align-middle grow git-icon"
             >
@@ -36,6 +38,7 @@ function Footer() {
             </a>
             <a
               href="https://github.com/vvsar"
+              target="_blank"
               title="Viktor"
               className="font-semibold align-middle grow git-icon"
             >

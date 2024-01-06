@@ -34,8 +34,8 @@ function VarsToggle() {
         onClick={handleVars}
         className={
           visibleTab === 'vars'
-            ? 'text-buttonColor-300 font-semibold underline'
-            : 'cursor-pointer hover:text-buttonColor-300 '
+            ? 'text-buttonColor-300 font-semibold'
+            : 'cursor-pointer hover:text-buttonColor-300'
         }
       >
         {texts.main.variables}
@@ -45,7 +45,7 @@ function VarsToggle() {
         onClick={handleHeaders}
         className={
           visibleTab === 'headers'
-            ? 'text-buttonColor-300 font-semibold underline'
+            ? 'text-buttonColor-300 font-semibold'
             : 'cursor-pointer hover:text-buttonColor-300'
         }
       >

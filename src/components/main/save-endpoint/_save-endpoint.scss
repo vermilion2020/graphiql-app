@@ -29,6 +29,15 @@
   }
 }
 
+.main-editor {
+  display: flex;
+  flex-direction: row;
+
+  .cm-editor {
+    flex-grow: 1;
+  }
+}
+
 .edit-toggle {
   cursor: pointer;
   color: $hoverLinkColor;

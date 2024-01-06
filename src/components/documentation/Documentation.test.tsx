@@ -7,13 +7,16 @@ import { setLoading, setQueriesDisplayed, setSchemaQueries, setSchemaTypes } fro
 import { SchemaType } from '../../model/schema.interface';
 import Query from './Query';
 import { TEST_Q } from '../../model/testDocsData';
+import { MemoryRouter } from 'react-router-dom';
 
 describe('Response', async () => {
   it('Preloader is shown while data is fetching', async () => {
     // Arrange
     store.dispatch(setLoading(true));
     renderWithProviders(
-      <Documentation />,
+      <MemoryRouter>
+        <Documentation />
+      </MemoryRouter>,
       { store }
     );
 
@@ -26,7 +29,9 @@ describe('Response', async () => {
     store.dispatch(setLoading(false));
     store.dispatch(setSchemaQueries({name: "Query"} as SchemaType));
     renderWithProviders(
-      <Documentation />,
+      <MemoryRouter>
+        <Documentation />
+      </MemoryRouter>,
       { store }
     );
 
@@ -42,7 +47,9 @@ describe('Response', async () => {
     store.dispatch(setQueriesDisplayed(false));
     store.dispatch(setSchemaTypes([{name: "type field"}] as SchemaType[]));
     renderWithProviders(
-      <Documentation />,
+      <MemoryRouter>
+        <Documentation />
+      </MemoryRouter>,
       { store }
     );
 
@@ -58,7 +65,9 @@ describe('Response', async () => {
     store.dispatch(setQueriesDisplayed(false));
     store.dispatch(setSchemaTypes([{name: "type field"}] as SchemaType[]));
     renderWithProviders(
-      <Query query={TEST_Q} />,
+      <MemoryRouter>
+        <Query query={TEST_Q} />
+      </MemoryRouter>,
       { store }
     );
 

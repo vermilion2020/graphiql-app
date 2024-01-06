@@ -22,7 +22,7 @@ function Header() {
       dispatch(setSignOut());
       navigate('/');
     } catch (error) {
-      dispatch(setError('There was an error'));
+      dispatch(setError(texts.errorMessages['auth/user-not-found']));
     }
   };
 

@@ -27,8 +27,8 @@ function InfoPopup() {
   };
 
   return (
-    <div className="fixed inset-0 z-10 overflow-y-auto box-border">
-      <div className="fixed inset-0 w-full h-full bg-black opacity-40" />
+    <div className="absolute inset-0 z-10 overflow-y-auto box-border">
+      <div className="absolute inset-0 w-full h-full bg-black opacity-40" />
       <div className="flex flex-row items-center justify-center min-h-screen px-4 py-8" data-testid="info-popup">
         <div className="relative max-w-xs bg-white rounded-lg shadow bg-red-600 ">
           <button

@@ -16,9 +16,9 @@ export const prettifyQuery = (query: string) => {
     const prefix = firstI[0].length ? firstI[0] : '';
     let maxIndent = '';
     firstI = firstI.slice(1);
-    firstI = firstI.map((s, i) => {
+    firstI = firstI.map((part, i) => {
       maxIndent = addSpaces(i + 1);
-      return ` {\r${maxIndent}${s}`
+      return ` {\r${maxIndent}${part.trim()}`
     });
     firstI[0] = `${prefix}${firstI[0]}`;
 
@@ -38,6 +38,7 @@ export const prettifyQuery = (query: string) => {
     resultQuery = resultQuery.replace(/=/g, ' = ');
 
     resultQuery = resultQuery.replace(/ {1,}/g, ' ');
+    resultQuery = resultQuery.replace(/\t/g, '  ');
 
     return { status: 'ok', query: resultQuery };
   } catch {

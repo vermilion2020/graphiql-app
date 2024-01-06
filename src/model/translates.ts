@@ -19,6 +19,7 @@ export const en = {
     headers: 'Headers',
     docs: {
       title: 'Documentation',
+      officialDocs: 'GraphQL official docs',
       query: 'query',
       mutation: 'mutation',
       kind: 'is a type of a kind',
@@ -28,9 +29,10 @@ export const en = {
       back: 'Docs',
     },
     errors: {
-      vars: 'Error in variables',
-      headers: 'Error in headers',
-      query: 'Error in a query',
+      vars: 'Error in variables. Variables should be a valid JSON',
+      headers: 'Error in headers. Headers should be a valid JSON',
+      query: 'An error found in the query. Use documentation to fix the query and try again',
+      emptyQuery: `You can't send an empty query`,
     },
     info: {
       heading: 'GraphQL Info',
@@ -178,6 +180,7 @@ export const ru: typeof en = {
     headers: 'Заголовки',
     docs: {
       title: 'Документация',
+      officialDocs: 'GraphQL документация',
       query: 'запрос',
       mutation: 'мутация',
       kind: 'это тип вида',
@@ -187,9 +190,10 @@ export const ru: typeof en = {
       back: 'Назад',
     },
     errors: {
-      vars: 'Ошибка в переменных',
-      headers: 'Ошибка в заголовках',
-      query: 'Ошибка в запросе',
+      vars: 'Ошибка в переменных. Переменные должны иметь формат JSON',
+      headers: 'Ошибка в заголовках. Заголовки должны иметь формат JSON',
+      query: 'Ошибка в запросе. Используйте документацию, чтобы поправить ошибку и попробуйте снова',
+      emptyQuery: 'Невозможно отправить пустой запрос',
     },
     info: {
       heading: 'GraphQL Инфо',

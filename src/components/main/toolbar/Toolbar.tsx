@@ -60,6 +60,10 @@ function Toolbar() {
   };
 
   const sendRequest = () => {
+    if (!query.trim().length) {
+      dispatch(setError(texts.main.errors.emptyQuery));
+      return;
+    }
     if (!validQuery(query)) {
       dispatch(setError(texts.main.errors.query));
       return;

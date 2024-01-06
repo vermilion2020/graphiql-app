@@ -3,7 +3,6 @@ export default function InfoIcon() {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       height="90%"
-      width="auto"
       viewBox="0 -960 960 960"
       className="inline fill-current"
     >
