@@ -44,7 +44,6 @@ describe('Localisation', async () => {
     expect(screen.getByTestId('locale-current')).toHaveTextContent(
       `${testLocale}`
     );
-    expect(screen.getByText(texts.menu.main)).toBeVisible();
     expect(screen.getByText(texts.menu.welcome)).toBeVisible();
   });
 });

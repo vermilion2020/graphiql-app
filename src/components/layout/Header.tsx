@@ -22,14 +22,14 @@ function Header() {
       dispatch(setSignOut());
       navigate('/');
     } catch (error) {
-      dispatch(setError('There was an error'));
+      dispatch(setError(texts.errorMessages['auth/user-not-found']));
     }
   };
 
   return (
-    <header className="header-wrapper">
+    <>
       <GraphQL />
-      <div className="menu-wrapper">
+      <nav className="menu-wrapper">
         <NavLink
           className={({ isActive }) =>
             isActive ? 'menu-link active-link' : 'menu-link'
@@ -45,6 +45,7 @@ function Header() {
         </NavLink>
         {isLoggedIn && (
           <button
+            data-testid="logout-btn"
             type="button"
             className="btn-link menu-link"
             onClick={handleLogout}
@@ -57,8 +58,8 @@ function Header() {
           </button>
         )}
         <Locale />
-      </div>
-    </header>
+      </nav>
+    </>
   );
 }
 

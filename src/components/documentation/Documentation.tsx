@@ -9,6 +9,7 @@ import {
 import { useContext } from 'react';
 import { LocaleContext } from '../../context/LocaleContext';
 import Loader from '../common/Loader';
+import { Link } from 'react-router-dom';
 
 function Documentation() {
   const dispatch = useAppDispatch();
@@ -29,52 +30,63 @@ function Documentation() {
     dispatch(setQueriesDisplayed(false));
   };
 
+  const showQueries = () => {
+    dispatch(setQueriesDisplayed(true));
+  };
+
   const mainPartDisplayed =
     !typeDisplayed && !queriesDisplayed && !mutationsDisplayed;
 
   return (
-    <>
+    <div className="min-h-[200px] md:h-full w-full ">
       {loading ? (
         <Loader />
       ) : (
-        <div className="text-left min-h-[30vh] md:h-full overflow-auto docs-container w-full px-2">
+        <div className="text-left overflow-auto w-full docs-container">
           {schemaQueries && (
-            <h2 className="text-left font-semibold text-white">{texts.main.docs.title}</h2>
+            <>
+              <h2 className="text-left font-semibold text-white mb-3">{texts.main.docs.title}</h2>
+              <Link to="https://graphql.org/learn/" target="_blank">{texts.main.docs.officialDocs}</Link>
+            </>
           )}
-          <div className="heading mt-4 mb-2">
+          <div className="heading mt-2 mb-2">
             {mainPartDisplayed && schemaQueries && (
               <div className="text-left">
-                {texts.main.docs.query}:
-                <span
-                  onClick={() => dispatch(setQueriesDisplayed(true))}
+                <span className="text-white">{texts.main.docs.query}:</span>
+                <Link
+                  to="#"
+                  data-testid="query-btn"
+                  onClick={showQueries}
                   className="cursor-pointer hover:underline"
                 >
-                  <span className="text-orange-600 ms-2">
+                  <span className="ps-2">
                     {schemaQueries.name}
                   </span>
-                </span>
+                </Link>
               </div>
             )}
             {mainPartDisplayed && schemaMutations && (
               <div>
-                {texts.main.docs.mutation}:
-                <span
-                  onClick={() => dispatch(setQueriesDisplayed(true))}
+                <span className="text-white">{texts.main.docs.mutation}:</span>
+                <Link
+                  to="#"
+                  onClick={showQueries}
                   className="cursor-pointer hover:underline"
                 >
-                  <span className="text-orange-600 ms-2">
+                  <span className="text-orange-600 ps-2">
                     {schemaMutations.name}
                   </span>
-                </span>
+                </Link>
               </div>
             )}
             {(typeDisplayed || queriesDisplayed || mutationsDisplayed) && (
-              <span
-                className="text-blue-900 ms-2 cursor-pointer hover:underline"
+              <Link
+                to="#"
+                className="text-blue-900 ps-2 cursor-pointer hover:underline"
                 onClick={toDefaultView}
               >
                 {`< ${texts.main.docs.back}`}
-              </span>
+              </Link>
             )}
           </div>
 
@@ -90,7 +102,7 @@ function Documentation() {
           )}
         </div>
       )}
-    </>
+    </div>
   );
 }
 

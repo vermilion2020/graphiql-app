@@ -8,8 +8,7 @@ export default function PopupError() {
   const dispatch = useAppDispatch();
 
   return (
-    <div className="absolute bottom-8 right-1 transform -translate-x-1/2 -translate-y-1/2 z-100 w-11/12 max-w-md animate-fadeinout">
-      {/* <div className="absolute bottom-8 left-1/2 right-1/2 transform -translate-x-1/2 -translate-y-1/2 z-100 w-11/12 max-w-md"> */}
+    <div className="absolute bottom-8 right-1 transform z-100 w-11/12 max-w-md animate-fadeinout">
       <div className="relative max-w-xs bg-white rounded-lg shadow bg-red-600 ">
         <button
           type="button"
@@ -21,7 +20,7 @@ export default function PopupError() {
         </button>
         <div className="p-4 md:p-5 border rounded-lg shadow-xl text-center bg-yellow-50">
           <ExclamationMark />
-          <h3 className="mb-4 text-gray-500">{!!error && error}</h3>
+          <h3 className="mb-4 text-gray-500" data-testid="error-message">{!!error && error}</h3>
         </div>
       </div>
     </div>

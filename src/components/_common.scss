@@ -25,10 +25,14 @@ body {
 }
 
 body::-webkit-scrollbar,
-.cm-scroller::-webkit-scrollbar,
-.docs-container::-webkit-scrollbar {
+.cm-scroller::-webkit-scrollbar {
   width: 12px;
   height: 90%;
+}
+
+.docs-container::-webkit-scrollbar {
+  height: 12px;
+  width: 90%;
 }
 
 body::-webkit-scrollbar-track,
@@ -46,6 +50,7 @@ body::-webkit-scrollbar-thumb,
   cursor: pointer;
   border: 3px solid $whiteBgFontColor;
 }
+
 
 @media screen and (max-width: 1240px) {
   html {

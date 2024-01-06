@@ -5,6 +5,7 @@ import {
   setQueriesDisplayed,
   setTypeDisplayed,
 } from '../../redux/features/documentationSlice';
+import { Link } from 'react-router-dom';
 
 interface IQueryProps {
   query: Field;
@@ -19,24 +20,25 @@ function Query({ query }: IQueryProps) {
   };
 
   const typeBlock = (typeName: string) => (
-    <span className={TYPE_CLASSES} onClick={() => handleClickField(typeName)}>
+    <Link to="#" className={TYPE_CLASSES} onClick={handleClickField.bind(null, typeName)}>
       {typeName}
-    </span>
+    </Link>
   );
   const argBlock = (a: Arg) => (
     <>
       <span className="text-red-900 ms-2">{a.name}</span>:
-      <span
+      <Link
+        to="#"
         className={TYPE_CLASSES}
-        onClick={() => handleClickField(a.type.name ?? '')}
+        onClick={handleClickField.bind(null, a.type.name ?? '')}
       >
         {parseType(a.type)}
-      </span>
+      </Link>
     </>
   );
 
   return (
-    <div className="px-2 py-2 w-96">
+    <div className="px-2 py-2 w-96 text-white">
       <span className="text-violet-700">{query.name}</span>
       {query.args.length > 1 ? (
         <>

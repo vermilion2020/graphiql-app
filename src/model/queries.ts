@@ -22,3 +22,22 @@ export const DEFINITION_QUERY =
 
 export const BASIC_TYPES_QUERY =
   '{ __schema { queryType { fields { name } } }}';
+
+export const TEST_QUERY = 
+`query ($ids: [ID!]! = "ids") {
+  charactersByIds(ids: $ids) {
+    name
+  }
+}`;
+
+export const TEST_VARS = `{
+  "ids": [
+    1,
+    2,
+    3
+  ]
+}`;
+
+export const TEST_HEADERS = `{
+  "Content-Type": "application/json"
+}`;
