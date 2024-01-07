@@ -1,0 +1,20 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.content--img {
+  width: 600px;
+  height: 450px;
+}
+
+.content--heading {
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.content--description {
+  font-size: 1.1rem;
+}

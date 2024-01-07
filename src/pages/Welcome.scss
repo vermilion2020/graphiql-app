@@ -1,0 +1,37 @@
+.welcome-page {
+  height: fit-content;
+  width: 100%;
+  max-width: 1024px;
+  padding: 2rem;
+  border: 3px solid #0000;
+  border-radius: 100px 0;
+  background:
+    linear-gradient(90deg, rgba(0, 21, 34, 1), rgba(0, 161, 215, 0.3))
+      padding-box,
+    linear-gradient(var(--angle), rgba(0, 21, 34, 0.5), rgba(0, 163, 215, 0.3))
+      border-box;
+  animation: 8s rotate linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@media screen and (max-width: 450px) {
+  .welcome-page {
+    padding: 1rem 0.2rem;
+    border-radius: 40px 0;
+  }
+
+  .welcome-page h1 {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,70 @@
+h1 {
+  font-size: 1.8rem;
+  line-height: 1.1;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Helvetica, sans-serif;
+  overflow: auto;
+  scroll-behavior: smooth;
+  background: #000a22;
+}
+
+body::-webkit-scrollbar,
+.cm-scroller::-webkit-scrollbar {
+  width: 12px;
+  height: 90%;
+}
+
+.docs-container::-webkit-scrollbar {
+  height: 12px;
+  width: 90%;
+}
+
+body::-webkit-scrollbar-track,
+.cm-scroller::-webkit-scrollbar-track,
+.docs-container::-webkit-scrollbar-track {
+  background: $whiteBgFontColor;
+  z-index: -1;
+}
+
+body::-webkit-scrollbar-thumb,
+.cm-scroller::-webkit-scrollbar-thumb,
+.docs-container::-webkit-scrollbar-thumb {
+  background-color: $darkGreyFontColor;
+  border-radius: 20px;
+  cursor: pointer;
+  border: 3px solid $whiteBgFontColor;
+}
+
+@media screen and (max-width: 1240px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 1920px) {
+  html {
+    font-size: 18px;
+  }
+}

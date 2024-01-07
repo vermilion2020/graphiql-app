@@ -1,0 +1,52 @@
+.save-endpoint-wrapper {
+  height: 1.5rem;
+  width: 97%;
+  margin-bottom: 1rem;
+  flex: none;
+
+  .form {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0.5rem;
+    height: 100%;
+
+    .text-input {
+      padding: 0 5px;
+      width: 100%;
+      max-width: 450px;
+      border: solid 2px $hoverLinkColor;
+      border-radius: 0.5rem;
+      background-color: #fff;
+
+      &.invalid,
+      &.invalid:focus {
+        border: solid 2px #a11818;
+      }
+    }
+  }
+}
+
+.main-editor {
+  display: flex;
+  flex-direction: row;
+
+  .cm-editor {
+    flex-grow: 1;
+  }
+}
+
+.edit-toggle {
+  cursor: pointer;
+  color: $hoverLinkColor;
+  height: 100%;
+  width: auto;
+}
+
+.edit-toggle:hover {
+  color: #93e8ff;
+  transform: scale(1.1, 1.1);
+  transition: all 0.3s ease;
+}

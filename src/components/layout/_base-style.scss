@@ -1,0 +1,67 @@
+$activeLinkColor: #1073c9;
+$baseLinkColor: #0b5394;
+$hoverLinkColor: #00a3d7;
+
+$whiteBgFontColor: #fff;
+$errorColor: rgb(145, 30, 30);
+$blackBgFontColor: #001522;
+$mainBgFontColor: #003354;
+$darkGreyFontColor: #636975;
+$lightGreyColor: #b9b5bb;
+$darkBlueColor: #000a22;
+$lightBlueColor: #7186ad;
+
+.btn {
+  border: 0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background-color: $baseLinkColor;
+  color: $whiteBgFontColor;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.btn:hover {
+  background-color: $hoverLinkColor;
+  transform: scale(1.05, 1.05);
+  transition: all 0.3s ease;
+}
+
+.btn:disabled {
+  background-color: $lightGreyColor;
+  transform: none;
+  cursor: default;
+}
+
+.btn:active {
+  background-color: $hoverLinkColor;
+  transform: none;
+}
+
+a,
+.btn-link {
+  font-weight: 500;
+  color: $baseLinkColor;
+  text-decoration: inherit;
+
+  &.menu-link {
+    color: $whiteBgFontColor;
+    text-transform: uppercase;
+  }
+
+  &.menu-link:hover {
+    color: $hoverLinkColor;
+  }
+
+  &:hover,
+  &.active-link:hover {
+    color: $hoverLinkColor;
+    transform: scale(1.03, 1.03);
+    transition: all 0.3s ease;
+  }
+
+  &.active-link {
+    color: $activeLinkColor;
+  }
+}
