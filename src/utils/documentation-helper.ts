@@ -1,8 +1,6 @@
 import { Type2 } from '../model/schema.interface';
 
-let arr = false;
-
-export function parseType(arg: Type2, type = '') {
+export function parseType(arg: Type2, type = '', arr = false) {
   if (arg.kind === 'NON_NULL' && !type.includes('!')) {
     type += '!';
   }
@@ -12,7 +10,7 @@ export function parseType(arg: Type2, type = '') {
   if (arg.name) {
     type = arg.name + type;
   } else if (arg.ofType) {
-    return parseType(arg.ofType, type);
+    return parseType(arg.ofType, type, arr);
   }
   return arr ? `[${type}]` : type;
 }
