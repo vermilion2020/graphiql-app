@@ -13,6 +13,9 @@ import Toolbar from './Toolbar';
 import { setQuery, setVars } from '../../../redux/features/editorSlice';
 import { prettifyQuery } from '../../../utils/prettify';
 import { DOCS_TEST_DATA } from '../../../model/testDocsData';
+import { MemoryRouter } from 'react-router-dom';
+import { App } from '../../../App';
+import { setSingIn, setTestMode } from '../../../redux/features/appSlice';
 
 describe('Toolbar', async () => {
   it('Query is sent to the server when clicking Run Query button', async () => {
@@ -50,6 +53,25 @@ describe('Toolbar', async () => {
 
     // Expect
     expect(store.getState().editorState.query).toEqual(prettifiedQuery.query);
+  });
+
+  it('An error shown when try to prettify invalid query', async () => {
+    // Arrange
+    store.dispatch(setSingIn(true));
+    store.dispatch(setTestMode(true));
+    store.dispatch(setQuery('{() query'));
+    renderWithProviders(
+      <MemoryRouter initialEntries={['/main']}>
+        <App />
+      </MemoryRouter>,
+      { store }
+    );
+
+    // Act
+    fireEvent.click(screen.getByTestId('prettify-btn'));
+
+    // Expect
+    expect(screen.getByTestId('error-message')).toBeVisible();
   });
 
   it('Documentation is set when clicking Show docs button', async () => {

@@ -15,7 +15,10 @@ function Welcome() {
           {texts.welcome.noEnv}
         </h1>
       ) : (
-        <article className="flex flex-col justify-center items-center max-w-4xl px-3 box-decoration-slice text-white">
+        <article
+          className="flex flex-col justify-center items-center max-w-4xl px-3 box-decoration-slice text-white"
+          data-testid="welcome-content"
+        >
           <h1 className="mb-4">{texts.welcome.title}</h1>
           <p className="self-start py-2">{texts.welcome.project}</p>
           <p className="self-start py-2">{texts.welcome.course}</p>

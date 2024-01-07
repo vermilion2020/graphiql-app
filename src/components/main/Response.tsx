@@ -29,6 +29,7 @@ function Response() {
         ) : (
           <CodeMirror
             value={parserResponse}
+            data-testid="response-editor"
             readOnly
             minHeight="200px"
             height="100%"

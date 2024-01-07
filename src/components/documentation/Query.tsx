@@ -30,7 +30,7 @@ function Query({ query }: IQueryProps) {
   );
   const argBlock = (a: Arg) => (
     <>
-      <span className="text-red-900 ms-2">{a.name}</span>:
+      <span className="text-blue-300 ms-2">{a.name}</span>:
       <Link
         to="#"
         className={TYPE_CLASSES}
@@ -59,7 +59,7 @@ function Query({ query }: IQueryProps) {
           </div>
         </>
       ) : query.args.length === 1 ? (
-        <span>
+        <span className="ml-1">
           ({argBlock(query.args[0])}): {typeBlock(parseType(query.type))}
         </span>
       ) : (

@@ -1,3 +1,78 @@
+import { SchemaType } from './schema.interface';
+
+export const TEST_TYPES = [
+  {
+    kind: 'SCALAR',
+    name: 'Int',
+  },
+  {
+    kind: 'ENUM',
+    name: 'CacheControlScope',
+    interfaces: null,
+    enumValues: [
+      {
+        name: 'PUBLIC',
+        isDeprecated: false,
+        deprecationReason: null,
+      },
+      {
+        name: 'PRIVATE',
+        isDeprecated: false,
+        deprecationReason: null,
+      },
+    ],
+    possibleTypes: null,
+  },
+  {
+    kind: 'INPUT_OBJECT',
+    name: 'FilterCharacter',
+    inputFields: [
+      {
+        name: 'name',
+        type: {
+          kind: 'SCALAR',
+          name: 'String',
+        },
+        defaultValue: null,
+      },
+    ],
+    interfaces: null,
+    enumValues: null,
+    possibleTypes: null,
+  },
+  {
+    kind: 'OBJECT',
+    name: 'Characters',
+    fields: [
+      {
+        name: 'info',
+        args: [],
+        type: {
+          kind: 'OBJECT',
+          name: 'Info',
+          ofType: null,
+        },
+        isDeprecated: false,
+        deprecationReason: null,
+      },
+      {
+        name: 'results',
+        args: [],
+        type: {
+          kind: 'LIST',
+          ofType: {
+            kind: 'OBJECT',
+            name: 'Character',
+          },
+        },
+        isDeprecated: false,
+        deprecationReason: null,
+      },
+    ],
+    enumValues: null,
+  },
+] as SchemaType[];
+
 export const TEST_Q = {
   name: 'character',
   args: [
