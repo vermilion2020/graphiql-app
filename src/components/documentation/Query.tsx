@@ -34,7 +34,7 @@ function Query({ query }: IQueryProps) {
       <Link
         to="#"
         className={TYPE_CLASSES}
-        onClick={handleClickField.bind(null, a.type.name ?? '')}
+        onClick={handleClickField.bind(null, parseType(a.type))}
       >
         {parseType(a.type)}
       </Link>
