@@ -29,7 +29,7 @@ function Main() {
         <Editor />
       </div>
 
-      <div className="md:w-4/12 md:flex-none w-full">
+      <div className="main-container-left">
         <Response />
       </div>
     </div>
