@@ -31,6 +31,7 @@ $lightBlueColor: #7186ad;
 .btn:disabled {
   background-color: $lightGreyColor;
   transform: none;
+  cursor: default;
 }
 
 .btn:active {

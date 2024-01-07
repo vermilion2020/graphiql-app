@@ -42,7 +42,7 @@ function Query({ query }: IQueryProps) {
   );
 
   return (
-    <div className="px-2 py-2 w-96 text-white">
+    <div className="px-2 py-2 min-w-80 text-white">
       <span className="text-violet-700">{query.name}</span>
       {query.args.length > 1 ? (
         <>
