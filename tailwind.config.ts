@@ -40,7 +40,7 @@ export default {
         },
       },
       animation: {
-        fadeinout: 'fadeinout 4s linear forwards',
+        fadeinout: 'fadeinout 6s linear forwards',
       },
     },
     screens: {

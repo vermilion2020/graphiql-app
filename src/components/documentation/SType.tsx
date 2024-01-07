@@ -18,21 +18,33 @@ function SType({ sTypeName }: IFieldProps) {
 
   const handleTypeClick = (typeName: string) => {
     dispatch(setTypeDisplayed(typeName));
-  }
+  };
 
   return (
     <div data-testid="type-data" className="text-blue-300">
       {sType?.kind === 'OBJECT' && (
-        <h3 className="my-2 text-sm text-white">{`${texts.main.docs.fields} ${sType.name}`}</h3>
+        <h3
+          className="my-2 text-sm text-white"
+          data-testid="object-type"
+        >{`${texts.main.docs.fields} ${sType.name}`}</h3>
       )}
       {sType?.kind === 'INPUT_OBJECT' && (
-        <h3 className="my-2 text-sm text-white">{`${texts.main.docs.inputFields} ${sType.name}`}</h3>
+        <h3
+          className="my-2 text-sm text-white"
+          data-testid="input-object-type"
+        >{`${texts.main.docs.inputFields} ${sType.name}`}</h3>
       )}
       {sType?.kind === 'SCALAR' && (
-        <h3 className="my-2 text-sm text-white">{`${sType.name} ${texts.main.docs.kind} 'Scalar'`}</h3>
+        <h3
+          className="my-2 text-sm text-white"
+          data-testid="scalar-type"
+        >{`${sType.name} ${texts.main.docs.kind} 'Scalar'`}</h3>
       )}
       {sType?.kind === 'ENUM' && (
-        <h3 className="my-2 text-sm text-white">{`${sType.name} ${texts.main.docs.kind} 'Enum'`}</h3>
+        <h3
+          className="my-2 text-sm text-white"
+          data-testid="enum-type"
+        >{`${sType.name} ${texts.main.docs.kind} 'Enum'`}</h3>
       )}
       {sType && sType.fields ? (
         sType.fields.map((f, i) => (

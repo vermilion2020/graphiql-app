@@ -12,8 +12,8 @@ function FieldsList({ fieldsData }: IFieldsList) {
   const dispatch = useAppDispatch();
 
   const handleTypeClick = (name: string) => {
-    dispatch(setTypeDisplayed(name))
-  }
+    dispatch(setTypeDisplayed(name));
+  };
 
   return (
     <div>

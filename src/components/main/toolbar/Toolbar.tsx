@@ -21,7 +21,9 @@ import InfoPopup from '../../common/infoPopup';
 import InfoIcon from '../../../assets/icons/InfoIcon';
 
 function Toolbar() {
-  const { query, vars, headers, infoDisplayed } = useAppSelector((state) => state.editorState);
+  const { query, vars, headers, infoDisplayed } = useAppSelector(
+    (state) => state.editorState
+  );
   const { texts, locale } = useContext(LocaleContext);
   const [triggerSchema] = useLazyGetSchemaQuery();
   const [triggerRequest] = useLazySendRequestQuery();
@@ -117,14 +119,29 @@ function Toolbar() {
               </button>
             )}
             {schemaQueries && (
-              <button type="button" className="edit-toggle" onClick={hideDocs} data-testid="hide-docs-btn">
+              <button
+                type="button"
+                className="edit-toggle"
+                onClick={hideDocs}
+                data-testid="hide-docs-btn"
+              >
                 <DescriptionIcon />
               </button>
             )}
-            <button type="button" className="edit-toggle" onClick={prettify} data-testid="prettify-btn">
+            <button
+              type="button"
+              className="edit-toggle"
+              onClick={prettify}
+              data-testid="prettify-btn"
+            >
               <FormatIcon />
             </button>
-            <button type="button" className="edit-toggle" onClick={showTooltip} data-testid="info-btn">
+            <button
+              type="button"
+              className="edit-toggle"
+              onClick={showTooltip}
+              data-testid="info-btn"
+            >
               <InfoIcon />
             </button>
           </div>

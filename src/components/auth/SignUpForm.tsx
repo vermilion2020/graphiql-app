@@ -134,6 +134,7 @@ function SignUpForm() {
               type="email"
               id="email"
               autoComplete="email"
+              data-testid="email"
               disabled={isLoading}
               placeholder={texts.signUp.emailPlaceholder}
               className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
@@ -143,7 +144,10 @@ function SignUpForm() {
             focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
               {...register('email')}
             />
-            <div className="block text-xs font-medium text-red-600">
+            <div
+              className="block text-xs font-medium text-red-600"
+              data-testid="email-error"
+            >
               {formState.errors.email && formState.errors.email.message}
             </div>
           </label>
@@ -155,6 +159,7 @@ function SignUpForm() {
             <input
               type="password"
               id="password"
+              data-testid="password"
               autoComplete="new-password"
               disabled={isLoading}
               placeholder={texts.signUp.passwordPlaceholder}
@@ -177,6 +182,7 @@ function SignUpForm() {
             <input
               type="password"
               id="confirmPassword"
+              data-testid="confirmPassword"
               disabled={isLoading}
               placeholder={texts.signUp.confirmPasswordPlaceholder}
               autoComplete="none"
@@ -197,6 +203,7 @@ function SignUpForm() {
             <div className="flex h-6 items-center">
               <input
                 id="accept"
+                data-testid="accept"
                 type="checkbox"
                 className="h-4 w-4 accent-buttonColor-600 hover:accent-buttonColor-300"
                 {...register('accept')}
@@ -219,7 +226,12 @@ function SignUpForm() {
             {isLoading ? (
               <Spinner text={texts.signUp.loading} />
             ) : (
-              <button type="submit" disabled={isDisabled} className="btn">
+              <button
+                type="submit"
+                data-testid="submit-btn"
+                disabled={isDisabled}
+                className="btn"
+              >
                 {texts.signUp.title}
               </button>
             )}
@@ -227,9 +239,9 @@ function SignUpForm() {
         </form>
         <p className="mt-3">
           {texts.signUp.question}&#32;
-            <Link to="/sign-in">
-              <span className="mt-3 font-semibold">{texts.signUp.linkText}</span>
-            </Link>
+          <Link to="/sign-in">
+            <span className="mt-3 font-semibold">{texts.signUp.linkText}</span>
+          </Link>
         </p>
       </div>
     </div>

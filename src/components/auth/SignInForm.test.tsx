@@ -1,9 +1,10 @@
 import { describe, it } from 'vitest';
 import { renderWithProviders } from '../../test-utils';
-import { screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { store } from '../../redux';
-import { setSingIn, setTestMode } from '../../redux/features/appSlice';
+import { setSingIn } from '../../redux/features/appSlice';
+import SignInForm from './SignInForm';
 import { App } from '../../App';
 
 describe('Sign in form', async () => {
@@ -11,7 +12,7 @@ describe('Sign in form', async () => {
     store.dispatch(setSingIn(false));
     renderWithProviders(
       <MemoryRouter initialEntries={['/sign-in']}>
-        <App />
+        <SignInForm />
       </MemoryRouter>,
       { store }
     );
@@ -20,16 +21,53 @@ describe('Sign in form', async () => {
     expect(screen.getByText('Password')).toBeInTheDocument();
   });
 
-  it('Main page is shown, when user is signed in and open Sign-in page', async () => {
+  it('Sign-up page validation', async () => {
     // Arrange
-    store.dispatch(setSingIn(true));
-    store.dispatch(setTestMode(true));
+    const invalidEmail = '123456.ru';
     renderWithProviders(
-      <MemoryRouter initialEntries={['/sign-ip']}>
+      <MemoryRouter initialEntries={['/sign-in']}>
+        <SignInForm />
+      </MemoryRouter>,
+      { store }
+    );
+
+    fireEvent.paste(screen.getByTestId('email'), invalidEmail);
+    fireEvent.click(screen.getByTestId('submit-btn'));
+
+    // Expect
+    expect(screen.getByTestId('submit-btn')).toBeDisabled();
+    expect(screen.getByTestId('email-error')).toBeVisible();
+  });
+
+  it('Enter a valid data', async () => {
+    // Arrange
+    const email = 'test123@example.com';
+    const password = '12345678tT/';
+    renderWithProviders(
+      <MemoryRouter initialEntries={['/sign-in']}>
+        <SignInForm />
+      </MemoryRouter>,
+      { store }
+    );
+
+    fireEvent.paste(screen.getByTestId('email'), email);
+    fireEvent.paste(screen.getByTestId('password'), password);
+
+    // Expect
+    expect(screen.getByTestId('submit-btn')).toHaveAttribute('disabled', '');
+  });
+
+  it('Back button opens Welcome page', async () => {
+    // Arrange
+    store.dispatch(setSingIn(false));
+    renderWithProviders(
+      <MemoryRouter initialEntries={['/sign-in']}>
         <App />
       </MemoryRouter>,
       { store }
     );
+
+    fireEvent.click(screen.getByTestId('back-btn'));
 
     // Expect
     expect(location.pathname).toEqual('/');

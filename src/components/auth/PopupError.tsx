@@ -20,7 +20,9 @@ export default function PopupError() {
         </button>
         <div className="p-4 md:p-5 border rounded-lg shadow-xl text-center bg-yellow-50">
           <ExclamationMark />
-          <h3 className="mb-4 text-gray-500" data-testid="error-message">{!!error && error}</h3>
+          <h3 className="mb-4 text-gray-500" data-testid="error-message">
+            {!!error && error}
+          </h3>
         </div>
       </div>
     </div>

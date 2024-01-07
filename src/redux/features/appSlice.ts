@@ -14,7 +14,7 @@ const initialState: IAppState = {
   expToken: null,
   isLoggedIn: false,
   error: null,
-  testMode: false
+  testMode: false,
 };
 
 export const AppSlice = createSlice({
@@ -49,10 +49,11 @@ export const AppSlice = createSlice({
     },
     setTestMode: (state, action) => {
       state.testMode = action.payload;
-    }
+    },
   },
 });
 
 export default AppSlice.reducer;
 
-export const { setSingIn, setError, setSignOut, setToken, setTestMode } = AppSlice.actions;
+export const { setSingIn, setError, setSignOut, setToken, setTestMode } =
+  AppSlice.actions;

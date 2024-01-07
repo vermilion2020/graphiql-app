@@ -45,8 +45,12 @@ function Documentation() {
         <div className="text-left overflow-auto w-full docs-container">
           {schemaQueries && (
             <>
-              <h2 className="text-left font-semibold text-white mb-3">{texts.main.docs.title}</h2>
-              <Link to="https://graphql.org/learn/" target="_blank">{texts.main.docs.officialDocs}</Link>
+              <h2 className="text-left font-semibold text-white mb-3">
+                {texts.main.docs.title}
+              </h2>
+              <Link to="https://graphql.org/learn/" target="_blank">
+                {texts.main.docs.officialDocs}
+              </Link>
             </>
           )}
           <div className="heading mt-2 mb-2">
@@ -59,9 +63,7 @@ function Documentation() {
                   onClick={showQueries}
                   className="cursor-pointer hover:underline"
                 >
-                  <span className="ps-2">
-                    {schemaQueries.name}
-                  </span>
+                  <span className="ps-2">{schemaQueries.name}</span>
                 </Link>
               </div>
             )}
@@ -82,6 +84,7 @@ function Documentation() {
             {(typeDisplayed || queriesDisplayed || mutationsDisplayed) && (
               <Link
                 to="#"
+                data-testid="back-btn"
                 className="text-blue-900 ps-2 cursor-pointer hover:underline"
                 onClick={toDefaultView}
               >

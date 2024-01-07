@@ -27,4 +27,4 @@ export const getErrorMessage = (key: string, texts: typeof en) => {
     : texts.errorMessages['auth/custom-authentication-error'];
 };
 
-export const HIDE_MODAL_TIMEOUT = 4000;
+export const HIDE_MODAL_TIMEOUT = 6000;

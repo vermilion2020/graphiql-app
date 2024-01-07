@@ -11,10 +11,7 @@ describe('Toolbar', async () => {
   it('Edit form is shown when clicking edit icon', async () => {
     // Arrange
     mswServer.use(SEND_QUERY);
-    renderWithProviders(
-      <SaveEndpoint />,
-      { store }
-    );
+    renderWithProviders(<SaveEndpoint />, { store });
 
     // Act
     fireEvent.click(screen.getByTestId('edit-btn'));
